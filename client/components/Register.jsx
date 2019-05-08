@@ -11,7 +11,8 @@ class Register extends React.Component {
       firstName: "",
       lastName: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      profilePictureUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     };
     this.updateDetails = this.updateDetails.bind(this);
     this.submit = this.submit.bind(this);
@@ -27,10 +28,11 @@ class Register extends React.Component {
     e.target.reset();
     let {
       userName,
+      firstName,
+      lastName,
       password,
       confirmPassword,
-      firstName,
-      lastName
+      profilePictureUrl
     } = this.state;
     if (confirmPassword != password)
       return this.props.dispatch(loginError("Passwords don't match"));
@@ -38,7 +40,6 @@ class Register extends React.Component {
   }
   render() {
     const { auth } = this.props;
-    console.log(this.state);
     return (
       <form className="text-center p-5 w-responsive m-auto" onSubmit={this.submit}>
         <p className="h4 mb-4">Sign up</p>
@@ -110,14 +111,16 @@ class Register extends React.Component {
           type="text"
           id="defaultRegisterPhonePassword"
           className="form-control"
-          placeholder="Phone number"
+          placeholder="Profile Picture URL"
+          name="profilePictureUrl"
           aria-describedby="defaultRegisterFormPhoneHelpBlock"
+          onChange={this.updateDetails}
         />
         <small
           id="defaultRegisterFormPhoneHelpBlock"
           className="form-text text-muted mb-4"
         >
-          Optional - for two step authentication
+          Optional
         </small>
 
         <div className="custom-control custom-checkbox">

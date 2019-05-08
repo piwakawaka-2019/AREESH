@@ -2,7 +2,7 @@ import React, { Fragment as F } from "react";
 import { logoutUser } from "../../actions/logout";
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
-function SignedInNav({logout}) {
+function SignedInNav({logout, user}) {
   return (
     <F>
       <li className="nav-item">
@@ -19,10 +19,10 @@ function SignedInNav({logout}) {
           aria-expanded="false"
         >
           <img
-            src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+            src={user.image_url}
             className="rounded-circle z-depth-0"
             alt="avatar image"
-            style={{ width: 30 }}
+            style={{ width: 30, height:30}}
           />
         </a>
         <div
@@ -41,6 +41,10 @@ function SignedInNav({logout}) {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {user:state.auth.user}
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     logout: e => dispatch(logoutUser(e))
@@ -48,7 +52,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SignedInNav)
 
