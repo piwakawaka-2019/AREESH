@@ -9,27 +9,28 @@ exports.seed = function (knex, Promise) {
       return knex('users').insert([
         {
           id: 1,
+          user_name: 'johndoe',
           first_name: 'John',
           last_name: 'Doe',
-          user_name: 'johndoe',
-          hourly_wage: 100,
           password_hash: hashSync('Krang', saltRounds),
+          image_url: 'https://i.kym-cdn.com/entries/icons/facebook/000/009/754/PhotogenicGuy.jpg'
         },
         {
           id: 2,
+          user_name: 'janedoe',
           first_name: 'Jane',
           last_name: 'Doe',
-          user_name: 'janedoe',
-          hourly_wage: 100,
           password_hash: hashSync('Krang', saltRounds),
+          image_url: 'https://worldwideinterweb.com/wp-content/uploads/2013/05/funny-looking-mugshots-1.png'
         },
         {
           id: 3,
+          user_name: 'houseofmouse',
           first_name: 'Mickey',
           last_name: 'Mouse',
-          user_name: 'houseofmouse',
-          hourly_wage: 100,
           password_hash: hashSync('Krang', saltRounds),
+          image_url: 'http://clipart-library.com/images/M8iAKoBca.gif'
+          
         }
       ])
     })

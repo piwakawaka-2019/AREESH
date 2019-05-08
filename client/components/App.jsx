@@ -28,8 +28,8 @@ export function App({auth}) {
         </div>
         <main className=''>
           <Route path="/" component={Home} exact/>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} exact/>
+          <Route path="/register" component={Register} exact/>
         </main>
       </div>
       <Footer/>
