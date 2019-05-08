@@ -7,7 +7,7 @@ class Winner extends Component {
     }
     render() {
         return (
-            
+            <div></div>
         );
     }
 }

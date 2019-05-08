@@ -12,9 +12,24 @@ import Header from './Header';
 export function App({auth}) {
   return (
     <div>
-      <Header />,
-      <About />,
-      <Footer />
+      <Router>
+      <div className="container has-text-centered">
+
+        <div className="hero is-small is-primary">
+          <div>
+            <Link to='/' className="">
+
+            </Link>
+          </div>
+        </div>
+        <main className=''>
+          <Route path="/" component={Home} exact/>
+          <Route path="/login" component={Login} exact/>
+          <Route path="/register" component={Register} exact/>
+        </main>
+      </div>
+      <Footer/>
+    </Router>
     </div>
     
    

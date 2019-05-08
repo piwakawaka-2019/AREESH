@@ -7,7 +7,7 @@ class YesOrNo extends Component {
     }
     render() {
         return (
-            
+            <div></div>
         );
     }
 }

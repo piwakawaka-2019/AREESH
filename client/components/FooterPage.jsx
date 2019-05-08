@@ -7,7 +7,7 @@ class FooterPage extends Component {
     }
     render() {
         return (
-            
+            <div></div>
         );
     }
 }
