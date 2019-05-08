@@ -16,6 +16,14 @@ Now over to you. Spell the word out loud, and AREESH will let you know if you ge
 * BE Lead		    TBC
 * Vibe Master		Josh
 
+## Stand-Up Schedule
+Daily @
+* 09:00 (+ check-in)
+* 11:00 (+ energizer game)
+* 13:00
+* 15:00 (+ energizer game)
+* 17:00
+
 ## User Stories
 
 ### MVP
