@@ -17,12 +17,12 @@ const client = new speech.SpeechClient();
 /**
  * TODO(developer): Uncomment the following lines before running the sample.
  */
-const filename = '../../public/userVoiceRecordings/sonic.m4a';
+const filename = '../../public/userVoiceRecordings/flacSonic.flac';
 // const filename = './public/userVoiceRecordings/sonic.m4a';
 // const encoding = 'Encoding of the audio file, e.g. LINEAR16';
-const encoding = 'LINEAR16';
+const encoding = 'FLAC';
 // const sampleRateHertz = 16000;
-const sampleRateHertz = 16000;
+const sampleRateHertz = 44100;
 // const languageCode = 'BCP-47 language code, e.g. en-US';
 const languageCode = 'en-IE';
 
@@ -40,29 +40,6 @@ const request = {
 console.log("About to make API call")
 const recognizeStream = client
   .streamingRecognize(request)
-  .on('error', stuff => {
-    console.error('error')
-    console.error(stuff)
-  })
-  .on('pipe', stuff => {
-    console.error('pipe')
-    console.error(stuff)
-  })
-  .on('unpipe', stuff => {
-    console.error('unpipe')
-    console.error(stuff)
-  })
-  .on('unpipe', console.error)
-  .on('drain', console.error)
-  .on('finish', console.error)
-  .on('close', stuff => {
-    console.error('close')
-    console.error(stuff)
-  })
-  .on('end', (stuff,stuff2) => {
-    console.error('end')
-    console.error(stuff,stuff2)
-  })
   .on('data', data => {
     console.log(
       `Transcription: ${data.results[0].alternatives[0].transcript}`
