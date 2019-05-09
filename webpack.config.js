@@ -20,11 +20,11 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   // attempting to fix webpack vs. fs issue
-  target: 'node',
-  externals: {
-    fs: 'commonjs fs"'
-  },
-  node: {fs: "empty"},
+  // target: 'node',
+  // externals: {
+  //   fs: 'commonjs fs"'
+  // },
+  // node: {fs: "empty"},
   //
   devtool: 'source-map'
 }
