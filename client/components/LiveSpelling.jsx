@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-import {transcribeSpeechAction} from '../actions/speech'
 import {transcribeSpeechAPI} from '../apis/speech'
 
 class LiveSpelling extends Component {
@@ -14,8 +13,12 @@ class LiveSpelling extends Component {
   }
 
   handleClick () {
-    transcribeSpeechAction()
-    transcribeSpeechAPI()
+    transcribeSpeechAPI('flacSonic.flac')
+    .then(transcription => {
+      this.setState({
+        transcribedWord: transcription
+      })
+    })
   }
 
   render() { 

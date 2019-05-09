@@ -2,14 +2,16 @@ const router = require('express').Router()
 const fs = require('fs');
 const speech = require('@google-cloud/speech');
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
 
-    console.log("firing speech.js funcitons on server side!")
+    let {fileName} = req.body
+
+    console.log("firing speech.js functions on server side!")
     // Creates a client
     const client = new speech.SpeechClient();
 
     // will eventually be passed via API call
-    const filename = '../../public/userVoiceRecordings/flacSonic.flac'
+    const filename = `./public/userVoiceRecordings/${fileName}`
 
     // Encoding of the audio file, e.g. LINEAR16
     const encoding = 'FLAC';
@@ -23,7 +25,7 @@ router.get('/', (req, res) => {
         sampleRateHertz: sampleRateHertz,
         languageCode: languageCode,
     },
-    interimResults: true, // If you want interim results, set this to true
+    interimResults: false, // If you want interim results, set this to true
     };
 
     // Stream the audio to the Google Cloud Speech API
@@ -33,6 +35,7 @@ router.get('/', (req, res) => {
         console.log(
         `Transcription: ${data.results[0].alternatives[0].transcript}`
         );
+        res.json({ transcript: data.results[0].alternatives[0].transcript })
     });
 
     // Stream an audio file from disk to the Speech API, e.g. "./resources/audio.raw"
