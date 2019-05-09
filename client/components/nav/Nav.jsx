@@ -7,21 +7,20 @@ import SignedInNav from "./SignedInNav";
 import SignedOutNav from "./SignedOutNav";
 
 export class Nav extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     console.log(this.props);
   }
 
   render() {
-    
     return (
       <nav className="mb-1 navbar navbar-expand-lg navbar-dark grey darken-3">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <Link to="/">
+          <a className="navbar-brand">Arreesh</a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -38,6 +37,16 @@ export class Nav extends Component {
           id="navbarSupportedContent-555"
         >
           <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <Link to="/">
+                <a className="nav-link">
+                  Home
+                  <span className="sr-only">(current)</span>
+                </a>
+              </Link>
+            </li>
+          </ul>
+          {/* <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <a className="nav-link" href="#">
                 Home
@@ -79,10 +88,9 @@ export class Nav extends Component {
                 </a>
               </div>
             </li>
-          </ul>
+          </ul> */}
           <ul className="navbar-nav ml-auto nav-flex-icons">
-            {this.props.auth.user ? <SignedInNav/>:<SignedOutNav/>}
-
+            {this.props.auth.user ? <SignedInNav /> : <SignedOutNav />}
           </ul>
         </div>
       </nav>
@@ -90,11 +98,11 @@ export class Nav extends Component {
   }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth
-  }
-}
+  };
+};
 
 const mapDispatchToProps = {};
 
