@@ -9,7 +9,7 @@ const {Storage} = require('@google-cloud/storage');
 // Instantiates a client. If you don't specify credentials when constructing
 // the client, the client library will look for credentials in the
 // environment.
-const storage = new Storage();
+const torage = new Storage();
 
 // Creates a client
 const client = new speech.SpeechClient();
@@ -52,9 +52,16 @@ const recognizeStream = client
     console.error('unpipe')
     console.error(stuff)
   })
-  .on('unpipe', console.error)
-  .on('drain', console.error)
-  .on('finish', console.error)
+  .on('drain', stuff => {
+    console.error('drain')
+    console.error(stuff)
+  })
+
+  .on('finish', stuff => {
+    console.error('finish')
+    console.error(stuff)
+  })
+
   .on('close', stuff => {
     console.error('close')
     console.error(stuff)
