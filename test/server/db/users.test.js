@@ -64,27 +64,3 @@ test('getUsers return users', () => {
       expect(actual).toEqual(expected)
     })
 })
-
-//saveMeetings(meetings_name, timestamp, duration, attendees, cost, testDb)
-
-test('saveMeetings saves meetings', () => {
-  let expected = 
-
-  return users.saveMeetings(meetings_name, timestamp, duration, attendees, cost, testDb)
-    .then(meetings => {
-      let actual = meetings.length > 0
-
-      expect(actual).toEqual(expected)
-    })
-})
-
-test('getMeetings return meetings', () => {
-  let expected = true
-
-  return users.getMeetings(testDb)
-    .then(meetings => {
-      let actual = meetings.length > 0
-
-      expect(actual).toEqual(expected)
-    })
-})
