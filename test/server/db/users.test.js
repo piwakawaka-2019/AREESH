@@ -1,3 +1,4 @@
+    
 const testEnv = require('../setup-db')
 const users = require('../../../server/db/users')
 
@@ -60,30 +61,6 @@ test('getUsers return users', () => {
   return users.getUsers(testDb)
     .then(users => {
       let actual = users.length > 0
-
-      expect(actual).toEqual(expected)
-    })
-})
-
-//saveMeetings(meetings_name, timestamp, duration, attendees, cost, testDb)
-
-test('saveMeetings saves meetings', () => {
-  let expected = 
-
-  return users.saveMeetings(meetings_name, timestamp, duration, attendees, cost, testDb)
-    .then(meetings => {
-      let actual = meetings.length > 0
-
-      expect(actual).toEqual(expected)
-    })
-})
-
-test('getMeetings return meetings', () => {
-  let expected = true
-
-  return users.getMeetings(testDb)
-    .then(meetings => {
-      let actual = meetings.length > 0
 
       expect(actual).toEqual(expected)
     })
