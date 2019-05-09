@@ -1,5 +1,5 @@
 import React from 'react'
-import Start from './Start'
+import Start from '../Start'
 class About extends React.Component {
   render () {
   return (
