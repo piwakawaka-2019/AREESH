@@ -1,35 +1,14 @@
-export function transcribeSpeech() {    
-    const fs = require('fs');
-    const speech = require('@google-cloud/speech');
+import request from 'superagent'
 
-    // Creates a client
-    const client = new speech.SpeechClient();
-
-    const filename = '../../public/userVoiceRecordings/flacSonic.flac';
-    // Encoding of the audio file, e.g. LINEAR16
-    const encoding = 'FLAC';
-    const sampleRateHertz = 44100;
-    // BCP-47 language code, e.g. en-US
-    const languageCode = 'en-IE';
-
-    const request = {
-    config: {
-        encoding: encoding,
-        sampleRateHertz: sampleRateHertz,
-        languageCode: languageCode,
-    },
-    interimResults: true, // If you want interim results, set this to true
-    };
-
-    // Stream the audio to the Google Cloud Speech API
-    const recognizeStream = client
-    .streamingRecognize(request)
-    .on('data', data => {
-        console.log(
-        `Transcription: ${data.results[0].alternatives[0].transcript}`
-        );
-    });
-
-    // Stream an audio file from disk to the Speech API, e.g. "./resources/audio.raw"
-    fs.createReadStream(filename).pipe(recognizeStream, { end: true })
+export function transcribeSpeechAPI () {
+    console.log("speech API has been called")
+    return request
+    .post('/api/speech/')
+    // put token in the header of req (like POSTMAN)
+    // .set(headers)
+    // username and password (not hashed yet)
+    // .send(creds)
+     // token returned at *2 in routes/auth.js
+     // body object set at *3 in server/auth/token.js
+    .then(res => res.body.token)
 }

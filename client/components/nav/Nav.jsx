@@ -18,7 +18,7 @@ export class Nav extends Component {
   render() {
     return (
       <nav className="mb-1 navbar navbar-expand-lg navbar-dark grey darken-3">
-        <Link to="/">
+        <Link className="navbar-brand" to="/">
         Areesh
           {/* <a className="navbar-brand">Arreesh</a> */}
         </Link>
@@ -39,7 +39,7 @@ export class Nav extends Component {
         >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link to="/">
+              <Link className="nav-link" to="/">
                 {/* <a className="nav-link"> */}
                   Home
                   <span className="sr-only">(current)</span>

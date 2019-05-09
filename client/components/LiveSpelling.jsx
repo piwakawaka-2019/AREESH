@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-import {transcribeSpeech} from '../apis/speech'
+import {transcribeSpeechAction} from '../actions/speech'
+import {transcribeSpeechAPI} from '../apis/speech'
 
 class LiveSpelling extends Component {
   constructor(props) {
@@ -13,12 +14,8 @@ class LiveSpelling extends Component {
   }
 
   handleClick () {
-    console.log("button clicked!")
-
-    transcribeSpeech()
-    // this.setState({
-    //   transcribedWord: "Clicked!"
-    // })
+    transcribeSpeechAction()
+    transcribeSpeechAPI()
   }
 
   render() { 
