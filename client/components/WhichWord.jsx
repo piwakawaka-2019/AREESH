@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { ReactMic } from "react-mic";
+import { sendBlob } from "../apis/speech";
+
 class WhichWord extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      record: false
+      isRecording: false,
+      blobURL: null
     };
   }
 
@@ -20,30 +23,42 @@ class WhichWord extends Component {
   // }
 
   startRecording = () => {
-    this.setState({ record: true });
+    this.setState({ isRecording: true });
   };
 
   stopRecording = () => {
-    this.setState({ record: false });
+    this.setState({ isRecording: false });
   };
 
   onStop(recordedBlob) {
     console.log("recordedBlob is ", recordedBlob);
     //this is where youll send the data
+    // this.setState({ blobURL: recordedBlob.blobURL });
+    // console.log(blobURL);
+    // sendBlob(recordedBlob);
   }
+  onSave = blobObject => {
+    console.log(11, blobObject);
+  };
 
   onData(recordedBlob) {
-    console.log("chunck of realtime data is ", recordedBlob);
+    // console.log("chunck of realtime data is ", recordedBlob);
   }
 
   render() {
     return (
       <Fragment>
+        <audio
+          ref="audioSource"
+          controls="controls"
+          src="http://localhost:3000/#/60c5e2b1-6b3f-4e56-bad8-df62453a5dcb"
+        />
         <ReactMic
-          record={this.state.record}
+          record={this.state.isRecording}
           className="sound-wave"
           onStop={this.onStop}
           onData={this.onData}
+          onSave={this.onSave}
           strokeColor="#000000"
           backgroundColor="#FF4081"
         />

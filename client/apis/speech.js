@@ -7,6 +7,15 @@ export function transcribeSpeech (fileName) {
     .then(res => res.body['transcript'])
 }
 
+export function sendBlob (blob) {
+    console.log("sendBlob function called")
+    return request
+    .post('/api/speech/blob')
+    .send({blob: blob})
+    .then(() => {})
+    // .then(res => res.body['transcript'])
+}
+
 export function checkSpelling (word, spelling) {
     let score = []
 
