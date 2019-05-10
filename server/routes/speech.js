@@ -7,7 +7,7 @@ router.post('/blob', (req, res) => {
     
     let blob = req.body.blob
 
-   
+    fs.writeFileSync('./sampleUserRecording.txt', 'hello')
 })
 
 router.post('/transcribe', (req, res) => {
