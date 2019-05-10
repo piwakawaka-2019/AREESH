@@ -164,7 +164,7 @@ class Register extends React.Component {
           By clicking
           <em> Sign up </em>
           <span> you agree to our </span>
-          <a href="" target="_blank">
+          <a className="amber-text" href="" target="_blank">
             terms of service
           </a>
         </p>

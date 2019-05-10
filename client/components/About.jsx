@@ -16,10 +16,11 @@ class About extends Component {
           
                 <div className="card-body  ">
                   <h5 className="card-title">Welcome!</h5>
-                  <p className="card-text">Here is some instruction to how to start the game.
-                  firstfdsfdsdsfasdfdsfdsgsdgsdffsadgasdgsdgdsgsdgsgsdgsgssdgdsgsdgsdsd
-                  gdasgagasdgsdagdsgdsgadsgdsgsdgerherhrtjrtjtryjtykyukuykyukuykdtyudrt
-                  ghsrtujertiueiykytdktyfkyulyuluylyuluilyuluylyguyhjdtrhjtrdyseysererster</p>
+                  <p className="card-text">This app uses speech-recognition technology to help you test your memory and sharpen your spelling skills!
+
+Just tell the app the word you want to spell. It will appear on your screen briefly before disappearing.
+
+Now over to you. Spell the word out loud, and AREESH will let you know if you get it right.</p>
                 
                 </div>
             
