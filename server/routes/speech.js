@@ -7,7 +7,7 @@ router.post('/blob', (req, res) => {
     
     let blob = req.body.blob
 
-    console.log(blob)
+   
 })
 
 router.post('/transcribe', (req, res) => {

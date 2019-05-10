@@ -5,7 +5,6 @@ export function transcribeSpeech (fileName) {
     .post('/api/speech/transcribe')
     .send({fileName: fileName})
     .then(res => {
-        console.log(typeof res.body['transcript'])
         return res.body['transcript']
     })
 }
