@@ -12,27 +12,9 @@ router.post('/blob', (req, res) => {
     // console.log("Server side called! Text: ", blobText)
     // console.log("Server side called! Text data type: ", typeof blobText)
 
-
-    // readfile is working;
-    // fs.readFile('./server/routes/readMe.txt', 'utf8', (err, data) => {
-    //     if (err) throw err;
-    //     console.log("Contents of readME file:", data)
-    // })
-
-    fs.writeFile('./server/routes/userAudioInput.txt', blobText, (err, data) => {
+    fs.writeFile('./server/routes/userAudioInput.flac', blobText, (err, data) => {
         if (err) throw err;
-        console.log("writeFile.txt has been written to")
     })
-
-
-    // let textFile = fs.readFileSync('textFile.txt', 'utf8')
-    // console.log('Text file: ', textFile)
-
-    // fs.writeFileSync('writeMe.txt', 'text succesfully written', 'utf8', (err) => {
-    //     console.log("writeFile executing")
-    //     if (err) throw err;
-    //     console.log("the file has been saved")
-    // })
 })
 
 router.post('/transcribe', (req, res) => {
@@ -43,7 +25,7 @@ router.post('/transcribe', (req, res) => {
     const client = new speech.SpeechClient();
 
     // will eventually be passed via API call
-    const filename = `./public/userVoiceRecordings/${fileName}`
+    const filename = `./server/routes/userAudioInput.txt`
 
     // Encoding of the audio file, e.g. LINEAR16
     const encoding = 'FLAC';

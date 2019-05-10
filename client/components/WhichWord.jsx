@@ -36,7 +36,7 @@ class WhichWord extends Component {
     // this is where youll send the data
     // this.setState({ blobURL: recordedBlob.blobURL });
     request.get(recordedBlob.blobURL).then(res => {
-      // console.log("BlobURL response: ", res);
+      console.log("BlobURL response: ", res);
       sendBlob(res);
     });
   }
