@@ -41,6 +41,8 @@ class Register extends React.Component {
   render() {
     const { auth } = this.props;
     return (
+
+
       <form className="text-center p-5 w-responsive m-auto" onSubmit={this.submit}>
         <p className="h4 mb-4">Sign up</p>
         {this.props.auth.errorMessage && (
@@ -137,22 +139,22 @@ class Register extends React.Component {
           </label>
         </div>
 
-        <button className="btn btn-info my-4 btn-block" type="submit">
-          Sign in
+        <button className="btn btn-outline-warning btn-rounded waves-effect" type="submit">
+          Sign In
         </button>
 
         <p>or sign up with:</p>
 
-        <a className="light-blue-text mx-2">
+        <a className="grey-text mx-2">
           <i className="fab fa-facebook-f" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="grey-text mx-2">
           <i className="fab fa-twitter" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="grey-text mx-2">
           <i className="fab fa-linkedin-in" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="grey-text mx-2">
           <i className="fab fa-github" />
         </a>
 

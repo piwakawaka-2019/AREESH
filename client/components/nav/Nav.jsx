@@ -17,10 +17,13 @@ export class Nav extends Component {
 
   render() {
     return (
-      <nav className="mb-1 navbar navbar-expand-lg navbar-dark grey darken-3">
-        <Link to="/">
-          <a className="navbar-brand">Arreesh</a>
-        </Link>
+      <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+        
+        <div className="navbar-brand text-white ">Arreesh</div>
+        
+        {/* <Link to="/">
+          
+        </Link> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -36,10 +39,10 @@ export class Nav extends Component {
           className="collapse navbar-collapse"
           id="navbarSupportedContent-555"
         >
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav mr-auto ">
             <li className="nav-item active">
               <Link to="/">
-                <a className="nav-link">
+                <a className="nav-link ">
                   Home
                   <span className="sr-only">(current)</span>
                 </a>
@@ -89,7 +92,7 @@ export class Nav extends Component {
               </div>
             </li>
           </ul> */}
-          <ul className="navbar-nav ml-auto nav-flex-icons">
+          <ul className="navbar-nav ml-auto nav-flex-icons #ffca28 amber lighten-1">
             {this.props.auth.user ? <SignedInNav /> : <SignedOutNav />}
           </ul>
         </div>

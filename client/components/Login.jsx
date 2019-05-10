@@ -28,11 +28,15 @@ class Login extends React.Component {
   render() {
     const { auth } = this.props;
     return (
+      <div class="card  m-4  p-3 text-center">
+       <h5 class="card-header stylish-color white-text">
+    <strong>Sign in</strong>
+  </h5>
       <form
         onSubmit={this.submit}
-        className="text-center w-responsive m-auto p-5"
+        className="text-center  m-auto p-3"
       >
-        <p className="h4 mb-4">Sign in</p>
+       
         {auth.errorMessage && <div class="red-text">{auth.errorMessage}</div>}
         <input
           type="text"
@@ -46,7 +50,7 @@ class Login extends React.Component {
         <input
           type="password"
           id="defaultLoginFormPassword"
-          className="form-control mb-4"
+          className="form-control mb-4 "
           placeholder="Password"
           name="password"
           onChange={this.updateDetails}
@@ -73,7 +77,7 @@ class Login extends React.Component {
           </div>
         </div>
 
-        <button className="btn btn-info btn-block my-4" type="submit">
+        <button className="btn btn-outline-warning btn-rounded waves-effect my-4" type="submit">
           Sign in
         </button>
 
@@ -84,19 +88,20 @@ class Login extends React.Component {
 
         <p>or sign in with:</p>
 
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-facebook-f" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-twitter" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-linkedin-in" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-github" />
         </a>
       </form>
+      </div>
     );
   }
 }

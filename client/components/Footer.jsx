@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <div>
@@ -47,9 +47,17 @@ export default function Footer() {
         </div>
 
         <div className="footer-copyright text-center py-3">
-          © 2019 Draw Four:
-          <a href="#"> DFProductions.com</a>
-        </div>
+          © 2019 Arresh Team <br></br>
+         <Link to="./ContactDetails">
+                <a className="contact_details ">
+                  Contact Us
+                  <span className="sr-only">(current)</span>
+                </a>
+              </Link>
+        
+        </div> 
+       
+         
       </footer>
     </div>
   );

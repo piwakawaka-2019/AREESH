@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import About from "./About";
-import StartButton from "./StartButton";
+
 
 
 class Home extends Component {
@@ -12,7 +12,7 @@ class Home extends Component {
     return ( 
       <Fragment>
         <About />
-        <StartButton />
+       
       </Fragment>
      );
   }
