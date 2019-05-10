@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { ReactMic } from "react-mic";
+
 class WhichWord extends Component {
   constructor(props) {
     super(props);
