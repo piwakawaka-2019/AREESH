@@ -4,15 +4,11 @@ import {NavLink} from 'react-router-dom'
 export default function SignedOutNav() {
   return (
     <F>
-    <NavLink  to="/register" className="nav-item" activeClassName="active">
-      <a  className="nav-link waves-effect waves-light">
+    <NavLink  className="nav-link waves-effect waves-light" to="/register" className="nav-item" activeClassName="active">
         Sign Up
-      </a>
     </NavLink>
-    <NavLink to="/login" className="nav-item" activeClassName="active">
-      <a className="nav-link waves-effect waves-light">
+    <NavLink className="nav-link waves-effect waves-light" to="/login" className="nav-item" activeClassName="active">
         Log In
-      </a>
     </NavLink>
   </F>
   )
