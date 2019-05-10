@@ -2,6 +2,14 @@ const router = require('express').Router()
 const fs = require('fs');
 const speech = require('@google-cloud/speech');
 
+router.post('/blob', (req, res) => {
+    console.log("Server side called!")
+    
+    let blob = req.body.blob
+
+    console.log(blob)
+})
+
 router.post('/transcribe', (req, res) => {
 
     let {fileName} = req.body
