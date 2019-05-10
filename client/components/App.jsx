@@ -12,6 +12,7 @@ import WhichWord from './WhichWord'
 import WordDefinition from './WordDefinition'
 import LiveSpelling from './LiveSpelling'
 import Winner from './Winner'
+import ContactDetails from './ContactDetails'
 
 
 export function App({auth}) {
@@ -30,6 +31,7 @@ export function App({auth}) {
           <Route exact path="/WordDefinition" component={WordDefinition} />
           <Route exact path="/LiveSpelling" component={LiveSpelling} />
           <Route exact path="/Winner" component={Winner} />
+          <Route exact path="/ContactDetails" component={ContactDetails} />
         </main>
       </div>
       <Footer/>

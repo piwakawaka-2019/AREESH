@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ContactDetails from './ContactDetails'
+
 export default function Footer() {
   return (
     <div>
@@ -81,7 +83,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-copyright text-center py-3">
-          © 2019 Arresh Team <br></br>
+          © 2019 Areesh Team <br></br>
          <Link className="contact_details " to="/ContactDetails">
                 
                   Contact Us
