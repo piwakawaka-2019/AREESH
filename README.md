@@ -9,12 +9,12 @@ Just tell the app the word you want to spell. It will appear on your screen brie
 Now over to you. Spell the word out loud, and AREESH will let you know if you get it right.
 
 ## Team Roles
-* Product owner		Des
-* Scrum Master		Des
-* Git Master		Jesse
-* FE Lead		    TBC
-* BE Lead		    TBC
-* Vibe Master		Josh
+* Product owner:	Des
+* Scrum Master:		Des
+* Vibe Master:		Josh
+* Git Master:		Jesse
+* FE Lead:		    TBC
+* BE Lead:		    TBC
 
 ## Stand-Up Schedule
 Daily @
@@ -48,19 +48,21 @@ As a user:
   | Login | View for user to enter their login credentials |
   | Register | View for user to sign up for the App |
   | Home | View to display a welcome message, game instructions and a 'start' button |
-  | What word? | View to prompt user to verbally provide the word they want to spell, then take that word as a verbal input |
-  | Word definition | Displays the word, along with a definition, before disappearing (2s) so the user cna try to memorise it |
-  | Live Spelling | Displays the letters the user has correctly spelled so far in green. If the user mispells a letter it displays in red and redirects to the 'word definition' view |
+  | WhichWord | View to prompt user to verbally provide the word they want to spell, then take that word as a verbal input |
+  | WordDefinition | Displays the word, along with a definition, before disappearing (2s) so the user cna try to memorise it |
+  | LiveSpelling | Displays the letters the user has correctly spelled so far in green. If the user mispells a letter it displays in red and redirects to the 'word definition' view |
   | Winner | Displays a congratulatory message/animation to the user when they have succesfully spelled the word |
-
+  |ContactDetails| View for user to contact the Areesh team|
 
 ## Reducers (Client Side)
 
   | name | purpose |
   | --- | --- |
   | auth | Store information regarding user logins, auth status and auth errors |
-  TBC...
-
+  | users | Store all registered users |  
+  | wordHistory | Store current users word attempts |  
+  | wordLibary | Store list of Words and definitions |  
+  
 ## Store (made up of the Reducers)
 ```js
 const state ={
@@ -156,9 +158,11 @@ const users = [
  | type | data | purpose |
  | --- | --- | --- |
  | RECEIVE_USERS | users | retreive the users from the server |
-
- TBC...
-
+ ### words
+ | type | data | purpose |
+ | --- | --- | --- |
+ | SAVE_WORD_DATA | wordData | store data set of users word attempt |
+ | SAVE_WORDS | words | store list of words and definitions |
 
 ## API (Client - Server)
 
@@ -166,6 +170,8 @@ const users = [
 | --- | --- | --- | --- | --- |
 | Post | /api/auth/login | Yes | Log In a User | The Users JWT Token | 
 | Post | /api/auth/register | Yes | Register a User | The Users JWT Token |
+| Post | /api/speech/transcribe | Yes | Transcribe an audio file to text | Transcript of audio file (string) |
+| Post | /api/speech/blob | Yes | Save user speech as audio file on server side | HTTP status |
 TBC...
 
 ## Route - POST /api/auth/login
@@ -206,9 +212,38 @@ TBC...
 }
 ```
 
-## Routes 2, 3...
-TBC
+## Route - POST	/api/speech/blob
 
+#### Data in
+```sh
+{
+    //TBC - blob?
+}
+```
+#### Data Out
+```sh
+{
+   fileName
+}
+```
+
+## Route - POST	/api/speech/transcribe
+
+#### Data in
+```sh
+{
+    fileName 
+}
+```
+#### Data Out
+```sh
+{
+   transcript: 's o n i c'
+}
+```
+
+## Routes n, n+1...
+TBC
 
 ## DB (Server Side)
   There should be one table for MVP
@@ -246,7 +281,6 @@ To run in production:
 ```sh
 npm start
 ```
-
 
 ## Heroku!!!
 

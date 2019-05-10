@@ -9,6 +9,10 @@ import Header from './nav/Header'
 import Footer from './Footer';
 import Home from './Home';
 import  testVinnie from './gameTestVinnie/game';
+import WhichWord from './WhichWord'
+import WordDefinition from './WordDefinition'
+import LiveSpelling from './LiveSpelling'
+import Winner from './Winner'
 
 
 export function App({auth}) {
@@ -19,19 +23,15 @@ export function App({auth}) {
       
       <div className="container has-text-centered">
 
-        <div className="hero is-small is-primary">
-          <div>
-            <Link to='/' className="">
-              
-            </Link>
-            {/* <Nav /> */}
-          </div>
-        </div>
-        <main className=''>
-          <Route path="/" component={Home} exact/>
-          <Route path="/login" component={Login} exact/>
-          <Route path="/register" component={Register} exact/>
+        <main className='body'>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           <Route path="/gameTestVinnie" component={testVinnie} exact/>
+          <Route exact path="/whichWord" component={WhichWord} />
+          <Route exact path="/WordDefinition" component={WordDefinition} />
+          <Route exact path="/LiveSpelling" component={LiveSpelling} />
+          <Route exact path="/Winner" component={Winner} />
         </main>
       </div>
       <Footer/>
