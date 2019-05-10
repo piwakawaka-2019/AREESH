@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import About from "./About";
-import StartButton from "./StartButton";
 
-
-class Home extends Component {
+class StartButton extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
@@ -11,11 +8,10 @@ class Home extends Component {
   render() { 
     return ( 
       <Fragment>
-        <About />
-        <StartButton />
+        
       </Fragment>
      );
   }
 }
  
-export default Home;
+export default StartButton;
