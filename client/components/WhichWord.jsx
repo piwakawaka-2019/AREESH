@@ -29,6 +29,7 @@ class WhichWord extends Component {
 
   onStop(recordedBlob) {
     console.log("recordedBlob is ", recordedBlob);
+    //this is where youll send the data
   }
 
   onData(recordedBlob) {
