@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export function transcribeSpeechAPI (fileName) {
+export function transcribeSpeech (fileName) {
     return request
     .post('/api/speech/')
     .send({fileName: fileName})
@@ -19,13 +19,11 @@ export function checkSpelling (word, spelling) {
             score.push(word.charAt(i))
         } else {
             score.push(spellingArr[i], 'X')
-            console.log("Incorrect: ", score)
             return score
         }
     }
 
     score.push('✓')
-    console.log("Winner: ", score)
     return score
 }
 
