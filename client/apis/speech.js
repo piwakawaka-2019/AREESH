@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export function transcribeSpeechAPI (fileName) {
+export function transcribeSpeech (fileName) {
     return request
     .post('/api/speech/')
     .send({fileName: fileName})
@@ -18,20 +18,11 @@ export function checkSpelling (word, spelling) {
         if(spellingArr[i] == word.charAt(i)){
             score.push(word.charAt(i))
         } else {
-            score.push(spellingArr[i], 'X')
-            console.log("Incorrect: ", score)
+            score.push('X')
             return score
         }
     }
 
     score.push('✓')
-    console.log("Winner: ", score)
     return score
 }
-
-// let word = 'sonic'
-// let correctSpelling = "s o n i c"
-// let incorrectSpelling = "s o m i c"
-
-// checkSpelling(word, correctSpelling)
-// checkSpelling(word, incorrectSpelling)
