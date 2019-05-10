@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { ReactMic } from "react-mic";
 import { sendBlob } from "../apis/speech";
+import request from "superagent";
 
 class WhichWord extends Component {
   constructor(props) {
@@ -34,8 +35,11 @@ class WhichWord extends Component {
     console.log("recordedBlob is ", recordedBlob);
     //this is where youll send the data
     // this.setState({ blobURL: recordedBlob.blobURL });
-    // console.log(blobURL);
-    // sendBlob(recordedBlob);
+    request.get(recordedBlob.blobURL).then(res => {
+      console.log(res.text);
+    });
+    console.log(blobURL);
+    sendBlob(recordedBlob);
   }
   onSave = blobObject => {
     console.log(11, blobObject);
@@ -51,7 +55,7 @@ class WhichWord extends Component {
         <audio
           ref="audioSource"
           controls="controls"
-          src="http://localhost:3000/#/60c5e2b1-6b3f-4e56-bad8-df62453a5dcb"
+          src="blob:http://localhost:3000/#/60c5e2b1-6b3f-4e56-bad8-df62453a5dcb"
         />
         <ReactMic
           record={this.state.isRecording}
