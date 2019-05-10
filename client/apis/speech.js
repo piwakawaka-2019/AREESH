@@ -18,7 +18,7 @@ export function checkSpelling (word, spelling) {
         if(spellingArr[i] == word.charAt(i)){
             score.push(word.charAt(i))
         } else {
-            score.push(spellingArr[i], 'X')
+            score.push('X')
             return score
         }
     }

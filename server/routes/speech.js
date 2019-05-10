@@ -6,7 +6,6 @@ router.post('/', (req, res) => {
 
     let {fileName} = req.body
 
-    console.log("firing speech.js functions on server side!")
     // Creates a client
     const client = new speech.SpeechClient();
 
