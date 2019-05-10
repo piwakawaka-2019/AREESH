@@ -12,14 +12,14 @@ export class Nav extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+   
   }
 
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
         
-        <div className="navbar-brand text-white ">Arreesh</div>
+        <div className="navbar-brand text-white ">Areesh</div>
         
         {/* <Link to="/">
           
@@ -41,11 +41,11 @@ export class Nav extends Component {
         >
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item active">
-              <Link to="/">
-                <a className="nav-link ">
+              <Link className="nav-link" to="/">
+              
                   Home
                   <span className="sr-only">(current)</span>
-                </a>
+               
               </Link>
             </li>
           </ul>

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import About from "./About";
-
+import StartButton from "./StartButton";
+import WhichWord from './WhichWord'
 
 
 class Home extends Component {
@@ -12,7 +13,9 @@ class Home extends Component {
     return ( 
       <Fragment>
         <About />
-       
+        <StartButton />
+        {/* remove later */}
+        <WhichWord/>
       </Fragment>
      );
   }
