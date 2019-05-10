@@ -15,7 +15,7 @@ class LiveSpelling extends Component {
 
   handleClick () {
     transcribeSpeech('flacSonic.flac')
-    .then(transcription => checkSpelling("sonic", transcription))
+    .then(transcription => checkSpelling("sober", transcription))
     .then(result => {
       this.setState({
         transcribedWord: ""

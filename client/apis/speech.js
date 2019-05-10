@@ -26,10 +26,3 @@ export function checkSpelling (word, spelling) {
     score.push('✓')
     return score
 }
-
-// let word = 'sonic'
-// let correctSpelling = "s o n i c"
-// let incorrectSpelling = "s o m i c"
-
-// checkSpelling(word, correctSpelling)
-// checkSpelling(word, incorrectSpelling)
