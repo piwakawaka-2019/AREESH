@@ -10,7 +10,6 @@ export function transcribeSpeech (fileName) {
 }
 
 export function sendBlob (blob) {
-    console.log("sendBlob function called")
     return request
     .post('/api/speech/blob')
     .send({blob: blob})

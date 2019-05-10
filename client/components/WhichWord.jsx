@@ -32,16 +32,16 @@ class WhichWord extends Component {
   };
 
   onStop(recordedBlob) {
-    console.log("recordedBlob is ", recordedBlob);
-    //this is where youll send the data
+    // console.log("Blob: ", recordedBlob);
+    // this is where youll send the data
     // this.setState({ blobURL: recordedBlob.blobURL });
     request.get(recordedBlob.blobURL).then(res => {
-      console.log(typeof res.text);
-      sendBlob(res.text);
+      // console.log("BlobURL response: ", res);
+      sendBlob(res);
     });
   }
+
   onSave = blobObject => {
-    console.log(11, blobObject);
   };
 
   onData(recordedBlob) {

@@ -3,11 +3,36 @@ const fs = require('fs');
 const speech = require('@google-cloud/speech');
 
 router.post('/blob', (req, res) => {
-    console.log("Server side called!")
+    // console.log("Server side called! Object: ", req.body)
+    // console.log("Server side called! Text: ", req.body.blob.text)
     
     let blob = req.body.blob
+    let blobText = blob.text
 
-    fs.writeFileSync('./sampleUserRecording.txt', 'hello')
+    // console.log("Server side called! Text: ", blobText)
+    // console.log("Server side called! Text data type: ", typeof blobText)
+
+
+    // readfile is working;
+    // fs.readFile('./server/routes/readMe.txt', 'utf8', (err, data) => {
+    //     if (err) throw err;
+    //     console.log("Contents of readME file:", data)
+    // })
+
+    fs.writeFile('./server/routes/userAudioInput.txt', blobText, (err, data) => {
+        if (err) throw err;
+        console.log("writeFile.txt has been written to")
+    })
+
+
+    // let textFile = fs.readFileSync('textFile.txt', 'utf8')
+    // console.log('Text file: ', textFile)
+
+    // fs.writeFileSync('writeMe.txt', 'text succesfully written', 'utf8', (err) => {
+    //     console.log("writeFile executing")
+    //     if (err) throw err;
+    //     console.log("the file has been saved")
+    // })
 })
 
 router.post('/transcribe', (req, res) => {
