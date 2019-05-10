@@ -12,11 +12,11 @@ class About extends Component {
             
           
 
-            <div class="card text-center my-5 ">
+            <div className="card text-center my-5 ">
           
-                <div class="card-body  ">
-                  <h5 class="card-title">Welcome!</h5>
-                  <p class="card-text">Here is some instruction to how to start the game.
+                <div className="card-body  ">
+                  <h5 className="card-title">Welcome!</h5>
+                  <p className="card-text">Here is some instruction to how to start the game.
                   firstfdsfdsdsfasdfdsfdsgsdgsdffsadgasdgsdgdsgsdgsgsdgsgssdgdsgsdgsdsd
                   gdasgagasdgsdagdsgdsgadsgdsgsdgerherhrtjrtjtryjtykyukuykyukuykdtyudrt
                   ghsrtujertiueiykytdktyfkyulyuluylyuluilyuluylyguyhjdtrhjtrdyseysererster</p>
@@ -24,9 +24,7 @@ class About extends Component {
                 </div>
             
                 </div>
-                <div class="d-flex justify-content-center">
-                <StartButton />
-                </div>
+               
             
       </Fragment>
     );

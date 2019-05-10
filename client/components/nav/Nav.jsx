@@ -41,7 +41,7 @@ export class Nav extends Component {
         >
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item active">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link nav-link waves-effect waves-light" to="/">
               
                   Home
                   <span className="sr-only">(current)</span>

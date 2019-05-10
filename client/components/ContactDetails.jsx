@@ -34,11 +34,7 @@ class ContactDetails extends Component {
 
                         <p className="card-text">Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque
                           laudantium, totam rem aperiam. </p>
-                        <a className="icons-sm li-ic"><i className="fab fa-linkedin-in"> </i></a>
                         
-                        <a className="icons-sm tw-ic"><i className="fab fa-twitter"> </i></a>
-                      
-                        <a className="icons-sm fb-ic"><i className="fab fa-facebook-f"> </i></a>
 
                      </div>
       
@@ -46,7 +42,7 @@ class ContactDetails extends Component {
                 </div>
    
 
-            </div>
+        
             
           
 

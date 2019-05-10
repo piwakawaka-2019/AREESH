@@ -8,7 +8,7 @@ class StartButton extends Component {
   render() { 
     return ( 
       <Fragment>
-        <button type="button" class = "btn btn-outline-warning btn-rounded waves-effect">Start</button>
+        <button type="button" className = "btn btn-outline-warning btn-rounded waves-effect">Start</button>
       </Fragment>
      );
   }

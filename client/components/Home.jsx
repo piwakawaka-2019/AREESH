@@ -13,7 +13,10 @@ class Home extends Component {
     return ( 
       <Fragment>
         <About />
-        <StartButton />
+
+         <div className="d-flex justify-content-center">
+                <StartButton />
+                </div>
         {/* remove later */}
         <WhichWord/>
       </Fragment>
