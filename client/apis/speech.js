@@ -2,9 +2,12 @@ import request from 'superagent'
 
 export function transcribeSpeech (fileName) {
     return request
-    .post('/api/speech/')
+    .post('/api/speech/transcribe')
     .send({fileName: fileName})
-    .then(res => res.body['transcript'])
+    .then(res => {
+        console.log(typeof res.body['transcript'])
+        return res.body['transcript']
+    })
 }
 
 export function sendBlob (blob) {

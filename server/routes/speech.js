@@ -10,7 +10,7 @@ router.post('/blob', (req, res) => {
     console.log(blob)
 })
 
-router.post('/', (req, res) => {
+router.post('/transcribe', (req, res) => {
 
     let {fileName} = req.body
 
