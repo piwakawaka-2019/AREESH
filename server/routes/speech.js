@@ -2,7 +2,7 @@ const router = require('express').Router()
 const fs = require('fs');
 const speech = require('@google-cloud/speech');
 
-router.post('/', (req, res) => {
+router.post('/transcribe', (req, res) => {
 
     let {fileName} = req.body
 
