@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -11,16 +11,13 @@ export class Nav extends Component {
     super(props);
   }
 
-  componentDidMount() {
-   
-  }
+  componentDidMount() {}
 
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
-        
         <div className="navbar-brand text-white ">Areesh</div>
-        
+
         {/* <Link to="/">
           
         </Link> */}
@@ -41,13 +38,23 @@ export class Nav extends Component {
         >
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item active">
-              <Link className="nav-link nav-link waves-effect waves-light" to="/">
-              
-                  Home
-                  <span className="sr-only">(current)</span>
-               
+              <Link
+                className="nav-link nav-link waves-effect waves-light"
+                to="/"
+              >
+                Home
+                <span className="sr-only">(current)</span>
               </Link>
             </li>
+            <NavLink
+              to="/gameTestVinnie"
+              className="nav-item"
+              activeClassName="active"
+            >
+              <a className="nav-link" href="#">
+                gameTestVinnie
+              </a>
+            </NavLink>
           </ul>
           {/* <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
@@ -91,6 +98,15 @@ export class Nav extends Component {
                 </a>
               </div>
             </li>
+            <NavLink to="/gameTestVinnie" className="nav-item" activeClassName="active">
+              <a className="nav-link" href="#">
+                gameTestVinnie
+              </a>
+            </NavLink>
+          </ul>
+          <ul className="navbar-nav ml-auto nav-flex-icons">
+            {this.props.auth.user ? <SignedInNav/>:<SignedOutNav/>}
+
           </ul> */}
           <ul className="navbar-nav ml-auto nav-flex-icons #ffca28 amber lighten-1">
             {this.props.auth.user ? <SignedInNav /> : <SignedOutNav />}

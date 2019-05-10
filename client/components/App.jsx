@@ -8,6 +8,7 @@ import Register from './Register'
 import Header from './nav/Header'
 import Footer from './Footer';
 import Home from './Home';
+import  testVinnie from './gameTestVinnie/game';
 import WhichWord from './WhichWord'
 import WordDefinition from './WordDefinition'
 import LiveSpelling from './LiveSpelling'
@@ -26,6 +27,7 @@ export function App({auth}) {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route path="/gameTestVinnie" component={testVinnie} exact/>
           <Route exact path="/whichWord" component={WhichWord} />
           <Route exact path="/WordDefinition" component={WordDefinition} />
           <Route exact path="/LiveSpelling" component={LiveSpelling} />
