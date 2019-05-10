@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import StartButton from "./StartButton";
+
 
 class About extends Component {
   constructor(props) {
