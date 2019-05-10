@@ -8,6 +8,7 @@ import Register from './Register'
 import Header from './nav/Header'
 import Footer from './Footer';
 import Home from './Home';
+import  testVinnie from './gameTestVinnie/game';
 
 
 export function App({auth}) {
@@ -30,6 +31,7 @@ export function App({auth}) {
           <Route path="/" component={Home} exact/>
           <Route path="/login" component={Login} exact/>
           <Route path="/register" component={Register} exact/>
+          <Route path="/gameTestVinnie" component={testVinnie} exact/>
         </main>
       </div>
       <Footer/>

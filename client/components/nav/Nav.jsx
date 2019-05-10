@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -79,6 +79,11 @@ export class Nav extends Component {
                 </a>
               </div>
             </li>
+            <NavLink to="/gameTestVinnie" className="nav-item" activeClassName="active">
+              <a className="nav-link" href="#">
+                gameTestVinnie
+              </a>
+            </NavLink>
           </ul>
           <ul className="navbar-nav ml-auto nav-flex-icons">
             {this.props.auth.user ? <SignedInNav/>:<SignedOutNav/>}
