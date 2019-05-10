@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import {transcribeSpeechAPI} from '../apis/speech'
+import {transcribeSpeechAPI, checkSpelling} from '../apis/speech'
 
 class LiveSpelling extends Component {
   constructor(props) {
@@ -14,11 +14,17 @@ class LiveSpelling extends Component {
 
   handleClick () {
     transcribeSpeechAPI('flacSonic.flac')
-    .then(transcription => {
-      this.setState({
-        transcribedWord: transcription
+    .then(transcription => checkSpelling("sorry", transcription))
+    .then(result => {
+      console.log(result)
+      result.forEach((letter, i) => {
+        setTimeout(() => this.printLetter(letter), 1000 * i)
       })
     })
+  }
+
+  printLetter (letter) {
+    console.log(letter)
   }
 
   render() { 

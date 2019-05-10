@@ -29,9 +29,9 @@ export function checkSpelling (word, spelling) {
     return score
 }
 
-let word = 'sonic'
-let correctSpelling = "s o n i c"
-let incorrectSpelling = "s o m i c"
+// let word = 'sonic'
+// let correctSpelling = "s o n i c"
+// let incorrectSpelling = "s o m i c"
 
-checkSpelling(word, correctSpelling)
-checkSpelling(word, incorrectSpelling)
+// checkSpelling(word, correctSpelling)
+// checkSpelling(word, incorrectSpelling)
