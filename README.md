@@ -59,8 +59,10 @@ As a user:
   | name | purpose |
   | --- | --- |
   | auth | Store information regarding user logins, auth status and auth errors |
-  TBC...
-
+  | users | Store all registered users |  
+  | wordHistory | Store current users word attempts |  
+  | wordLibary | Store list of Words and definitions |  
+  
 ## Store (made up of the Reducers)
 ```js
 const state ={
@@ -156,9 +158,11 @@ const users = [
  | type | data | purpose |
  | --- | --- | --- |
  | RECEIVE_USERS | users | retreive the users from the server |
-
- TBC...
-
+ ### words
+ | type | data | purpose |
+ | --- | --- | --- |
+ | SAVE_WORD_DATA | wordData | store data set of users word attempt |
+ | SAVE_WORDS | words | store list of words and definitions |
 
 ## API (Client - Server)
 
