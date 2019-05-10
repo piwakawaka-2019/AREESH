@@ -35,7 +35,6 @@ const request = {
 async function recognizeAsync () {
     try {
         const [response] = await client.recognize(request);
-        console.log("Response: ", response)
         return response
     }
     catch (err) {

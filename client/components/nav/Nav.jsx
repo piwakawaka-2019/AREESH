@@ -12,14 +12,15 @@ export class Nav extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+   
   }
 
   render() {
     return (
       <nav className="mb-1 navbar navbar-expand-lg navbar-dark grey darken-3">
-        <Link to="/">
-          <a className="navbar-brand">Arreesh</a>
+        <Link className="navbar-brand" to="/">
+        Areesh
+          {/* <a className="navbar-brand">Arreesh</a> */}
         </Link>
         <button
           className="navbar-toggler"
@@ -38,11 +39,11 @@ export class Nav extends Component {
         >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link to="/">
-                <a className="nav-link">
+              <Link className="nav-link" to="/">
+                {/* <a className="nav-link"> */}
                   Home
                   <span className="sr-only">(current)</span>
-                </a>
+                {/* </a> */}
               </Link>
             </li>
           </ul>
