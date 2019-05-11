@@ -12,7 +12,7 @@ router.post('/blob', (req, res) => {
     // console.log("Server side called! Text: ", blobText)
     // console.log("Server side called! Text data type: ", typeof blobText)
 
-    fs.writeFile('./server/routes/userAudioInput.flac', blobText, (err, data) => {
+    fs.writeFile('./server/routes/userAudioInput.opus', blobText, (err, data) => {
         if (err) throw err;
     })
 })
@@ -20,12 +20,10 @@ router.post('/blob', (req, res) => {
 router.post('/transcribe', (req, res) => {
 
     let {fileName} = req.body
+    let filePath = './public/userVoiceRecordings/flacSonic.flac'
 
     // Creates a client
     const client = new speech.SpeechClient();
-
-    // will eventually be passed via API call
-    const filename = `./server/routes/userAudioInput.txt`
 
     // Encoding of the audio file, e.g. LINEAR16
     const encoding = 'FLAC';
@@ -52,8 +50,9 @@ router.post('/transcribe', (req, res) => {
         res.json({ transcript: data.results[0].alternatives[0].transcript })
     });
 
+    console.log("about to transcribe file")
     // Stream an audio file from disk to the Speech API, e.g. "./resources/audio.raw"
-    fs.createReadStream(filename).pipe(recognizeStream, { end: true })
+    fs.createReadStream(filePath).pipe(recognizeStream, { end: true })
 })
 
 module.exports = router
