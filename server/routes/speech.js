@@ -3,11 +3,18 @@ const fs = require('fs');
 const speech = require('@google-cloud/speech');
 
 router.post('/blob', (req, res) => {
-    console.log("Server side called!")
+    // console.log("Server side called! Object: ", req.body)
+    // console.log("Server side called! Text: ", req.body.blob.text)
     
     let blob = req.body.blob
+    let blobText = blob.text
 
-    console.log(blob)
+    // console.log("Server side called! Text: ", blobText)
+    // console.log("Server side called! Text data type: ", typeof blobText)
+
+    fs.writeFile('./server/routes/userAudioInput.flac', blobText, (err, data) => {
+        if (err) throw err;
+    })
 })
 
 router.post('/transcribe', (req, res) => {
@@ -18,7 +25,7 @@ router.post('/transcribe', (req, res) => {
     const client = new speech.SpeechClient();
 
     // will eventually be passed via API call
-    const filename = `./public/userVoiceRecordings/${fileName}`
+    const filename = `./server/routes/userAudioInput.txt`
 
     // Encoding of the audio file, e.g. LINEAR16
     const encoding = 'FLAC';

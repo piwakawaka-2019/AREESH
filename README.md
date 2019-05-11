@@ -13,7 +13,7 @@ Now over to you. Spell the word out loud, and AREESH will let you know if you ge
 * Scrum Master:		Des
 * Vibe Master:		Josh
 * Git Master:		Jesse
-* FE Lead:		    TBC
+* FE Lead:		    Vinnie
 * BE Lead:		    TBC
 
 ## Stand-Up Schedule

@@ -5,13 +5,11 @@ export function transcribeSpeech (fileName) {
     .post('/api/speech/transcribe')
     .send({fileName: fileName})
     .then(res => {
-        console.log(typeof res.body['transcript'])
         return res.body['transcript']
     })
 }
 
 export function sendBlob (blob) {
-    console.log("sendBlob function called")
     return request
     .post('/api/speech/blob')
     .send({blob: blob})
