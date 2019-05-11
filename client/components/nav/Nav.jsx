@@ -37,22 +37,13 @@ export class Nav extends Component {
           id="navbarSupportedContent-555"
         >
           <ul className="navbar-nav mr-auto ">
-            <li className="nav-item active">
-              <Link
-                className="nav-link nav-link waves-effect waves-light"
-                to="/"
-              >
-                Home
-                <span className="sr-only">(current)</span>
-              </Link>
-            </li>
             <NavLink
-              to="/gameTestVinnie"
+              to="/game"
               className="nav-item"
               activeClassName="active"
             >
               <a className="nav-link" href="#">
-                gameTestVinnie
+                Game
               </a>
             </NavLink>
           </ul>

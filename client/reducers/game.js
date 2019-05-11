@@ -8,11 +8,12 @@ const displaySuccess = 4;
 
 const initialState = {
     views: {
-        displayIntro: true,
-        displayWordHint: false,
-        displaySpellWord: false,
-        displaySpellResult: false,
-        displaySuccess: false
+        displayHome: true,
+        displayWhichWord: false,
+        displayWordDefinition: false,
+        displayLiveSpelling: false,
+        displayResults: false,
+        displayWinner: false
     }
 }
 
@@ -23,7 +24,7 @@ export default function currentWord(state = initialState, action) {
             return {
                 ...state,
                 views: {
-                    ... _.map(state.views, () => false),
+                    ... _.map(state.views, () => false), //the underscore is the lodash object
                     [action.view]:true
                 }
             }
