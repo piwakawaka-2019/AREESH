@@ -8,25 +8,32 @@ router.post('/blob', (req, res) => {
     
     let blob = req.body.blob
     let blobText = blob.text
+    let blobURL = req.body.blob.req.url
+
+    console.log(blobURL)
 
     // console.log("Server side called! Text: ", blobText)
     // console.log("Server side called! Text data type: ", typeof blobText)
 
-    fs.writeFile('./server/routes/userAudioInput.opus', blobText, (err, data) => {
+    fs.writeFile('./server/routes/userAudioInput', blobText, (err, data) => {
         if (err) throw err;
     })
 })
 
 router.post('/transcribe', (req, res) => {
 
+    // WORKING CODE
     let {fileName} = req.body
-    let filePath = './public/userVoiceRecordings/flacSonic.flac'
+    let filePath = `./public/userVoiceRecordings/${fileName}`
+
+    // IN PROGRESS
+    // let filePath = './server/routes/blobURLAudio.weba'
 
     // Creates a client
     const client = new speech.SpeechClient();
 
     // Encoding of the audio file, e.g. LINEAR16
-    const encoding = 'FLAC';
+    const encoding = 'LINEAR16';
     const sampleRateHertz = 44100;
     // BCP-47 language code, e.g. en-US
     const languageCode = 'en-IE';
@@ -50,7 +57,6 @@ router.post('/transcribe', (req, res) => {
         res.json({ transcript: data.results[0].alternatives[0].transcript })
     });
 
-    console.log("about to transcribe file")
     // Stream an audio file from disk to the Speech API, e.g. "./resources/audio.raw"
     fs.createReadStream(filePath).pipe(recognizeStream, { end: true })
 })
