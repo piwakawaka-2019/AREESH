@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const fs = require('fs');
 const speech = require('@google-cloud/speech');
+const download = require('download-file')
+
 
 router.post('/blob', (req, res) => {
     // console.log("Server side called! Object: ", req.body)
@@ -8,19 +10,32 @@ router.post('/blob', (req, res) => {
     
     let blob = req.body.blob
     let blobText = blob.text
+    let blobURL = blob.url
+    
+    var options = {
+        directory: "./server/routes/",
+        filename: "blobURLDownload"
+    }
+
+    download(blobURL, options, function(err){
+        if (err) throw err
+        console.log("meow")
+    }) 
 
     // console.log("Server side called! Text: ", blobText)
     // console.log("Server side called! Text data type: ", typeof blobText)
 
-    fs.writeFile('./server/routes/userAudioInput.opus', blobText, (err, data) => {
-        if (err) throw err;
-    })
+    // fs.writeFile('./server/routes/userAudioInput.opus', blobText, (err, data) => {
+    //     if (err) throw err;
+    // })
 })
 
 router.post('/transcribe', (req, res) => {
 
     let {fileName} = req.body
-    let filePath = './public/userVoiceRecordings/flacSonic.flac'
+    // let filePath = './public/userVoiceRecordings/flacSonic.flac'
+    let filePath = './server/routes/blobURLAudio.flac'
+
 
     // Creates a client
     const client = new speech.SpeechClient();
