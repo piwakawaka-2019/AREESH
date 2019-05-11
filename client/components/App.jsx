@@ -13,12 +13,14 @@ import WhichWord from './WhichWord'
 import WordDefinition from './WordDefinition'
 import LiveSpelling from './LiveSpelling'
 import Winner from './Winner'
+import TileExample from './TileExample'
 
 
 export function App({auth}) {
   return (
-    
-    <Router>
+    <div>
+      <TileExample/>
+      <Router>
       <Header/>
       
       <div className="container has-text-centered">
@@ -36,6 +38,8 @@ export function App({auth}) {
       </div>
       <Footer/>
     </Router>
+    </div>
+    
   )
 }
 

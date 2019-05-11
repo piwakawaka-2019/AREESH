@@ -1,12 +1,13 @@
-html{
-  height:100%;
-  
+html {
+  height: 100%;
 }
-body{
-  min-height:100%; padding:0; margin:0; position:relative;
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
 }
 
-
-main{
+main {
   min-height: 60vh;
 }

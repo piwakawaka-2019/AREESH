@@ -64,6 +64,7 @@
     "react-mic": "^12.4.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
+    "react-scrabblefy": "^1.0.9",
     "react-scroll": "^1.7.11",
     "react-test-renderer": "^16.8.6",
     "redux": "^4.0.1",
