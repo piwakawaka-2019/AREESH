@@ -23,11 +23,11 @@ router.post('/blob', (req, res) => {
 router.post('/transcribe', (req, res) => {
 
     // WORKING CODE
-    let {fileName} = req.body
-    let filePath = `./public/userVoiceRecordings/${fileName}`
+    // let {fileName} = req.body
+    // let filePath = `./public/userVoiceRecordings/${fileName}`
 
     // IN PROGRESS
-    // let filePath = './server/routes/blobURLAudio.weba'
+    let filePath = './server/routes/blobURLAudio.flac'
 
     // Creates a client
     const client = new speech.SpeechClient();
