@@ -27,8 +27,9 @@ class LiveSpelling extends Component {
   }
 
   // for text input version only
-  handleTextClick () {
+  handleTextClick (e) {
     this.props.dispatchSpellingAttempt(this.state.spellingAttempt)
+    this.changeView(e)
   }
 
   render() { 
@@ -36,14 +37,13 @@ class LiveSpelling extends Component {
       <F>
           <form>
             <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
-            <button onClick={(e) => this.handleTextClick(e)}>Check your spelling!</button>
-          </form>
-          <button
-            onClick={this.changeView}
+            <button
+            onClick={(e) => this.handleTextClick(e)}
             className="btn btn-outline-warning btn-rounded waves-effect"
           >
-            View Results
+            Check your spelling!
           </button>
+          </form>
       </F>
      );
   }
