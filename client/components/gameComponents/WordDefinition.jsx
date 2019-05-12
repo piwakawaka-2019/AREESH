@@ -6,9 +6,6 @@ import {changeView} from '../../actions/game'
 class WordDefinition extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      definitions: []
-     }
   }
 
   changeView = (e) => {
@@ -17,10 +14,11 @@ class WordDefinition extends Component {
   }
 
   render() { 
-    console.log(this.state);
+    let {word, definitions} = this.props
     return ( 
       <F>
-           <h1>Word Definition</h1>
+          <h1>{word}</h1>
+          <p>{definitions[0]}</p>
           <button
             onClick={this.changeView}
             className="btn btn-outline-warning btn-rounded waves-effect"
@@ -33,7 +31,10 @@ class WordDefinition extends Component {
 }
 
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  definitions: state.game.wordData.definitions,
+  word: state.game.wordData.word
+});
 
 const mapDispatchToProps = dispatch => {
   return {
