@@ -5,15 +5,11 @@ export default function SignedOutNav() {
   return (
     <F>
       <NavLink className="nav-link waves-effect waves-light  " to="/login"  activeClassName="active">
-      
         Log In
-     
-    </NavLink>
-    <NavLink className="nav-link waves-effect waves-light" to="/register"  activeClassName="active">
-       
+      </NavLink>
+      <NavLink className="nav-link waves-effect waves-light" to="/register"  activeClassName="active">
         Sign Up
-    </NavLink>
-    
+      </NavLink>
   </F>
   )
 }

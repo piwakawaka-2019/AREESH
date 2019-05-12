@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+// are we using this package?
+import PropTypes from 'prop-types'
 
 export class SpellWord extends Component {
 
@@ -13,12 +14,8 @@ export class SpellWord extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => ({})
 
-const mapDispatchToProps = {
-  
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpellWord)

@@ -1,14 +1,15 @@
-import { Link, NavLink } from "react-router-dom";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { Link, NavLink } from "react-router-dom"
+// are we using this package?
+import PropTypes from "prop-types"
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import SignedInNav from "./SignedInNav";
-import SignedOutNav from "./SignedOutNav";
+import SignedInNav from "./SignedInNav"
+import SignedOutNav from "./SignedOutNav"
 
 export class Nav extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   componentDidMount() {}
@@ -17,10 +18,6 @@ export class Nav extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
         <div className="navbar-brand text-white ">Areesh</div>
-
-        {/* <Link to="/">
-          
-        </Link> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -41,10 +38,9 @@ export class Nav extends Component {
               to="/game"
               className="nav-item"
               activeClassName="active"
+              className="nav-link" href="#"
             >
-              <a className="nav-link" href="#">
                 Game
-              </a>
             </NavLink>
           </ul>
           {/* <ul className="navbar-nav mr-auto">
@@ -104,19 +100,16 @@ export class Nav extends Component {
           </ul>
         </div>
       </nav>
-    );
+    )
   }
 }
 
 const mapStateToProps = ({ auth }) => {
   return {
     auth
-  };
-};
+  }
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

@@ -1,3 +1,5 @@
+// Transcribes audio from a short audio file (<20s)
+
 // Imports the Google Cloud client library
 const fs = require('fs');
 const speech = require('@google-cloud/speech');
@@ -33,20 +35,20 @@ const request = {
 
 // Detects speech in the audio file
 async function recognizeAsync () {
-    try {
-        const [response] = await client.recognize(request);
-        return response
-    }
-    catch (err) {
-        console.log(err)
-    }
+  try {
+    const [response] = await client.recognize(request);
+    return response
+  }
+  catch (err) {
+    console.log(err)
+  }
 }
 
 const transcription = recognizeAsync()
-    .then(response => {
-        const transcriptionResult = response.results.map(result => result.alternatives[0].transcript)
-        .join('\n')
-        console.log("Result: ",  transcriptionResult)
-    })
+  .then(response => {
+    const transcriptionResult = response.results.map(result => result.alternatives[0].transcript)
+    .join('\n')
+    console.log("Result: ",  transcriptionResult)
+  })
 
   

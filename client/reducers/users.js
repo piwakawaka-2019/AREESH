@@ -1,6 +1,6 @@
-import { isAuthenticated, getUserTokenInfo } from "../utils/auth";
+import { isAuthenticated, getUserTokenInfo } from "../utils/auth"
 
-const initialState = [{id: 1, firstName: "John", lastName: "Doe", userName: "johndoe", hourlyWages: 100}];
+const initialState = [{id: 1, firstName: "John", lastName: "Doe", userName: "johndoe", hourlyWages: 100}]
 
 export default function users(state = initialState, action) {
   switch (action.type) {
