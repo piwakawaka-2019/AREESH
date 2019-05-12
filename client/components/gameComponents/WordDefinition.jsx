@@ -16,13 +16,19 @@ class WordDefinition extends Component {
   render() { 
     return ( 
       <F>
+         <div className="card  m-4  p-3 text-center">
            <h1>Word Definition</h1>
-          <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Start Spelling
-          </button>
+           </div>
+           <div className="d-flex justify-content-center">
+          
+              <button
+                onClick={this.changeView}
+                className="btn btn-outline-warning btn-rounded waves-effect"
+              >
+                Start Spelling
+              </button>
+          </div>
+        
       </F>
      );
   }

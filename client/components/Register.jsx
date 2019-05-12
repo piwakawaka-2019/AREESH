@@ -78,7 +78,7 @@ class Register extends React.Component {
           placeholder="Username"
           onChange={this.updateDetails}
         />
-        <div className="form-row mb-4">
+        <div className="form-row mb-4 ">
           <div className="col">
             <input
               type="password"

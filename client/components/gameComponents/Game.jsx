@@ -50,12 +50,7 @@ class Game extends Component {
     console.log('game state:', this.state.currentWord);
     return (
       <F>
-        <button
-          className="btn btn-outline-danger btn-rounded waves-effect restart-game"
-          onClick={this.restart}
-        >
-          Restart
-        </button>
+     
         <div className="text-center">
           {views.displayHome && <Home />}
           {views.displayWhichWord && <WhichWord setCurrentWord={this.setCurrentWord}/>}
@@ -63,6 +58,14 @@ class Game extends Component {
           {views.displayLiveSpelling && <LiveSpelling />}
           {views.displayResults && <Results />}
           {views.displayWinner && <Winner />}
+        </div> 
+        <div className="d-flex justify-content-center">
+          <button type="button"
+          className="btn btn-outline-grey btn-rounded waves-effect restart-game"
+          onClick={this.restart}
+        >
+          Restart
+        </button>
         </div>
       </F>
     );

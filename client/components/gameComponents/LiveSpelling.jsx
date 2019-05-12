@@ -16,13 +16,18 @@ class LiveSpelling extends Component {
   render() { 
     return ( 
       <F>
+         <div class="card  m-4  p-3 text-center">
           <h1>Try to spell the word</h1>
-          <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            View Results
-          </button>
+          </div>
+                  <div className="d-flex justify-content-center">
+                  <button
+                    onClick={this.changeView}
+                    className="btn btn-outline-warning btn-rounded waves-effect"
+                  >
+                    View Results
+                  </button>
+                 </div>
+         
       </F>
      );
   }

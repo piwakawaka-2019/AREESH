@@ -67,9 +67,11 @@ class WhichWord extends Component {
     console.log(this.state);
     return (
       <Fragment>
-        <form class="md-form" onSubmit={this.submit}>
-          <input type="text" name="currentWord" id="form1" class="form-control" onChange={this.handleChange}/>
-          <label for="form1">Enter the word you'd like to spell</label>
+        
+        <form className="md-form" onSubmit={this.submit}> <div className="card  m-6  p-3 text-center">
+          <input type="text" name="currentWord" id="form1" className="form-control" onChange={this.handleChange}/>
+          <label htmlFor="form1">Enter the word you'd like to spell</label>
+          </div>
           <button
             type="submit"
             className="btn btn-outline-warning btn-rounded waves-effect"
@@ -77,7 +79,7 @@ class WhichWord extends Component {
             Confirm
           </button>
         </form>
-
+        
         {/* <audio
           ref="audioSource"
           controls="controls"

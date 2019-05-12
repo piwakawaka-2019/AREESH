@@ -34,10 +34,10 @@ class Login extends React.Component {
   </h5>
       <form
         onSubmit={this.submit}
-        className="text-center  m-auto p-3"
+        className="text-center  m-auto p-3 "
       >
        
-        {auth.errorMessage && <div class="red-text">{auth.errorMessage}</div>}
+        {auth.errorMessage && <div className="red-text">{auth.errorMessage}</div>}
         <input
           type="text"
           id="defaultLoginFormUsername"

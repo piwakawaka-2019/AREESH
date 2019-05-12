@@ -42,14 +42,23 @@ export class Results extends Component {
       render() { 
         return ( 
           <F>
-            <button onClick={() => this.handleClick()}>Transcribe File</button>
-            <p>Answer: {this.state.transcribedWord}</p>
-            <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            But did you win?
-          </button>
+
+            <div class="card  m-4  p-3 text-center">
+                  
+                 <div className="d-flex justify-content-center">
+                    <button onClick={() => this.handleClick()}>Transcribe File</button>
+                    <p>Answer: {this.state.transcribedWord}</p></div>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                    <button
+                    onClick={this.changeView}
+                    className="btn btn-outline-warning btn-rounded waves-effect"
+                  >
+                    But did you win?
+                  </button>
+                  </div>
+                  
+         
           </F>
 
          );
