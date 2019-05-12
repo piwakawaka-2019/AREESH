@@ -35,6 +35,6 @@ function handleClick() {
   console.log(userText.innerHTML)
 }
 
-Dictaphone.propTypes = propTypes;
+Dictaphone.propTypes = propTypes
 
-export default SpeechRecognition(Dictaphone);
+export default SpeechRecognition(Dictaphone)
