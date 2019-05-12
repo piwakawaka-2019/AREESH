@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { changeView, setWord, setDefinitions } from "../../actions/game";
-import { getDefinitions } from "../../apis/dictionary";
+import React, { Component, Fragment } from "react"
+import { connect } from "react-redux"
+
+import { getDefinitions } from "../../apis/dictionary"
+import { changeView, setWord, setDefinitions } from "../../actions/game"
 import Dictaphone from "./Dictaphone";
+
 
 class WhichWord extends Component {
   constructor(props) {
