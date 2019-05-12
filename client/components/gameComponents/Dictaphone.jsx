@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import SpeechRecognition from "react-speech-recognition";
+import { connect } from "react-redux"
 import { thisTypeAnnotation } from "@babel/types";
 
 const propTypes = {

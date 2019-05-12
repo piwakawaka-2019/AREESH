@@ -84,4 +84,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WhichWord);
+export default connect(mapStateToProps, mapDispatchToProps)(WhichWord)
