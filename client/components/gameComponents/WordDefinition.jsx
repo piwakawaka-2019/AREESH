@@ -2,10 +2,13 @@ import React, { Component, Fragment as F } from 'react';
 import { connect } from "react-redux";
 import {changeView} from '../../actions/game'
 
+
 class WordDefinition extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = { 
+      definitions: []
+     }
   }
 
   changeView = (e) => {
@@ -14,6 +17,7 @@ class WordDefinition extends Component {
   }
 
   render() { 
+    console.log(this.state);
     return ( 
       <F>
            <h1>Word Definition</h1>

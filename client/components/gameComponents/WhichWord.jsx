@@ -3,7 +3,8 @@ import { ReactMic } from "react-mic";
 import { sendBlob } from "../../apis/speech";
 import request from "superagent";
 import { connect } from "react-redux";
-import {changeView} from '../../actions/game'
+import { changeView, setWord, setDefinitions } from "../../actions/game";
+import { getDefinitions } from "../../apis/dictionary";
 
 class WhichWord extends Component {
   constructor(props) {
@@ -11,8 +12,8 @@ class WhichWord extends Component {
     this.state = {
       isRecording: false,
       blobURL: null,
-      currentWord: ''
-
+      word: "",
+      error: ""
     };
   }
 
@@ -49,17 +50,27 @@ class WhichWord extends Component {
   }
 
   //****************************************************** */
-    //Text input
-    submit = (e) => {
-      e.preventDefault()
-      this.props.setCurrentWord(this.state.currentWord)
-      this.props.displayWordDefinition()
-    }
+  //Text input
+  submit = e => {
+    e.preventDefault();
+    this.setState({ error: "" });
+    this.props.setWord(this.state.word);
+    getDefinitions(this.state.word, this.validateWord);
+  };
 
-    handleChange = (e) => {
-      this.setState({[e.target.name]:e.target.value})
+  validateWord = definitions => {
+    console.log(definitions);
+    if (definitions) {
+      this.props.setDefinitions(definitions);
+      this.props.displayWordDefinition();
+    } else {
+      this.setState({ error: "Invalid word, please try again." });
     }
+  };
 
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   //****************************************************** */
 
@@ -67,9 +78,18 @@ class WhichWord extends Component {
     console.log(this.state);
     return (
       <Fragment>
-        <form class="md-form" onSubmit={this.submit}>
-          <input type="text" name="currentWord" id="form1" class="form-control" onChange={this.handleChange}/>
-          <label for="form1">Enter the word you'd like to spell</label>
+        <form className="md-form" onSubmit={this.submit}>
+          <input
+            type="text"
+            name="word"
+            id="validationServer043"
+            className={`form-control ${this.state.error && 'is-invalid'}`}
+            onChange={this.handleChange}
+          />
+          <label htmlFor="validationServer043">Enter the word you'd like to spell</label>
+          <div class="invalid-feedback">Please provide a valid Word.</div>
+
+
           <button
             type="submit"
             className="btn btn-outline-warning btn-rounded waves-effect"
@@ -103,7 +123,9 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWordDefinition: e => dispatch(changeView("displayWordDefinition"))
+    displayWordDefinition: e => dispatch(changeView("displayWordDefinition")),
+    setWord: word => dispatch(setWord(word)),
+    setDefinitions: definitions => dispatch(setDefinitions(definitions))
   };
 };
 
