@@ -73,7 +73,7 @@ class Login extends React.Component {
             </div>
           </div>
           <div>
-            <a href="">Forgot password?</a>
+            <a className="amber-text" href="">Forgot password?</a>
           </div>
         </div>
 
@@ -83,7 +83,7 @@ class Login extends React.Component {
 
         <p>
           Not a member?
-          <a href="#"> Register</a>
+          <a className="amber-text" href="#"> Register</a>
         </p>
 
         <p>or sign in with:</p>
