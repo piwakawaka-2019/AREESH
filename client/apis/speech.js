@@ -25,6 +25,7 @@ export function checkSpelling (word, spelling) {
     })
   
     for (var i = 0; i < word.length; i++) {
+
         if(spellingArr[i] == word.charAt(i)){
             score.push(word.charAt(i))
         } else {
@@ -33,6 +34,11 @@ export function checkSpelling (word, spelling) {
         }
     }
 
-    score.push('✓')
-    return score
+    if(spellingArr.length != word.length){
+        score.push('X')
+        return score
+    } else {
+        score.push('✓')
+        return score
+    }
 }

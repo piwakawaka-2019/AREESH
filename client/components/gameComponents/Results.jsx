@@ -29,7 +29,7 @@ export class Results extends Component {
     })
 
     result.forEach((letter, i) => {
-      setTimeout(() => this.updateResult(letter), 750 * i)
+      setTimeout(() => this.updateResult(letter), 500 * i)
     })
   }
   
