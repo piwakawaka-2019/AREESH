@@ -14,17 +14,19 @@ class Winner extends Component {
   }
 
   render() { 
-    return ( 
-      <F>
-          <h1>Grats bro</h1>
-          <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Play again?
-          </button>
-      </F>
-     );
+    if(this.props.winnerDisplayed){
+      return ( 
+        <F>
+            <h1>Grats bro</h1>
+            <button
+              onClick={this.changeView}
+              className="btn btn-outline-warning btn-rounded waves-effect"
+            >
+              Play again?
+            </button>
+        </F>
+      )
+    } else return <F></F>
   }
 }
 
