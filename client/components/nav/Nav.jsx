@@ -46,6 +46,15 @@ export class Nav extends Component {
                 Game
               </a>
             </NavLink>
+            <NavLink
+              to="/resultsTest"
+              className="nav-item"
+              activeClassName="active"
+            >
+              <a className="nav-link" href="#">
+                Results Test
+              </a>
+            </NavLink>
           </ul>
           {/* <ul className="navbar-nav mr-auto">
             <li className="nav-item active">

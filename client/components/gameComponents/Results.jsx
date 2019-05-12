@@ -28,6 +28,7 @@ export class Results extends Component {
         })
       }
     
+    
       updateTranscribedWord (letter) {
         this.setState({
           transcribedWord: this.state.transcribedWord + letter
