@@ -1,20 +1,24 @@
-import React, { Component, Fragment } from "react";
-import { ReactMic } from "react-mic";
-import { sendBlob } from "../../apis/speech";
-import request from "superagent";
-import { connect } from "react-redux";
-import { changeView, setWord, setDefinitions } from "../../actions/game";
-import { getDefinitions } from "../../apis/dictionary";
+import React, { Component, Fragment } from "react"
+import { connect } from "react-redux"
+import request from "superagent"
+// are we still using this package?
+import { ReactMic } from "react-mic"
+
+
+import { sendBlob } from "../../apis/speech"
+import { getDefinitions } from "../../apis/dictionary"
+import { changeView, setWord, setDefinitions } from "../../actions/game"
+
 
 class WhichWord extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       isRecording: false,
       blobURL: null,
       word: "",
       error: ""
-    };
+    }
   }
 
   // async getAudio() {
@@ -29,47 +33,47 @@ class WhichWord extends Component {
   // }
 
   startRecording = () => {
-    this.setState({ isRecording: true });
-  };
+    this.setState({ isRecording: true })
+  }
 
   stopRecording = () => {
-    this.setState({ isRecording: false });
-  };
+    this.setState({ isRecording: false })
+  }
 
   onStop(recordedBlob) {
-    //this is where youll send the data
-    // this.setState({ blobURL: recordedBlob.blobURL });
-    request.get(recordedBlob.blobURL).then(res => {});
+    // his is where youll send the data
+    // this.setState({ blobURL: recordedBlob.blobURL })
+    request.get(recordedBlob.blobURL).then(res => {})
 
-    sendBlob(recordedBlob);
+    sendBlob(recordedBlob)
   }
-  onSave = blobObject => {};
+  onSave = blobObject => {}
 
   onData(recordedBlob) {
-    // console.log("chunck of realtime data is ", recordedBlob);
+    // console.log("chunck of realtime data is ", recordedBlob)
   }
 
   //****************************************************** */
   //Text input
   submit = e => {
     e.preventDefault();
-    this.setState({ error: "" });
-    this.props.setWord(this.state.word);
-    getDefinitions(this.state.word, this.validateWord);
-  };
+    this.setState({ error: "" })
+    this.props.setWord(this.state.word)
+    getDefinitions(this.state.word, this.validateWord)
+  }
 
   validateWord = definitions => {
     if (definitions) {
       this.props.setDefinitions(definitions);
       this.props.displayWordDefinition();
     } else {
-      this.setState({ error: "Invalid word, please try again." });
+      this.setState({ error: "Invalid word, please try again." })
     }
-  };
+  }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  };
+  }
 
   //****************************************************** */
 
@@ -86,7 +90,6 @@ class WhichWord extends Component {
           />
           <label htmlFor="validationServer043">Enter the word you'd like to spell</label>
           <div className="invalid-feedback">Please provide a valid Word.</div>
-
 
           <button
             type="submit"
@@ -113,21 +116,18 @@ class WhichWord extends Component {
         <button onClick={this.startRecording}>Start Recording</button>
         <button onClick={this.stopRecording}>Stop Recording</button> */}
       </Fragment>
-    );
+    )
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWordDefinition: e => dispatch(changeView("displayWordDefinition")),
     setWord: word => dispatch(setWord(word)),
     setDefinitions: definitions => dispatch(setDefinitions(definitions))
-  };
-};
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WhichWord);
+export default connect(mapStateToProps, mapDispatchToProps)(WhichWord);

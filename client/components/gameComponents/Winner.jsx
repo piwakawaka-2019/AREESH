@@ -1,11 +1,12 @@
-import React, { Component, Fragment as F } from 'react';
-import { connect } from "react-redux";
+import React, { Component, Fragment as F } from 'react'
+import { connect } from "react-redux"
+
 import {changeView} from '../../actions/game'
 
 class Winner extends Component {
   constructor(props) {
-    super(props);
-    this.state = {  }
+    super(props)
+    this.state = {}
   }
 
   changeView = (e) => {
@@ -14,7 +15,7 @@ class Winner extends Component {
   }
 
   render() { 
-    let winnerStatus = "Unlucky, shit-cunt"
+    let winnerStatus = "Loser :("
     if (this.props.wordCorrect) {
       winnerStatus = "Winner!"
     }
@@ -22,13 +23,13 @@ class Winner extends Component {
     if(this.props.winnerDisplayed){
       return ( 
         <F>
-            <h1>{winnerStatus}</h1>
-            <button
-              onClick={this.changeView}
-              className="btn btn-outline-warning btn-rounded waves-effect"
-            >
-              Play again?
-            </button>
+          <h1>{winnerStatus}</h1>
+          <button
+            onClick={this.changeView}
+            className="btn btn-outline-warning btn-rounded waves-effect"
+          >
+            Play again?
+          </button>
         </F>
       )
     } else return <F></F>
@@ -38,15 +39,12 @@ class Winner extends Component {
 
 const mapStateToProps = state => ({
   wordCorrect: state.game.wordData.wordCorrect
-});
+})
 
 const mapDispatchToProps = dispatch => {
   return {
     displayHome: e => dispatch(changeView("displayWhichWord"))
-  };
-};
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Winner);
+export default connect(mapStateToProps, mapDispatchToProps)(Winner)

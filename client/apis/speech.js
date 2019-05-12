@@ -9,12 +9,13 @@ export function transcribeSpeech (fileName) {
     })
 }
 
+// send blob of audio recording to server-side
+// built for first recording solution ( the one with the pink equalizer )
 export function sendBlob (blob) {
     return request
     .post('/api/speech/blob')
     .send({blob: blob})
     .then(() => {})
-    // .then(res => res.body['transcript'])
 }
 
 export function checkSpelling (word, spelling) {
@@ -25,7 +26,6 @@ export function checkSpelling (word, spelling) {
     })
   
     for (var i = 0; i < word.length; i++) {
-
         if(spellingArr[i] == word.charAt(i)){
             score.push(word.charAt(i))
         } else {

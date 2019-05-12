@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Nav from './Nav';
+// are we still using this package?
+import PropTypes from 'prop-types'
 
+import Nav from './Nav'
 
 export class Header extends Component {
   render() {
     return (
-        <Nav/>
+      <Nav/>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => ({})
 
-const mapDispatchToProps = {
-  
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
 

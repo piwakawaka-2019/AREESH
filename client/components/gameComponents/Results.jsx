@@ -1,22 +1,24 @@
 import React, { Component, Fragment as F} from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+// are we using this library?
+import PropTypes from 'prop-types'
+
 import {transcribeSpeech, checkSpelling} from '../../apis/speech'
 import {changeView, setWordCorrect} from '../../actions/game'
 import Winner from './Winner'
 
 export class Results extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       // for speech-recognition version 
       result: "",
       winnerDisplayed: false
-      }
+    }
 
-      this.handleClick = this.handleClick.bind(this)
-      this.updateResult = this.updateResult.bind(this)
-      this.displayWinner = this.displayWinner.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.updateResult = this.updateResult.bind(this)
+    this.displayWinner = this.displayWinner.bind(this)
   }
 
   componentDidMount (e) {
@@ -52,6 +54,7 @@ export class Results extends Component {
       result: this.state.result + letter
     })
 
+    // display winner component if spellcheck complete
     if(letter == 'X' || letter == '✓'){
       this.setState({
         winnerDisplayed: true
@@ -89,16 +92,13 @@ export class Results extends Component {
 const mapStateToProps = state => ({
   word: state.game.wordData.word,
   spellingAttempt: state.game.wordData.spellingAttempt
-});
+})
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWinner: e => dispatch(changeView("displayWinner")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
-  };
-};
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Results);
+export default connect(mapStateToProps, mapDispatchToProps)(Results)

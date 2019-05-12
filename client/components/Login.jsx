@@ -1,42 +1,44 @@
-import React from "react";
-import { connect } from "react-redux";
-import { loginUser, loginError } from "../actions/login";
-
+import React from "react"
+import { connect } from "react-redux"
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
+import { loginUser, loginError } from "../actions/login"
+
 class Login extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       userName: "",
       password: ""
-    };
+    }
   }
+
   componentDidMount() {
-    this.props.dispatch(loginError(""));
+    this.props.dispatch(loginError(""))
   }
+
   updateDetails = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   submit = e => {
-    e.preventDefault();
-    let { userName, password } = this.state;
-    this.props.dispatch(loginUser({ userName, password }));
-  };
+    e.preventDefault()
+    let { userName, password } = this.state
+    this.props.dispatch(loginUser({ userName, password }))
+  }
 
   render() {
-    const { auth } = this.props;
+    const { auth } = this.props
     return (
-      <div class="card  m-4  p-3 text-center">
-       <h5 class="card-header stylish-color white-text">
-    <strong>Sign in</strong>
-  </h5>
+      <div className="card  m-4  p-3 text-center">
+        <h5 className="card-header stylish-color white-text">
+          <strong>Sign in</strong>
+        </h5>
       <form
         onSubmit={this.submit}
         className="text-center  m-auto p-3"
       >
-       
         {auth.errorMessage && <div class="red-text">{auth.errorMessage}</div>}
         <input
           type="text"
@@ -102,14 +104,14 @@ class Login extends React.Component {
         </a>
       </form>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = ({ auth }) => {
   return {
     auth
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login)
