@@ -1,5 +1,5 @@
 import React from 'react'
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
+import {HashRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 
@@ -13,6 +13,7 @@ import WordDefinition from './WordDefinition'
 import LiveSpelling from './LiveSpelling'
 import Winner from './Winner'
 import ContactDetails from './ContactDetails'
+import  Game from './gameComponents/Game';
 
 
 export function App({auth}) {
@@ -22,11 +23,11 @@ export function App({auth}) {
       <Header/>
       
       <div className="container has-text-centered">
-
+      
         <main className='body'>
-          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route path="/game" component={Game} exact/>
           <Route exact path="/whichWord" component={WhichWord} />
           <Route exact path="/WordDefinition" component={WordDefinition} />
           <Route exact path="/LiveSpelling" component={LiveSpelling} />
