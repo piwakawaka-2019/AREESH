@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from "react"
+import { connect } from "react-redux"
+
 import {changeView} from '../../actions/game'
-import WhichWord from "./WhichWord";
-import { connect } from "react-redux";
 
 class Home extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Home extends Component {
           <div className="card-body  ">
             <h5 className="card-title">Welcome!</h5>
             <p className="card-text">
-              Here is some instruction to how to start the game. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam minus veritatis eos ex dicta, a in tenetur vero accusamus repudiandae suscipit adipisci accusantium corrupti consequatur, rerum quos magnam commodi.
+            AREESH uses speech-recognition technology to help you test your memory and sharpen your spelling skills! Just tell the app the word you want to spell. It will display on your screen briefly before disappearing. Now over to you. Spell the word out loud, and AREESH will let you know if you got it right
             </p>
           </div>
         </div>
@@ -31,7 +31,7 @@ class Home extends Component {
           </button>
         </div>
       </Fragment>
-    );
+    )
   }
 }
 
@@ -40,10 +40,7 @@ const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => {
   return {
     displayWhichWord: e => dispatch(changeView("displayWhichWord"))
-  };
-};
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
