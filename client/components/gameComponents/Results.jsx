@@ -2,7 +2,7 @@ import React, { Component, Fragment as F} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {transcribeSpeech, checkSpelling} from '../../apis/speech'
-import {changeView} from '../../actions/game'
+import {changeView, setWordCorrect} from '../../actions/game'
 import Winner from './Winner'
 
 export class Results extends Component {
@@ -25,7 +25,7 @@ export class Results extends Component {
     let result = checkSpelling(word, spellingAttempt)
 
     this.setState({
-      result: ""
+      result: "",
     })
 
     result.forEach((letter, i) => {
@@ -57,6 +57,12 @@ export class Results extends Component {
         winnerDisplayed: true
       })
     }
+
+    let {word, spellingAttempt, dispatchWordCorrect} = this.props
+
+    if(word == spellingAttempt){
+      dispatchWordCorrect(true)
+    } else dispatchWordCorrect(false)
   }
 
   displayWinner () {
@@ -87,7 +93,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWinner: e => dispatch(changeView("displayWinner"))
+    displayWinner: e => dispatch(changeView("displayWinner")),
+    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
   };
 };
 

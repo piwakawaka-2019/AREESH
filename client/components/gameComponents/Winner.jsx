@@ -14,10 +14,15 @@ class Winner extends Component {
   }
 
   render() { 
+    let winnerStatus = "Unlucky, shit-cunt"
+    if (this.props.wordCorrect) {
+      winnerStatus = "Winner!"
+    }
+
     if(this.props.winnerDisplayed){
       return ( 
         <F>
-            <h1>Grats bro</h1>
+            <h1>{winnerStatus}</h1>
             <button
               onClick={this.changeView}
               className="btn btn-outline-warning btn-rounded waves-effect"
@@ -31,7 +36,9 @@ class Winner extends Component {
 }
 
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  wordCorrect: state.game.wordData.wordCorrect
+});
 
 const mapDispatchToProps = dispatch => {
   return {
