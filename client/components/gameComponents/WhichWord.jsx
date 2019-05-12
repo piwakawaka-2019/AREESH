@@ -1,64 +1,56 @@
-<<<<<<< HEAD
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { changeView, setWord, setDefinitions } from "../../actions/game";
-import { getDefinitions } from "../../apis/dictionary";
-import Dictaphone from "./Dictaphone";
-=======
 import React, { Component, Fragment } from "react"
 import { connect } from "react-redux"
-import request from "superagent"
-// are we still using this package?
-import { ReactMic } from "react-mic"
 
-
-import { sendBlob } from "../../apis/speech"
 import { getDefinitions } from "../../apis/dictionary"
 import { changeView, setWord, setDefinitions } from "../../actions/game"
+import Dictaphone from "./Dictaphone";
 
->>>>>>> 6912755f6ca13bf189648572e6d125f24992ea9b
 
 class WhichWord extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       isRecording: false,
       blobURL: null,
       word: "",
-      error: ""
-    }
+      error: "",
+    };
   }
 
   //****************************************************** */
   //Text input
   submit = e => {
     e.preventDefault();
-    this.setState({ error: "" })
-    this.props.setWord(this.state.word)
-    getDefinitions(this.state.word, this.validateWord)
-  }
+    this.setState({ error: "" });
+    this.props.setWord(this.state.word);
+    getDefinitions(this.state.word, this.validateWord);
+  };
 
   validateWord = definitions => {
     if (definitions) {
       this.props.setDefinitions(definitions);
       this.props.displayWordDefinition();
     } else {
-      this.setState({ error: "Invalid word, please try again." })
+      this.setState({ error: "Invalid word, please try again." });
     }
-  }
+  };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
+  handleTest = (arg) => {
+    this.setState({ test:  arg});
+  }
   //****************************************************** */
 
   render() {
     return (
       <Fragment>
         <div>
-          <Dictaphone />
+          <Dictaphone setTest={this.handleTest} />
         </div>
+        <p>112, {this.state.test}</p>
 
         <form className="md-form" onSubmit={this.submit}>
           <input
@@ -81,18 +73,21 @@ class WhichWord extends Component {
           </button>
         </form>
       </Fragment>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWordDefinition: e => dispatch(changeView("displayWordDefinition")),
     setWord: word => dispatch(setWord(word)),
     setDefinitions: definitions => dispatch(setDefinitions(definitions))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(WhichWord);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WhichWord);
