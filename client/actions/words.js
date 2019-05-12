@@ -8,30 +8,25 @@ function saveCurrentWord (wordData) {
 }
 
 function saveWords (words) {
-    return {
-      type: 'SAVE_WORDS',
-      words
-    }
+  return {
+    type: 'SAVE_WORDS',
+    words
   }
+}
   
 //not used yet
 loading = () => {
-    return {
-        type: 'LOADING',
-
-      }
+return {
+    type: 'LOADING'
+  }
 }
 
 //not used yet
 doneLoading = () => {
-    return {
-        type: 'DONE_LOADING',
-
-      }
+  return {
+    type: 'DONE_LOADING'
+  }
 }
-
-
-
 
 
 //just an example of thunk async call

@@ -1,89 +1,104 @@
 import React, { Component, Fragment as F} from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+// are we using this library?
+import PropTypes from 'prop-types'
+
 import {transcribeSpeech, checkSpelling} from '../../apis/speech'
-import {changeView} from '../../actions/game'
+import {changeView, setWordCorrect} from '../../actions/game'
+import Winner from './Winner'
 
 export class Results extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          // for speech-recognition version 
-          result: ""
-         }
-    
-         this.handleClick = this.handleClick.bind(this)
-         this.updateResult = this.updateResult.bind(this)
-      }
-    
+  constructor(props) {
+    super(props)
+    this.state = {
       // for speech-recognition version 
-      handleClick () {
-        transcribeSpeech('flacSonic.flac')
-        .then(transcription => checkSpelling("sonic", transcription))
-        .then(result => {
-          this.setState({
-            result: ""
-          })
-          result.forEach((letter, i) => {
-            setTimeout(() => this.updateResult(letter), 750 * i)
-          })
-        })
-      }
-    
-      updateResult (letter) {
-        this.setState({
-          result: this.state.result + letter
-        })
-      }
+      result: "",
+      winnerDisplayed: false
+    }
 
-      componentDidMount (e) {
-        let {word, spellingAttempt} = this.props
+    this.handleClick = this.handleClick.bind(this)
+    this.updateResult = this.updateResult.bind(this)
+    this.displayWinner = this.displayWinner.bind(this)
+  }
 
-        let result = checkSpelling(word, spellingAttempt)
+  componentDidMount (e) {
+    let {word, spellingAttempt} = this.props
 
-        this.setState({
-          result: ""
-        })
+    let result = checkSpelling(word, spellingAttempt)
 
-        result.forEach((letter, i) => {
-          setTimeout(() => this.updateResult(letter), 750 * i)
-        })
-      }
+    this.setState({
+      result: "",
+    })
 
-      changeView = (e) => {
-        e.preventDefault()
-        this.props.displayWinner()
-      }
-    
-      render() { 
-        return ( 
-          <F>
-            <button onClick={() => this.handleClick()}>Transcribe File</button>
-            <p>Answer: {this.state.result}</p>
-            <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            But did you win?
-          </button>
-          </F>
+    result.forEach((letter, i) => {
+      setTimeout(() => this.updateResult(letter), 500 * i)
+    })
+  }
+  
+  // for speech-recognition version 
+  handleClick () {
+    transcribeSpeech('flacSonic.flac')
+    .then(transcription => checkSpelling("sonic", transcription))
+    .then(result => {
+      this.setState({
+        result: ""
+      })
+      result.forEach((letter, i) => {
+        setTimeout(() => this.updateResult(letter), 750 * i)
+      })
+    })
+  }
+  
+  updateResult (letter) {
+    this.setState({
+      result: this.state.result + letter
+    })
 
-         );
-      }
+    // display winner component if spellcheck complete
+    if(letter == 'X' || letter == '✓'){
+      this.setState({
+        winnerDisplayed: true
+      })
+    }
+
+    let {word, spellingAttempt, dispatchWordCorrect} = this.props
+
+    if(word == spellingAttempt){
+      dispatchWordCorrect(true)
+    } else dispatchWordCorrect(false)
+  }
+
+  displayWinner () {
+    this.setState({
+      winnerDisplayed: true
+    })
+  }
+
+  changeView = (e) => {
+    e.preventDefault()
+    this.props.displayWinner()
+  }
+
+  render() { 
+    return ( 
+      <F>
+        <h1>{this.state.result}</h1>
+        <Winner winnerDisplayed={this.state.winnerDisplayed}/>
+      </F>
+    )
+  }
 }
 
 const mapStateToProps = state => ({
   word: state.game.wordData.word,
   spellingAttempt: state.game.wordData.spellingAttempt
-});
+})
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWinner: e => dispatch(changeView("displayWinner"))
-  };
-};
+    displayWinner: e => dispatch(changeView("displayWinner")),
+    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Results);
+export default connect(mapStateToProps, mapDispatchToProps)(Results)

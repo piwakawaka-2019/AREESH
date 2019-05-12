@@ -1,3 +1,5 @@
+// Transcribes audio from streamed from a local file
+
 const fs = require('fs');
 const speech = require('@google-cloud/speech');
 

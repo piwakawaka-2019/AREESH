@@ -1,5 +1,6 @@
-import React, { Component, Fragment as F } from 'react';
-import { connect } from "react-redux";
+import React, { Component, Fragment as F } from 'react'
+import { connect } from "react-redux"
+
 import {changeView, setSpellingAttempt} from '../../actions/game'
 
 class LiveSpelling extends Component {
@@ -35,20 +36,19 @@ class LiveSpelling extends Component {
   render() { 
     return ( 
       <F>
-          <form>
-            <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
-            <button
-            onClick={(e) => this.handleTextClick(e)}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Check your spelling!
-          </button>
-          </form>
+        <form>
+          <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
+          <button
+          onClick={(e) => this.handleTextClick(e)}
+          className="btn btn-outline-warning btn-rounded waves-effect"
+        >
+          Check your spelling!
+        </button>
+        </form>
       </F>
-     );
+     )
   }
 }
-
 
 const mapStateToProps = state => ({});
 
@@ -56,10 +56,7 @@ const mapDispatchToProps = dispatch => {
   return {
     displayResults: e => dispatch(changeView("displayResults")),
     dispatchSpellingAttempt: spellingAttempt => dispatch(setSpellingAttempt(spellingAttempt))
-  };
-};
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LiveSpelling);
+export default connect(mapStateToProps, mapDispatchToProps)(LiveSpelling)

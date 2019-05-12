@@ -1,7 +1,9 @@
-import React, { Fragment as F } from "react";
-import { logoutUser } from "../../actions/logout";
-import {NavLink} from 'react-router-dom'
+import React, { Fragment as F } from "react"
 import {connect} from 'react-redux'
+import {NavLink} from 'react-router-dom'
+
+import { logoutUser } from "../../actions/logout"
+
 function SignedInNav({logout, user}) {
   return (
     <F>
@@ -38,7 +40,7 @@ function SignedInNav({logout, user}) {
         </div>
       </li>
     </F>
-  );
+  )
 }
 
 const mapStateToProps = (state) => {
@@ -51,8 +53,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignedInNav)
+export default connect(mapStateToProps, mapDispatchToProps)(SignedInNav)
 

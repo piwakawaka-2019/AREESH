@@ -1,17 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 
 class LoadingBar extends Component {
   constructor(props) {
-    super(props);
-    this.state = {  }
+    super(props)
+    this.state = {}
   }
+
   render() { 
     return ( 
       <Fragment>
-        
       </Fragment>
-     );
+    )
   }
 }
  
-export default LoadingBar;
+export default LoadingBar

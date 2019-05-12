@@ -1,16 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment as F} from 'react'
 
 class ConfirmWord extends Component {
   constructor(props) {
     super(props);
     this.state = {  }
   }
+  
   render() { 
     return ( 
-      <Fragment>
-        
-      </Fragment>
-     );
+      <F>
+      </F>
+    )
   }
 }
  
