@@ -6,7 +6,6 @@ import {changeView} from '../../actions/game'
 class WordDefinition extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
   }
 
   changeView = (e) => {

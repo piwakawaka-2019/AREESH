@@ -24,7 +24,8 @@ const initialState = {
             "",
         attemptDuration: null,
         // lettersCorrect: [], May not need?
-        wordCorrect: false
+        wordCorrect: false,
+        spellingAttempt: ""
     }
 }
 
@@ -81,8 +82,17 @@ export default function game(state = initialState, action) {
             }
         case "RESET_GAME":
             return initialState
+        case "SET_SPELLING_ATTEMPT":
+            return {
+                ...state,
+                wordData: {
+                    ...state.wordData,
+                    spellingAttempt: action.spellingAttempt
+                }
+            }
         default:
             return state;
+        
     }
 }
 

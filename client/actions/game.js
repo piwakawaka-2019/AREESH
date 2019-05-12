@@ -47,6 +47,13 @@ export function resetGame() {
     }
 }
 
+export function setSpellingAttempt(spellingAttempt) {
+    return {
+        type: 'SET_SPELLING_ATTEMPT',
+        spellingAttempt
+    }
+}
+
 
 
 
