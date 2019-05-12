@@ -17,14 +17,16 @@ class WordDefinition extends Component {
     let {word, definitions} = this.props
     return ( 
       <F>
-        <h1>{word}</h1>
-        <p>{definitions[0]}</p>
-        <button
-          onClick={this.changeView}
-          className="btn btn-outline-warning btn-rounded waves-effect"
-        >
-          Start Spelling
-        </button>
+      <div className="card  m-4  p-3 text-center">
+          <h1>{word}</h1>
+          <p>{definitions[0]}</p>
+          <button
+            onClick={this.changeView}
+            className="btn btn-outline-warning btn-rounded waves-effect"
+          >
+            Start Spelling
+          </button>
+        </div>
       </F>
     )
   }

@@ -36,15 +36,17 @@ class LiveSpelling extends Component {
   render() { 
     return ( 
       <F>
-        <form>
-          <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
-          <button
-          onClick={(e) => this.handleTextClick(e)}
-          className="btn btn-outline-warning btn-rounded waves-effect"
-        >
-          Check your spelling!
-        </button>
-        </form>
+        <div className="card  m-4  p-3 text-center">
+          <form>
+            <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
+            <button
+            onClick={(e) => this.handleTextClick(e)}
+            className="btn btn-outline-warning btn-rounded waves-effect"
+          >
+            Check your spelling!
+          </button>
+          </form>
+        </div>
       </F>
      )
   }
