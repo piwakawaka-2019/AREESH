@@ -42,7 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayHome: e => dispatch(changeView("displayHome"))
+    displayHome: e => dispatch(changeView("displayWhichWord"))
   };
 };
 
