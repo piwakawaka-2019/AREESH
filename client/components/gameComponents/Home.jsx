@@ -17,10 +17,7 @@ class Home extends Component {
           <div className="card-body  ">
             <h5 className="card-title">Welcome!</h5>
             <p className="card-text">
-              Here is some instruction to how to start the game.
-              firstfdsfdsdsfasdfdsfdsgsdgsdffsadgasdgsdgdsgsdgsgsdgsgssdgdsgsdgsdsd
-              gdasgagasdgsdagdsgdsgadsgdsgsdgerherhrtjrtjtryjtykyukuykyukuykdtyudrt
-              ghsrtujertiueiykytdktyfkyulyuluylyuluilyuluylyguyhjdtrhjtrdyseysererster
+              Here is some instruction to how to start the game. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quibusdam minus veritatis eos ex dicta, a in tenetur vero accusamus repudiandae suscipit adipisci accusantium corrupti consequatur, rerum quos magnam commodi.
             </p>
           </div>
         </div>

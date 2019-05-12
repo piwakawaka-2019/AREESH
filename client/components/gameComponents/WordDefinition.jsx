@@ -1,7 +1,7 @@
 import React, { Component, Fragment as F } from 'react';
 import { connect } from "react-redux";
 import {changeView} from '../../actions/game'
-import { getDefinitions } from "../../apis/dictionary";
+
 
 class WordDefinition extends Component {
   constructor(props) {
@@ -9,14 +9,6 @@ class WordDefinition extends Component {
     this.state = { 
       definitions: []
      }
-  }
-
-  componentDidMount(){
-    getDefinitions('apple',this.setDefinitions)
-  }
-
-  setDefinitions = (definitions) => {
-    this.setState({definitions}) 
   }
 
   changeView = (e) => {
