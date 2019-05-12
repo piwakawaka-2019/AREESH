@@ -21,7 +21,7 @@ class Winner extends Component {
             onClick={this.changeView}
             className="btn btn-outline-warning btn-rounded waves-effect"
           >
-            Try again?
+            Play again?
           </button>
       </F>
      );

@@ -34,21 +34,18 @@ export class Results extends Component {
         this.setState({
           result: this.state.result + letter
         })
-        console.log("state updated to: ", this.state.result)
       }
 
-      componentDidMount () {
+      componentDidMount (e) {
         let {word, spellingAttempt} = this.props
 
         let result = checkSpelling(word, spellingAttempt)
-        console.log("result: ", result )
 
         this.setState({
           result: ""
         })
 
         result.forEach((letter, i) => {
-          console.log(`letter ${i} is ${letter}`)
           setTimeout(() => this.updateResult(letter), 750 * i)
         })
       }

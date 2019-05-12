@@ -59,7 +59,6 @@ class WhichWord extends Component {
   };
 
   validateWord = definitions => {
-    console.log(definitions);
     if (definitions) {
       this.props.setDefinitions(definitions);
       this.props.displayWordDefinition();
@@ -75,7 +74,6 @@ class WhichWord extends Component {
   //****************************************************** */
 
   render() {
-    console.log(this.state);
     return (
       <Fragment>
         <form className="md-form" onSubmit={this.submit}>
@@ -87,7 +85,7 @@ class WhichWord extends Component {
             onChange={this.handleChange}
           />
           <label htmlFor="validationServer043">Enter the word you'd like to spell</label>
-          <div class="invalid-feedback">Please provide a valid Word.</div>
+          <div className="invalid-feedback">Please provide a valid Word.</div>
 
 
           <button
