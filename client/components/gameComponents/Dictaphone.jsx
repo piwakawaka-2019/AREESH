@@ -22,7 +22,7 @@ const Dictaphone = ({
 
   return (
     <div>
-      <p>11 {setTest}</p>
+   
       <button
         onClick={() => {
           setTest(transcript);
