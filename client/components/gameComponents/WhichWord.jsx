@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { changeView, setWord, setDefinitions } from "../../actions/game";
+import { getDefinitions } from "../../apis/dictionary";
+import Dictaphone from "./Dictaphone";
+=======
 import React, { Component, Fragment } from "react"
 import { connect } from "react-redux"
 import request from "superagent"
@@ -9,6 +16,7 @@ import { sendBlob } from "../../apis/speech"
 import { getDefinitions } from "../../apis/dictionary"
 import { changeView, setWord, setDefinitions } from "../../actions/game"
 
+>>>>>>> 6912755f6ca13bf189648572e6d125f24992ea9b
 
 class WhichWord extends Component {
   constructor(props) {
@@ -19,38 +27,6 @@ class WhichWord extends Component {
       word: "",
       error: ""
     }
-  }
-
-  // async getAudio() {
-  //   let stream = null;
-  //   const constraints = { audio: true, video: false };
-  //   try {
-  //     stream = await navigator.mediaDevices.getUserMedia(constraints);
-  //     console.log(stream);
-  //   } catch (err) {
-  //     console.log(err.name, err.message);
-  //   }
-  // }
-
-  startRecording = () => {
-    this.setState({ isRecording: true })
-  }
-
-  stopRecording = () => {
-    this.setState({ isRecording: false })
-  }
-
-  onStop(recordedBlob) {
-    // his is where youll send the data
-    // this.setState({ blobURL: recordedBlob.blobURL })
-    request.get(recordedBlob.blobURL).then(res => {})
-
-    sendBlob(recordedBlob)
-  }
-  onSave = blobObject => {}
-
-  onData(recordedBlob) {
-    // console.log("chunck of realtime data is ", recordedBlob)
   }
 
   //****************************************************** */
@@ -80,15 +56,21 @@ class WhichWord extends Component {
   render() {
     return (
       <Fragment>
+        <div>
+          <Dictaphone />
+        </div>
+
         <form className="md-form" onSubmit={this.submit}>
           <input
             type="text"
             name="word"
             id="validationServer043"
-            className={`form-control ${this.state.error && 'is-invalid'}`}
+            className={`form-control ${this.state.error && "is-invalid"}`}
             onChange={this.handleChange}
           />
-          <label htmlFor="validationServer043">Enter the word you'd like to spell</label>
+          <label htmlFor="validationServer043">
+            Enter the word you'd like to spell
+          </label>
           <div className="invalid-feedback">Please provide a valid Word.</div>
 
           <button
@@ -98,23 +80,6 @@ class WhichWord extends Component {
             Confirm
           </button>
         </form>
-
-        {/* <audio
-          ref="audioSource"
-          controls="controls"
-          src="blob:http://localhost:3000/#/60c5e2b1-6b3f-4e56-bad8-df62453a5dcb"
-        />
-        <ReactMic
-          record={this.state.isRecording}
-          className="sound-wave"
-          onStop={this.onStop}
-          onData={this.onData}
-          onSave={this.onSave}
-          strokeColor="#000000"
-          backgroundColor="#FF4081"
-        />
-        <button onClick={this.startRecording}>Start Recording</button>
-        <button onClick={this.stopRecording}>Stop Recording</button> */}
       </Fragment>
     )
   }
