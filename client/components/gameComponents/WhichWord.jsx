@@ -1,22 +1,11 @@
-<<<<<<< HEAD
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { changeView, setWord, setDefinitions } from "../../actions/game";
-import { getDefinitions } from "../../apis/dictionary";
-import Dictaphone from "./Dictaphone";
-=======
 import React, { Component, Fragment } from "react"
 import { connect } from "react-redux"
-import request from "superagent"
-// are we still using this package?
-import { ReactMic } from "react-mic"
-
 
 import { sendBlob } from "../../apis/speech"
 import { getDefinitions } from "../../apis/dictionary"
 import { changeView, setWord, setDefinitions } from "../../actions/game"
+import Dictaphone from "./Dictaphone";
 
->>>>>>> 6912755f6ca13bf189648572e6d125f24992ea9b
 
 class WhichWord extends Component {
   constructor(props) {
