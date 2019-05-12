@@ -13,7 +13,16 @@ class WhichWord extends Component {
       blobURL: null,
       word: "",
       error: "",
+      transcription: ""
     };
+  }
+
+  handleTranscription () {
+    this.props.setWord(this.state.word)
+  }
+
+  handleTest = (transcription) => {
+    this.setState({ word:  transcription});
   }
 
   //****************************************************** */
@@ -37,10 +46,6 @@ class WhichWord extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  handleTest = (arg) => {
-    this.setState({ test:  arg});
-  }
   //****************************************************** */
 
   render() {
@@ -49,7 +54,8 @@ class WhichWord extends Component {
         <div>
           <Dictaphone setTest={this.handleTest} />
         </div>
-        <p>112, {this.state.test}</p>
+        <p>{this.state.test}</p>
+        <button onClick={() => this.handleTranscription()}>Dispatch transcription to props</button>
 
         <form className="md-form" onSubmit={this.submit}>
           <input
