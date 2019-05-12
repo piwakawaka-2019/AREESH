@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react"
 import { connect } from "react-redux"
-// are we still using this package?
 import Dictaphone from "./Dictaphone";
 
 import { getDefinitions } from "../../apis/dictionary"
