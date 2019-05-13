@@ -14,7 +14,7 @@ class Game extends Component {
 
   render() {
     const { views } = this.props;
-
+    console.log(this.props.wordHistory.length)
     return (
       <F>
        
@@ -25,6 +25,7 @@ class Game extends Component {
           {views.displayLiveSpelling && <LiveSpelling />}
           {views.displayResults && <Results />}
           {views.displayWinner && <Winner />}
+          <h1>Number of words learnt: {this.props.wordHistory.length}</h1>
         </div> 
         {/* <div className="d-flex justify-content-center">
           <button type="button"
@@ -39,8 +40,9 @@ class Game extends Component {
   }
 }
 
-const mapStateToProps = ({ game }) => ({
-  views: game.views
+const mapStateToProps = ({ game, wordHistory }) => ({
+  views: game.views,
+  wordHistory
 })
 
 const mapDispatchToProps = dispatch => {

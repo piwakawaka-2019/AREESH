@@ -46,6 +46,7 @@ export class Nav extends Component {
     
 </div>
         <div className="title4nav">Areesh</div>
+        <NavLink to="/" className="navbar-brand text-white ">Areesh</NavLink>
         <button
           className="navbar-toggler"
           type="button"

@@ -58,6 +58,7 @@ class LiveSpelling extends Component {
              <br></br>
              <br></br>
              <br></br>
+          <img src="images/listening.gif" style={{width:100}}/>
           </form>
           {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
         </div>
