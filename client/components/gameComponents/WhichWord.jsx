@@ -94,6 +94,13 @@ class WhichWord extends Component {
               Confirm
             </button> */}
           </form>
+          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+          <br></br>
+            <br></br>
+            <br></br> 
+            <br></br>
+            
+            
       </div>
       </Fragment>
     );
