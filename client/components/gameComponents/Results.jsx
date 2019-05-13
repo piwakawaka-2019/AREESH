@@ -1,15 +1,13 @@
 import React, { Component, Fragment as F } from "react";
 import { connect } from "react-redux";
+import SplitText from "react-pose-text";
+
 import {
   transcribeSpeech,
   checkSpelling,
   speltCorrectly
 } from "../../apis/speech";
-import SplitText from "react-pose-text";
-// are we using this library?
-import PropTypes from "prop-types";
 import { changeView, setWordCorrect } from "../../actions/game";
-import Winner from "./Winner";
 import Firework from "./Firework";
 
 export class Results extends Component {

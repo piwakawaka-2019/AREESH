@@ -17,12 +17,7 @@ class Game extends Component {
 
     return (
       <F>
-        <button
-          className="btn btn-outline-danger btn-rounded waves-effect restart-game"
-          onClick={this.props.resetGame}
-        >
-          Restart
-        </button>
+       
         <div className="text-center">
           {views.displayHome && <Home />}
           {views.displayWhichWord && <WhichWord />}
