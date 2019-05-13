@@ -17,7 +17,7 @@ export class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
-        <div className="navbar-brand text-white ">Areesh</div>
+        <NavLink to="/" className="navbar-brand text-white ">Areesh</NavLink>
         <button
           className="navbar-toggler"
           type="button"

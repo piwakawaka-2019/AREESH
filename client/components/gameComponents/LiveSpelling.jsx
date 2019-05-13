@@ -45,6 +45,7 @@ class LiveSpelling extends Component {
           >
             Check your spelling!
           </button>
+          <img src="images/listening.gif" style={{width:100}}/>
           </form>
         </div>
       </F>
