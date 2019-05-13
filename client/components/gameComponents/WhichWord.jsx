@@ -13,8 +13,11 @@ class WhichWord extends Component {
       blobURL: null,
       word: "",
       error: "",
-      transcription: ""
-    };
+      transcription: "",
+      displayDefinition: false
+    }
+
+    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this)
   }
 
   handleTranscription () {
@@ -33,10 +36,11 @@ class WhichWord extends Component {
     });
   }
 
-  displayDefinition = (transcript) => {
-
+  toggleDefinitionDisplay (displayStatus) {
+      this.setState({
+      displayDefinition: displayStatus
+    })
   }
-
   //****************************************************** */
   //Text input
   submit = e => {
@@ -66,7 +70,7 @@ class WhichWord extends Component {
         <form className="md-form" onSubmit={this.submit}>
 
           {/*SPEECH TO TEXT*/}
-          <Dictaphone setTest={this.handleTest} displayDefinition={this.displayDefinition}/>
+          <Dictaphone setTest={this.handleTest} toggleDefinitionDisplay={this.toggleDefinitionDisplay}/>
           <p>{this.state.error}</p>
           <div className="invalid-feedback">Please provide a valid Word.</div>
           <div
@@ -78,7 +82,10 @@ class WhichWord extends Component {
             onChange={this.handleChange}
             value={this.state.test}
           >{this.state.test}</div>
-          <p>{this.props.definitions[0]}</p>
+          
+          <p>{this.state.displayDefinition && this.props.definitions[0]}</p>
+
+
           {/*SPEECH TO TEXT*/}
           
           {/*TEXT INPUT*/}

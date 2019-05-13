@@ -15,7 +15,8 @@ const Dictaphone = ({
   transcript,
   resetTranscript,
   browserSupportsSpeechRecognition,
-  setTest
+  setTest,
+  toggleDefinitionDisplay
 }) => {
   if (!browserSupportsSpeechRecognition) {
     return null;
@@ -27,13 +28,17 @@ const Dictaphone = ({
         className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
+          toggleDefinitionDisplay(true)
         }}
       >
         <i className="far fa-hand-rock" />
       </button>
       <button
         className="btn-floating btn-grey btn-sm waves-effect"
-        onClick={resetTranscript}
+        onClick={() => {
+          resetTranscript()
+          toggleDefinitionDisplay(false)
+        }}
       >
         <i className="fas fa-redo-alt" />
       </button>
