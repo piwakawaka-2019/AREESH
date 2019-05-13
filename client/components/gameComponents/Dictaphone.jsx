@@ -22,23 +22,22 @@ const Dictaphone = ({
   }
 
   return (
-    <div>
-      <button
-        className="btn-floating btn-grey btn-sm waves-effect"
+    <div>  
+     
+   
+      <button className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
         }}
-      >
-        <i className="far fa-hand-rock" />
-      </button>
-      <button
-        className="btn-floating btn-grey btn-sm waves-effect"
-        onClick={resetTranscript}
-      >
-        <i className="fas fa-redo-alt" />
-      </button>
-      <br />
+      ><i className="fas fa-check"></i>
+      </button> 
+      <button className="btn-floating btn-grey btn-sm waves-effect"
+       onClick={resetTranscript}><i className="fas fa-times"></i></button>
+       <br></br>
+      
       <span id="transcript">{transcript}</span>
+    
+    {/* <button className="btn-floating btn-grey btn-sm  waves-effect" onClick={() => handleClick()}><i className="far fa-hand-rock"></i></button> */}
     </div>
   );
 };

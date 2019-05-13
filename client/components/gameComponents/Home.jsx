@@ -25,9 +25,9 @@ class Home extends Component {
           <button
             onClick={displayWhichWord}
             type="button"
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Start
+            className="btn-floating btn-yellow btn-sm waves-effect px-3"
+          ><i className="fas fa-gamepad"></i>
+           
           </button>
         </div>
       </Fragment>
