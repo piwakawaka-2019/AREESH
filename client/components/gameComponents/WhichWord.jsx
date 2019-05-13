@@ -53,7 +53,6 @@ class WhichWord extends Component {
   validateWord = definitions => {
     if (definitions) {
       this.props.setDefinitions(definitions);
-      // this.props.displayWordDefinition();
     } else {
       this.setState({ error: "Please provide a valid word" });
     }
@@ -65,6 +64,15 @@ class WhichWord extends Component {
   //****************************************************** */
 
   render() {
+    const definitionDisplay = (
+      <Fragment>
+        <p>{this.props.definitions[0]}</p>
+        <button onClick={this.props.displayLiveSpelling}>✓</button>
+      </Fragment>
+    )
+      
+    
+
     return (
       <Fragment>
          <div className="card  m-4  p-3 text-center">
@@ -83,10 +91,8 @@ class WhichWord extends Component {
             onChange={this.handleChange}
             value={this.state.test}
           >{this.state.test}</div>
-          
-          <p>{this.state.displayDefinition && this.props.definitions[0]}</p>
-
-
+          {this.state.displayDefinition && definitionDisplay}
+    
           {/*SPEECH TO TEXT*/}
           
           {/*TEXT INPUT*/}
@@ -131,7 +137,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWordDefinition: e => dispatch(changeView("displayWordDefinition")),
+    displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling")),
     setWord: word => dispatch(setWord(word)),
     setDefinitions: definitions => dispatch(setDefinitions(definitions))
   };
