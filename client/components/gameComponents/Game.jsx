@@ -17,12 +17,6 @@ class Game extends Component {
 
     return (
       <F>
-        <button
-          className="btn btn-outline-danger btn-rounded waves-effect restart-game"
-          onClick={this.props.resetGame}
-        >
-          Restart
-        </button>
         <div className="text-center">
           {views.displayHome && <Home />}
           {views.displayWhichWord && <WhichWord />}
@@ -31,14 +25,6 @@ class Game extends Component {
           {views.displayResults && <Results />}
           {views.displayWinner && <Winner />}
         </div> 
-        <div className="d-flex justify-content-center">
-          <button type="button"
-          className="btn btn-outline-grey btn-rounded waves-effect restart-game"
-          onClick={this.restart}
-        >
-          Restart
-        </button>
-        </div>
       </F>
     )
   }
@@ -50,8 +36,8 @@ const mapStateToProps = ({ game }) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayHome: e => dispatch(changeView("displayHome")),
-    resetGame: e => dispatch(resetGame())
+    displayWhichWord: e => dispatch(changeView("displayWhichWord")),
+    resetGame: e => dispatch(resetGame("displayWhichWord"))
   }
 }
 
