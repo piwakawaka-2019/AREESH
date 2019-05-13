@@ -55,7 +55,7 @@ class WhichWord extends Component {
           <form className="md-form" onSubmit={this.submit}>
 
             {/*SPEECH TO TEXT*/}
-            <div className="title">Speak a word</div>
+            <div className="title">Is this the word?</div>
             <Dictaphone setTest={this.handleTest} />
             <p>{this.state.error}</p>
             <div className="invalid-feedback">Please provide a valid Word.</div>
