@@ -55,6 +55,13 @@ export function setSpellingAttempt(spellingAttempt) {
     }
 }
 
+export function saveWord(wordData){
+    return {
+        type: 'SAVE_WORD_DATA',
+        wordData
+    }
+}
+
 
 
 
