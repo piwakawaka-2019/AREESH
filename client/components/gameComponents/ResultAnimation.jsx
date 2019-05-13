@@ -21,18 +21,8 @@ export function ResultAnimation() {
       <SplitText initialPose="exit" pose="enter" charPoses={charPoses}>
         ELECTRICITY
       </SplitText>
+      <div></div>
 
-      <ReactCountdownClock
-        seconds={9}
-        color="#fb3"
-        alpha={1}
-        size={100}
-        weight={50}
-        timeFormat={"hms"}
-        fontSize={"40px"}
-        showMilliseconds={false}
-        onComplete={"hi"}
-      />
     </div>
   );
 }

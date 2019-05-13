@@ -6,7 +6,6 @@ import Login from './Login'
 import Register from './Register'
 import Header from './nav/Header'
 import Footer from './Footer';
-import  Game from './gameComponents/Game';
 import  resultTest from './gameComponents/ResultAnimation';
 import Game from './gameComponents/Game';
 import ContactDetails from './ContactDetails'
