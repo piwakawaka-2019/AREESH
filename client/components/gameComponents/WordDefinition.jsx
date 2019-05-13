@@ -20,12 +20,14 @@ class WordDefinition extends Component {
       <div className="card  m-4  p-3 text-center">
           <h1>{word}</h1>
           <p>{definitions[0]}</p>
-          <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Start Spelling
-          </button>
+          <div className="d-flex justify-content-center">
+            <button
+              onClick={this.changeView}
+              className="btn btn-outline-warning btn-rounded waves-effect"
+            >
+              Start Spelling
+            </button>
+          </div>
         </div>
       </F>
     )

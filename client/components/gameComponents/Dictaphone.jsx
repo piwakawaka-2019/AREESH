@@ -24,16 +24,18 @@ const Dictaphone = ({
   return (
     <div>
    
-      <button
+      <button className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
         }}
-      >
-        Correct word!
+      ><i className="fas fa-pencil-alt">
+        </i>
       </button>
-      <button onClick={resetTranscript}>Nope, let me say it again!</button>
+      <button className="btn-floating btn-grey btn-sm waves-effect"
+       onClick={resetTranscript}><i className="fas fa-redo-alt"></i></button>
       <br />
       <span id="transcript">{transcript}</span>
+      <button className="btn-floating btn-grey btn-sm  waves-effect" onClick={() => handleClick()}><i className="far fa-hand-rock"></i></button>
     </div>
   );
 };
