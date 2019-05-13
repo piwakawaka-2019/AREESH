@@ -84,11 +84,10 @@ export class Results extends Component {
 
   changeView = e => {
     e.preventDefault();
-    this.props.displayWinner();
+    this.props.displayWhichWord();
   };
 
   render() {
-    console.log(this.state.resultsComplete);
     const wordAnimation = (
       <div
         className={`resultsContainer ${!this.state.result.isCorrect &&
@@ -107,7 +106,12 @@ export class Results extends Component {
         {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
         <h1>{this.state.message}</h1>
         {this.state.result && wordAnimation}
-        
+        <button
+            onClick={this.changeView}
+            className="btn btn-outline-warning btn-rounded waves-effect"
+          >
+            Play again?
+        </button>
       </F>
     );
   }
@@ -120,7 +124,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWinner: e => dispatch(changeView("displayWinner")),
+    displayWhichWord: e => dispatch(changeView("displayWhichWord")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
     
   };

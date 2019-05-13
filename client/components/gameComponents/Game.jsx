@@ -31,14 +31,14 @@ class Game extends Component {
           {views.displayResults && <Results />}
           {views.displayWinner && <Winner />}
         </div> 
-        <div className="d-flex justify-content-center">
+        {/* <div className="d-flex justify-content-center">
           <button type="button"
           className="btn btn-outline-grey btn-rounded waves-effect restart-game"
           onClick={this.restart}
         >
           Restart
         </button>
-        </div>
+        </div> */}
       </F>
     )
   }
