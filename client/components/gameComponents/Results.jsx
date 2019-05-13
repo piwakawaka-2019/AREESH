@@ -1,38 +1,41 @@
 import React, { Component, Fragment as F } from "react";
 import { connect } from "react-redux";
-// are we using this library?
-import PropTypes from "prop-types";
+import SplitText from "react-pose-text";
 
-import { transcribeSpeech, checkSpelling } from "../../apis/speech";
+import {
+  transcribeSpeech,
+  checkSpelling,
+  speltCorrectly
+} from "../../apis/speech";
 import { changeView, setWordCorrect } from "../../actions/game";
-import Winner from "./Winner";
+import Firework from "./Firework";
+import Looser from './Looser'
 
 export class Results extends Component {
   constructor(props) {
     super(props);
     this.state = {
       // for speech-recognition version
-      result: "",
-      winnerDisplayed: false
+      result: {
+        word: "testaaaaaa",
+        isCorrect: false
+      },
+      message: "The results are in...",
+      letterSpeed: 400,
+      resultsComplete: false
+    };
+
+    this.charPoses = {
+      exit: { opacity: 0, y: -200 },
+      enter: {
+        opacity: 0.8,
+        y: 0,
+        delay: ({ charIndex }) => charIndex * this.state.letterSpeed
+      }
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.updateResult = this.updateResult.bind(this);
-    this.displayWinner = this.displayWinner.bind(this);
-  }
-
-  componentDidMount(e) {
-    let { word, spellingAttempt } = this.props;
-
-    let result = checkSpelling(word, spellingAttempt);
-
-    this.setState({
-      result: ""
-    });
-
-    result.forEach((letter, i) => {
-      setTimeout(() => this.updateResult(letter), 500 * i);
-    });
   }
 
   // for speech-recognition version
@@ -53,37 +56,70 @@ export class Results extends Component {
     this.setState({
       result: this.state.result + letter
     });
-
-    // display winner component if spellcheck complete
-    if (letter == "X" || letter == "✓") {
-      this.setState({
-        winnerDisplayed: true
-      });
-    }
-
-    let { word, spellingAttempt, dispatchWordCorrect } = this.props;
-
-    if (word.toLowerCase() == spellingAttempt.toLowerCase()) {
-      dispatchWordCorrect(true);
-    } else dispatchWordCorrect(false);
   }
 
-  displayWinner() {
+  componentDidMount(e) {
+    let { word, spellingAttempt } = this.props;
+
+    //let result = checkSpelling(word, spellingAttempt);
+
+    let result = speltCorrectly(word, spellingAttempt);
     this.setState({
-      winnerDisplayed: true
+      result
     });
+    this.props.dispatchWordCorrect(result.isCorrect)
+
+    setTimeout(() => {
+      this.setState({
+        resultsComplete: true,
+        message: this.state.result.isCorrect ? "Well Done!" : "You done f@#%ed up A-A-ron!"
+      });
+    }, this.state.letterSpeed * result.word.length);
+
+    // result.forEach((letter, i) => {
+    //   setTimeout(() => this.updateResult(letter), 750 * i);
+    // });
   }
 
   changeView = e => {
     e.preventDefault();
-    this.props.displayWinner();
+    this.props.displayWhichWord();
   };
 
   render() {
+    const wordAnimation = (
+      <div
+        className={`resultsContainer ${!this.state.result.isCorrect &&
+          "resultWrong"}`}
+      >
+        <SplitText initialPose="exit" pose="enter" charPoses={this.charPoses}>
+          {this.state.result.word}
+        </SplitText>
+        <div />
+      </div>
+    );
     return (
       <F>
-        <h1>{this.state.result}</h1>
-        <Winner winnerDisplayed={this.state.winnerDisplayed} />
+        {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
+        {/* <p>Answer: {this.state.result}</p> */}
+        
+        
+        <div className="card  m-4  p-3 text-center">
+
+            <h1>{this.state.message}</h1>
+            {this.state.result && wordAnimation}
+               <div className="d-flex justify-content-center">
+                  <button
+                      onClick={this.changeView}
+                      className="btn btn-outline-warning btn-rounded waves-effect"
+                    >
+                      Play again?
+                  </button>
+              </div>     
+              
+             {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
+
+        </div>
       </F>
     );
   }
@@ -96,8 +132,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWinner: e => dispatch(changeView("displayWinner")),
+    displayWhichWord: e => dispatch(changeView("displayWhichWord")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
+    
   };
 };
 

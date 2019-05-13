@@ -15,7 +15,7 @@ class Home extends Component {
       <Fragment>
         <div className="card text-center my-5 ">
           <div className="card-body  ">
-            <h5 className="instructions">INSTRUCTIONS/INFORMATION</h5>
+            <h5 className="instruction">INSTRUCTIONS/INFORMATION</h5>
             <ul className="instructions">
             <li>Fusing speech-recognition technology and your knowledge together to help you test your memory and sharpen your spelling skills!</li> 
             <li>Let the app know the word you want to learn</li>
@@ -29,9 +29,9 @@ class Home extends Component {
           <button
             onClick={displayWhichWord}
             type="button"
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Start
+            className="btn-floating btn-yellow btn-sm waves-effect px-3"
+          ><i className="fas fa-gamepad"></i>
+           
           </button>
         </div>
       </Fragment>
