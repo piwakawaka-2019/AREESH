@@ -46,6 +46,7 @@ class LiveSpelling extends Component {
           
           </button>
           </form>
+          <img className="card-image" src="/images/bk.png" alt="Card image cap"></img> 
         </div>
       </F>
      )

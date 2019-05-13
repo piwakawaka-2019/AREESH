@@ -116,7 +116,7 @@ export class Results extends Component {
                       Play again?
                   </button>
               </div>     
-              
+               <img className="card-image" src="/images/bk.png" alt="Card image cap"></img> 
              {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
 
         </div>
