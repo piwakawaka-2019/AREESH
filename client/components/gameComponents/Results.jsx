@@ -1,13 +1,16 @@
 import React, { Component, Fragment as F } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   transcribeSpeech,
   checkSpelling,
   speltCorrectly
 } from "../../apis/speech";
-import { changeView } from "../../actions/game";
 import SplitText from "react-pose-text";
+// are we using this library?
+import PropTypes from 'prop-types'
+import {transcribeSpeech, checkSpelling} from '../../apis/speech'
+import {changeView, setWordCorrect} from '../../actions/game'
+import Winner from './Winner'
 
 export class Results extends Component {
   constructor(props) {
@@ -22,6 +25,7 @@ export class Results extends Component {
       letterSpeed: 400,
       resultsComplete: false
     };
+    
     this.charPoses = {
       exit: { opacity: 0, y: -200 },
       enter: {
@@ -116,15 +120,13 @@ export class Results extends Component {
 const mapStateToProps = state => ({
   word: state.game.wordData.word,
   spellingAttempt: state.game.wordData.spellingAttempt
-});
+})
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWinner: e => dispatch(changeView("displayWinner"))
-  };
-};
+    displayWinner: e => dispatch(changeView("displayWinner")),
+    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Results);
+export default connect(mapStateToProps, mapDispatchToProps)(Results)

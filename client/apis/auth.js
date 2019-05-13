@@ -1,11 +1,7 @@
 import request from 'superagent'
 
-import {
-  get
-} from '../utils/localstorage'
-import {
-  isAuthenticated
-} from '../utils/auth'
+import { get } from '../utils/localstorage'
+import { isAuthenticated } from '../utils/auth'
 
 export function register (creds) {
   // the 'token' string is set at *1 in utils/auth.js

@@ -1,10 +1,10 @@
 import _ from 'lodash'
 
-const displayIntro = 0;
-const displayWordHint = 1;
-const displaySpellWord = 2;
-const displaySpellResult = 3;
-const displaySuccess = 4;
+const displayIntro = 0
+const displayWordHint = 1
+const displaySpellWord = 2
+const displaySpellResult = 3
+const displaySuccess = 4
 
 const initialState = {
     views: {

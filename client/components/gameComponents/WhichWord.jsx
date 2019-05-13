@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from "react";
-import { ReactMic } from "react-mic";
-import { sendBlob } from "../../apis/speech";
-import request from "superagent";
-import { connect } from "react-redux";
-import { changeView, setWord, setDefinitions } from "../../actions/game";
-import { getDefinitions } from "../../apis/dictionary";
+import React, { Component, Fragment } from "react"
+import { connect } from "react-redux"
+
+import { getDefinitions } from "../../apis/dictionary"
+import { changeView, setWord, setDefinitions } from "../../actions/game"
+import Dictaphone from "./Dictaphone";
 
 class WhichWord extends Component {
   constructor(props) {
@@ -13,40 +12,17 @@ class WhichWord extends Component {
       isRecording: false,
       blobURL: null,
       word: "",
-      error: ""
+      error: "",
+      transcription: ""
     };
   }
 
-  // async getAudio() {
-  //   let stream = null;
-  //   const constraints = { audio: true, video: false };
-  //   try {
-  //     stream = await navigator.mediaDevices.getUserMedia(constraints);
-  //     console.log(stream);
-  //   } catch (err) {
-  //     console.log(err.name, err.message);
-  //   }
-  // }
-
-  startRecording = () => {
-    this.setState({ isRecording: true });
-  };
-
-  stopRecording = () => {
-    this.setState({ isRecording: false });
-  };
-
-  onStop(recordedBlob) {
-    //this is where youll send the data
-    // this.setState({ blobURL: recordedBlob.blobURL });
-    request.get(recordedBlob.blobURL).then(res => {});
-
-    sendBlob(recordedBlob);
+  handleTranscription () {
+    this.props.setWord(this.state.word)
   }
-  onSave = blobObject => {};
 
-  onData(recordedBlob) {
-    // console.log("chunck of realtime data is ", recordedBlob);
+  handleTest = (transcription) => {
+    this.setState({ word:  transcription});
   }
 
   //****************************************************** */
@@ -70,23 +46,33 @@ class WhichWord extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
   //****************************************************** */
 
   render() {
     return (
       <Fragment>
         <form className="md-form" onSubmit={this.submit}>
+
+          {/*SPEECH TO TEXT*/}
+          <Dictaphone setTest={this.handleTest} />
+          <p>{this.state.test}</p>
+          {/*SPEECH TO TEXT*/}
+          
+          {/*TEXT INPUT*/}
           <input
             type="text"
             name="word"
             id="validationServer043"
-            className={`form-control ${this.state.error && 'is-invalid'}`}
+            className={`form-control ${this.state.error && "is-invalid"}`}
             onChange={this.handleChange}
+            value={this.state.test}
           />
-          <label htmlFor="validationServer043">Enter the word you'd like to spell</label>
-          <div className="invalid-feedback">Please provide a valid Word.</div>
+          <label htmlFor="validationServer043">
+            Enter the word you'd like to spell
+          </label>
+          {/*TEXT INPUT*/}
 
+          <div className="invalid-feedback">Please provide a valid Word.</div>
 
           <button
             type="submit"
@@ -95,23 +81,6 @@ class WhichWord extends Component {
             Confirm
           </button>
         </form>
-
-        {/* <audio
-          ref="audioSource"
-          controls="controls"
-          src="blob:http://localhost:3000/#/60c5e2b1-6b3f-4e56-bad8-df62453a5dcb"
-        />
-        <ReactMic
-          record={this.state.isRecording}
-          className="sound-wave"
-          onStop={this.onStop}
-          onData={this.onData}
-          onSave={this.onSave}
-          strokeColor="#000000"
-          backgroundColor="#FF4081"
-        />
-        <button onClick={this.startRecording}>Start Recording</button>
-        <button onClick={this.stopRecording}>Stop Recording</button> */}
       </Fragment>
     );
   }
@@ -127,7 +96,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WhichWord);
+export default connect(mapStateToProps, mapDispatchToProps)(WhichWord)

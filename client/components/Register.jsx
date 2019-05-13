@@ -1,11 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
-import { registerUserRequest } from "../actions/register";
-import { loginError } from "../actions/login";
+import React from "react"
+import { connect } from "react-redux"
+
+import { registerUserRequest } from "../actions/register"
+import { loginError } from "../actions/login"
 
 class Register extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       userName: "",
       firstName: "",
@@ -13,19 +14,22 @@ class Register extends React.Component {
       password: "",
       confirmPassword: "",
       profilePictureUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-    };
-    this.updateDetails = this.updateDetails.bind(this);
-    this.submit = this.submit.bind(this);
+    }
+    this.updateDetails = this.updateDetails.bind(this)
+    this.submit = this.submit.bind(this)
   }
+
   componentDidMount() {
-    this.props.dispatch(loginError(""));
+    this.props.dispatch(loginError(""))
   }
+
   updateDetails(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value })
   }
+
   submit(e) {
-    e.preventDefault();
-    e.target.reset();
+    e.preventDefault()
+    e.target.reset()
     let {
       userName,
       firstName,
@@ -33,16 +37,16 @@ class Register extends React.Component {
       password,
       confirmPassword,
       profilePictureUrl
-    } = this.state;
+    } = this.state
+
     if (confirmPassword != password)
-      return this.props.dispatch(loginError("Passwords don't match"));
-    this.props.dispatch(registerUserRequest(this.state));
+      return this.props.dispatch(loginError("Passwords don't match"))
+    this.props.dispatch(registerUserRequest(this.state))
   }
+
   render() {
-    const { auth } = this.props;
+    const { auth } = this.props
     return (
-
-
       <form className="text-center p-5 w-responsive m-auto" onSubmit={this.submit}>
         <p className="h4 mb-4">Sign up</p>
         {this.props.auth.errorMessage && (
@@ -78,7 +82,7 @@ class Register extends React.Component {
           placeholder="Username"
           onChange={this.updateDetails}
         />
-        <div className="form-row mb-4">
+        <div className="form-row mb-4 ">
           <div className="col">
             <input
               type="password"
@@ -169,14 +173,14 @@ class Register extends React.Component {
           </a>
         </p>
       </form>
-    );
+    )
   }
 }
 
 const mapStateToProps = ({ auth }) => {
   return {
     auth
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps)(Register);
+export default connect(mapStateToProps)(Register)
