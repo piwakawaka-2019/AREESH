@@ -60,7 +60,14 @@ export function speltCorrectly(word, attempt) {
         }
     }
 
-    score.push('✓') 
-    return { word:score.join('').toUpperCase(), isCorrect: true }
+    if(spellingArr.length != word.length){ 
+        score.push(spellingArr[word.length])
+        return { word:score.join('').toUpperCase(), isCorrect: false }
+    } else {
+        score.push('✓') 
+        return { word:score.join('').toUpperCase(), isCorrect: true }
+    }
+
+
 
 }

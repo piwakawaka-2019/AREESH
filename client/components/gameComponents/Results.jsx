@@ -7,10 +7,10 @@ import {
 } from "../../apis/speech";
 import SplitText from "react-pose-text";
 // are we using this library?
-import PropTypes from 'prop-types'
-import {transcribeSpeech, checkSpelling} from '../../apis/speech'
-import {changeView, setWordCorrect} from '../../actions/game'
-import Winner from './Winner'
+import PropTypes from "prop-types";
+import { changeView, setWordCorrect } from "../../actions/game";
+import Winner from "./Winner";
+import Firework from "./Firework";
 
 export class Results extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export class Results extends Component {
       letterSpeed: 400,
       resultsComplete: false
     };
-    
+
     this.charPoses = {
       exit: { opacity: 0, y: -200 },
       enter: {
@@ -68,13 +68,13 @@ export class Results extends Component {
     this.setState({
       result
     });
+    this.props.dispatchWordCorrect(result.isCorrect)
 
     setTimeout(() => {
-      this.setState({ 
+      this.setState({
         resultsComplete: true,
-        message: this.state.result.isCorrect ? "Grats Bro!":"Game-over man!"
-       });
-
+        message: this.state.result.isCorrect ? "Grats Bro!" : "Game-over man!"
+      });
     }, this.state.letterSpeed * result.word.length);
 
     // result.forEach((letter, i) => {
@@ -104,14 +104,10 @@ export class Results extends Component {
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
+        {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
         <h1>{this.state.message}</h1>
         {this.state.result && wordAnimation}
-        <button
-          onClick={this.changeView}
-          className="btn btn-outline-warning btn-rounded waves-effect"
-        >
-          But did you win?
-        </button>
+        
       </F>
     );
   }
@@ -120,13 +116,17 @@ export class Results extends Component {
 const mapStateToProps = state => ({
   word: state.game.wordData.word,
   spellingAttempt: state.game.wordData.spellingAttempt
-})
+});
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWinner: e => dispatch(changeView("displayWinner")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
-  }
-}
+    
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Results)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Results);
