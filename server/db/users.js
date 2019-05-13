@@ -5,16 +5,16 @@ const {
 const connection = require('./connection')
 
 
-function createUser(first_name, last_name, user_name, hourly_wage, password, testDb) {
+function createUser(userName, firstName, lastName, password, profilePictureUrl, testDb) {
   const db = testDb || connection
-
   return generatePasswordHash(password)
-    .then(hash => {
+    .then(passwordHash => {
       return db('users').insert({
-        first_name: first_name,
-        last_name: last_name,
-        user_name: user_name,
-        password_hash: hash,
+        user_name: userName,
+        first_name: firstName,
+        last_name: lastName,
+        password_hash: passwordHash,
+        image_url: profilePictureUrl
       })
     })
 }

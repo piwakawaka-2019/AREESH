@@ -7,13 +7,12 @@ router.post('/register', register, token.issue)
 
 function register (req, res, next) {
   // needs to match json date object keys supplied by client
-  const { firstName, lastName, userName, hourlyWage, password } = req.body
-  console.log('req.body: ', req.body);
+  const { userName, firstName, lastName, password, profilePictureUrl} = req.body
   userExists(userName)
     .then(exists => {
       if (exists) return res.status(400).send({ message: "User Name Taken" })
 
-      createUser(firstName, lastName, userName, hourlyWage, password)
+      createUser(userName, firstName, lastName, password, profilePictureUrl)
       // next() in this case is token.issue and returns *2
         .then(() => next())
         .catch(err => res.status(500).send({message: "Server Error"}))

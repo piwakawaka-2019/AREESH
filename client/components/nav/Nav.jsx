@@ -1,27 +1,23 @@
-import { Link } from "react-router-dom";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { Link, NavLink } from "react-router-dom"
+// are we using this package?
+import PropTypes from "prop-types"
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import SignedInNav from "./SignedInNav";
-import SignedOutNav from "./SignedOutNav";
+import SignedInNav from "./SignedInNav"
+import SignedOutNav from "./SignedOutNav"
 
 export class Nav extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
   }
-  
-  componentDidMount(){
-    console.log(this.props);
-  }
+
+  componentDidMount() {}
 
   render() {
-    
     return (
-      <nav className="mb-1 navbar navbar-expand-lg navbar-dark grey darken-3">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+      <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+        <div className="navbar-brand text-white ">Areesh</div>
         <button
           className="navbar-toggler"
           type="button"
@@ -37,7 +33,17 @@ export class Nav extends Component {
           className="collapse navbar-collapse"
           id="navbarSupportedContent-555"
         >
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav mr-auto ">
+            <NavLink
+              to="#"
+              className="nav-item"
+              activeClassName="active"
+              className="nav-link" href="#"
+            >
+              PLACEHOLDER
+            </NavLink>
+          </ul>
+          {/* <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <a className="nav-link" href="#">
                 Home
@@ -79,26 +85,31 @@ export class Nav extends Component {
                 </a>
               </div>
             </li>
+            <NavLink to="/gameTestVinnie" className="nav-item" activeClassName="active">
+              <a className="nav-link" href="#">
+                gameTestVinnie
+              </a>
+            </NavLink>
           </ul>
           <ul className="navbar-nav ml-auto nav-flex-icons">
             {this.props.auth.user ? <SignedInNav/>:<SignedOutNav/>}
 
+          </ul> */}
+          <ul className="navbar-nav ml-auto nav-flex-icons #ffca28 amber lighten-1">
+            {this.props.auth.user ? <SignedInNav /> : <SignedOutNav />}
           </ul>
         </div>
       </nav>
-    );
+    )
   }
 }
 
-const mapStateToProps = ({auth}) => {
+const mapStateToProps = ({ auth }) => {
   return {
     auth
   }
 }
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

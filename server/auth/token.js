@@ -34,7 +34,8 @@ function createToken(user, secret) {
   const payload = {
     // these values will go on the boday of the response
     user_id: user.id,
-    user_name: user.user_name
+    user_name: user.user_name,
+    image_url: user.image_url
   }
 
   const options = {

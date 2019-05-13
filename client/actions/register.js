@@ -6,6 +6,7 @@ export function registerUserRequest (creds) {
   return (dispatch) => {
     register(creds)
       .then(token => {
+        console.log('here');
         const userInfo = saveUserToken(token)
         dispatch(receiveLogin(userInfo))
         document.location = '/#/'
@@ -13,3 +14,5 @@ export function registerUserRequest (creds) {
       .catch(err => dispatch(loginError(err.response.body.message)))
   }
 }
+
+

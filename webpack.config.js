@@ -7,6 +7,9 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
+  devServer: {
+    contentBase: "./public"
+  },
   module: {
     rules: [
       {
@@ -19,5 +22,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  // attempting to fix webpack vs. fs issue
+  // target: 'node',
+  // externals: {
+  //   fs: 'commonjs fs"'
+  // },
+  // node: {fs: "empty"},
+  //
   devtool: 'source-map'
 }

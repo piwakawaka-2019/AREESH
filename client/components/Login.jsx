@@ -1,39 +1,46 @@
-import React from "react";
-import { connect } from "react-redux";
-import { loginUser, loginError } from "../actions/login";
-
+import React from "react"
+import { connect } from "react-redux"
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
+import { loginUser, loginError } from "../actions/login"
+
 class Login extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       userName: "",
       password: ""
-    };
+    }
   }
+
   componentDidMount() {
-    this.props.dispatch(loginError(""));
+    this.props.dispatch(loginError(""))
   }
+
   updateDetails = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   submit = e => {
-    e.preventDefault();
-    let { userName, password } = this.state;
-    this.props.dispatch(loginUser({ userName, password }));
-  };
+    e.preventDefault()
+    let { userName, password } = this.state
+    this.props.dispatch(loginUser({ userName, password }))
+  }
 
   render() {
-    const { auth } = this.props;
+    const { auth } = this.props
     return (
+      <div className="card  m-4  p-3 text-center">
+        <h5 className="card-header stylish-color white-text">
+          <strong>Sign in</strong>
+        </h5>
       <form
         onSubmit={this.submit}
-        className="text-center w-responsive m-auto p-5"
+        className="text-center  m-auto p-3 "
       >
-        <p className="h4 mb-4">Sign in</p>
-        {auth.errorMessage && <div class="red-text">{auth.errorMessage}</div>}
+       
+        {auth.errorMessage && <div className="red-text">{auth.errorMessage}</div>}
         <input
           type="text"
           id="defaultLoginFormUsername"
@@ -46,7 +53,7 @@ class Login extends React.Component {
         <input
           type="password"
           id="defaultLoginFormPassword"
-          className="form-control mb-4"
+          className="form-control mb-4 "
           placeholder="Password"
           name="password"
           onChange={this.updateDetails}
@@ -69,42 +76,43 @@ class Login extends React.Component {
             </div>
           </div>
           <div>
-            <a href="">Forgot password?</a>
+            <a className="amber-text" href="">Forgot password?</a>
           </div>
         </div>
 
-        <button className="btn btn-info btn-block my-4" type="submit">
+        <button className="btn btn-outline-warning btn-rounded waves-effect my-4" type="submit">
           Sign in
         </button>
 
         <p>
           Not a member?
-          <a href="#"> Register</a>
+          <a className="amber-text" href="#"> Register</a>
         </p>
 
         <p>or sign in with:</p>
 
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-facebook-f" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-twitter" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-linkedin-in" />
         </a>
-        <a className="light-blue-text mx-2">
+        <a className="amber-text mx-2">
           <i className="fab fa-github" />
         </a>
       </form>
-    );
+      </div>
+    )
   }
 }
 
 const mapStateToProps = ({ auth }) => {
   return {
     auth
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login)

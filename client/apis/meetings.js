@@ -1,3 +1,4 @@
+// sample code from boilerplate
 import request from 'superagent'
 
 export function getMeetings() {
