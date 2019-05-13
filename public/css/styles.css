@@ -59,6 +59,10 @@ footer{
   font-family: 'Orbitron', sans-serif;
   color: black;
 }
+.img {
+
+  position: absolute;
+}
   /*********************firework***********************/
 
   
@@ -291,78 +295,64 @@ footer{
   }
   
   /* Step 1: Build the Animation */
-  @-webkit-keyframes aniload {
-    from {-webkit-transform:translate(0px, 1000px)}
-    to   {-webkit-transform:translate(0px, 0px)}
+  @-webkit-keyframes fadeinout {
+    50% { opacity: 1; }
   }
   
-  @-moz-keyframes aniload {
-    from {-moz-transform:translate(0px, 1000px)}
-    to   {-moz-transform:translate(0px, 0px)}
+  @keyframes fadeinout {
+    50% { opacity: 1; }
   }
   
-  @-ms-keyframes aniload {
-    from {-ms-transform:translate(0px, 1000px)}
-    to   {-ms-transform:translate(0px, 0px)}
-  }
-  
-  @-o-keyframes aniload {
-    from {-o-transform:translate(0px, 1000px)}
-    to   {-o-transform:translate(0px, 0px)}
-  }
-  
-  @keyframes aniload {
-    from {transform:translate(0px, 1000px)}
-    to   {transform:translate(0px, 0px)}
-  }
   
   /* Step 2: Call the Animation */
   #box1 {
-    -webkit-animation:aniload 4s;
-    -moz-animation:aniload 4s;
-    -ms-animation:aniload 4s;
-    -o-animation:aniload 4s;
-    animation:aniload 4s;
+    margin-top: 25px;
+    margin-left: 80px;
+    -webkit-animation: fadeinout 3s linear forwards;
+    animation: fadeinout 3s linear forwards;
+    opacity: 0;
   }
   
   #box2 {
-    -webkit-animation:aniload 1s;
-    -moz-animation:aniload 1s;
-    -ms-animation:aniload 1s;
-    -o-animation:aniload 1s;
-    animation:aniload 1s;
+    margin-top: 6px;
+    margin-left: 50px;
+    -webkit-animation: fadeinout 2s linear forwards;
+    animation: fadeinout 2s linear forwards;
+    opacity: 0;
   }
   
   #box3 { 
-    -webkit-animation:aniload 4s;
-    -moz-animation:aniload 4s;
-    -ms-animation:aniload 4s;
-    -o-animation:aniload 4s;
-    animation:aniload 4s;
+    margin-top: 15px;
+    margin-left: 20px;
+    -webkit-animation: fadeinout 2.5s linear forwards;
+    animation: fadeinout 2.5s linear forwards;
+    opacity: 0;
   }
   
   #box4 {
-    -webkit-animation:aniload 3s;
-    -moz-animation:aniload 3s;
-    -ms-animation:aniload 3s;
-    -o-animation:aniload 3s;
-    animation:aniload 3s;
+    margin-top: 6px;
+    margin-left: 50px;
+    -webkit-animation: fadeinout 2s linear forwards;
+    animation: fadeinout 2s linear forwards;
+    opacity: 0;
+   
   }
   
   #box5 {
-    -webkit-animation:aniload 2s;
-    -moz-animation:aniload 2s;
-    -ms-animation:aniload 2s;
-    -o-animation:aniload 2s;
-    animation:aniload 2s;
+    margin-top: 15px;
+    margin-left: 20px;
+    -webkit-animation: fadeinout 3s linear forwards;
+    animation: fadeinout 3s linear forwards;
+    opacity: 0;
+    
   }
   
   #box6 {
-    -webkit-animation:aniload 1s;
-    -moz-animation:aniload 1s;
-    -ms-animation:aniload 1s;
-    -o-animation:aniload 1s;
-    animation:aniload 1s;
+    margin-top: 10px;
+    margin-left: 80px;
+    -webkit-animation: fadeinout 2s linear forwards;
+    animation: fadeinout 2s linear forwards;
+    opacity: 0;
   }
   
   
@@ -370,7 +360,7 @@ footer{
   
   
   
-/**********logo**************/
+/**********Banner**************/
 
 
 /*

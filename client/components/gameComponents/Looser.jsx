@@ -8,12 +8,12 @@ class Looser extends Component {
     render() {
         return (
             <div className="sinir">
-                <div className="box" id="box1">L</div>
-                <div className="box" id="box2">O</div>
-                <div className="box" id="box3">O</div>
-                <div className="box" id="box4">S</div>
-                <div className="box" id="box5">e</div>
-                <div className="box" id="box6">R</div>
+                <div className="box" id="box1"><img src="/images/boom.png" width="100" height="100"  alt="Card image cap"></img> </div>
+                <div className="box" id="box2"><img src="/images/boom.png" width="100" height="100"  alt="Card image cap"></img></div>
+                <div className="box" id="box3"><img src="/images/boom.png" width="100" height="100" alt="Card image cap"></img></div>
+                <div className="box" id="box4"><img src="/images/boom.png" width="100" height="100" alt="Card image cap"></img></div>
+                <div className="box" id="box5"><img src="/images/boom.png" width="100" height="100" alt="Card image cap"></img></div>
+                <div className="box" id="box6"><img src="/images/boom.png" width="100" height="100" alt="Card image cap"></img></div>
             </div>
         );
     }
