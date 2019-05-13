@@ -36,7 +36,7 @@ class LiveSpelling extends Component {
   render() { 
     return ( 
       <F>
-        <div className="card  m-4  p-3 text-center ">
+        
           <form>
             <br></br>
             <br></br>
@@ -51,17 +51,12 @@ class LiveSpelling extends Component {
           
           </button>
           <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-             <br></br>
-             <br></br>
-             <br></br>
-             <br></br>
+          <br></br>
+            
           <img src="images/listening.gif" style={{width:100}}/>
           </form>
           {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
-        </div>
+       
       </F>
      )
   }

@@ -18,14 +18,18 @@ class Game extends Component {
     return (
       <F>
        
-        <div className="text-center">
+        <div className="card  m-4  p-3 text-center ">
+       <br></br>
           {views.displayHome && <Home />}
           {views.displayWhichWord && <WhichWord />}
           {views.displayWordDefinition && <WordDefinition/>}
           {views.displayLiveSpelling && <LiveSpelling />}
           {views.displayResults && <Results />}
           {views.displayWinner && <Winner />}
-          <h1>Number of words learnt: {this.props.wordHistory.length}</h1>
+          <br></br>
+          <br></br>
+
+           <h2>Number of words learnt: {this.props.wordHistory.length}</h2>
         </div> 
         {/* <div className="d-flex justify-content-center">
           <button type="button"
