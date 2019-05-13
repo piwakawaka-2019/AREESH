@@ -45,6 +45,7 @@ class LiveSpelling extends Component {
           ><i className="far fa-grin-tongue-wink"></i>
           
           </button>
+          <img src="images/listening.gif" style={{width:100}}/>
           </form>
         </div>
       </F>

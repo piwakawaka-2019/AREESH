@@ -56,6 +56,7 @@ class WhichWord extends Component {
 
             {/*SPEECH TO TEXT*/}
             <div className="title">Is this the word?</div>
+            <img src="images/listening.gif" style={{width:100}}/>
             <Dictaphone setTest={this.handleTest} />
             <p>{this.state.error}</p>
             <div className="invalid-feedback">Please provide a valid Word.</div>
