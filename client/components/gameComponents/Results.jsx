@@ -71,7 +71,7 @@ export class Results extends Component {
     setTimeout(() => {
       this.setState({
         resultsComplete: true,
-        message: this.state.result.isCorrect ? "Grats Bro!" : "Game-over man!"
+        message: this.state.result.isCorrect ? "Well Done!" : "You done f@#%ed up A-A-ron!"
       });
     }, this.state.letterSpeed * result.word.length);
 
