@@ -23,9 +23,9 @@ class WordDefinition extends Component {
           <div className="d-flex justify-content-center">
             <button
               onClick={this.changeView}
-              className="btn btn-outline-warning btn-rounded waves-effect"
-            >
-              Start Spelling
+              className="btn-floating btn-grey btn-sm waves-effect px-3"
+            ><i className="fas fa-pencil-alt "></i>
+            
             </button>
           </div>
         </div>

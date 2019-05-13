@@ -51,47 +51,49 @@ class WhichWord extends Component {
   render() {
     return (
       <Fragment>
-        <form className="md-form" onSubmit={this.submit}>
+         <div className="card  m-4  p-3 text-center">
+          <form className="md-form" onSubmit={this.submit}>
 
-          {/*SPEECH TO TEXT*/}
-          <Dictaphone setTest={this.handleTest} />
-          <p>{this.state.error}</p>
-          <div className="invalid-feedback">Please provide a valid Word.</div>
-          <div
-            type="text"
-            name="word"
-            id="validationServer043"
-            className={`form-control ${this.state.error && "is-invalid"}`}
-            className="hidden-div"
-            onChange={this.handleChange}
-            value={this.state.test}
-          >{this.state.test}</div>
-          {/*SPEECH TO TEXT*/}
-          
-          {/*TEXT INPUT*/}
-          {/* <input
-            type="text"
-            name="word"
-            id="validationServer043"
-            className={`form-control ${this.state.error && "is-invalid"}`}
-            onChange={this.handleChange}
-            value={this.state.test}
-          /> */}
-          {/* <label htmlFor="validationServer043">
-            Enter the word you'd like to spell
-          </label> */}
-          {/*TEXT INPUT*/}
+            {/*SPEECH TO TEXT*/}
+            <div className="title">Speak a word</div>
+            <Dictaphone setTest={this.handleTest} />
+            <p>{this.state.error}</p>
+            <div className="invalid-feedback">Please provide a valid Word.</div>
+            <div
+              type="text"
+              name="word"
+              id="validationServer043"
+              className={`form-control ${this.state.error && "is-invalid"}`}
+              className="hidden-div"
+              onChange={this.handleChange}
+              value={this.state.test}
+            >{this.state.test}</div>
+            {/*SPEECH TO TEXT*/}
+            
+            {/*TEXT INPUT*/}
+            {/* <input
+              type="text"
+              name="word"
+              id="validationServer043"
+              className={`form-control ${this.state.error && "is-invalid"}`}
+              onChange={this.handleChange}
+              value={this.state.test}
+            /> */}
+            {/* <label htmlFor="validationServer043">
+              Enter the word you'd like to spell
+            </label> */}
+            {/*TEXT INPUT*/}
 
-          
+            
 
-          {/* <button
-            type="submit"
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Confirm
-          </button> */}
-        </form>
-
+            {/* <button
+              type="submit"
+              className="btn btn-outline-warning btn-rounded waves-effect"
+            >
+              Confirm
+            </button> */}
+          </form>
+      </div>
       </Fragment>
     );
   }
