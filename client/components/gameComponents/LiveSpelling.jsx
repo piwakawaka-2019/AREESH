@@ -41,9 +41,9 @@ class LiveSpelling extends Component {
             <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
             <button
             onClick={(e) => this.handleTextClick(e)}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Check your spelling!
+            className="btn-floating btn-grey btn-sm waves-effect px-3"
+          ><i className="far fa-grin-tongue-wink"></i>
+          
           </button>
           <img src="images/listening.gif" style={{width:100}}/>
           </form>

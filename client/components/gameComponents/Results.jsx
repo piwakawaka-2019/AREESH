@@ -9,6 +9,7 @@ import {
 } from "../../apis/speech";
 import { changeView, setWordCorrect } from "../../actions/game";
 import Firework from "./Firework";
+import Looser from './Looser'
 
 export class Results extends Component {
   constructor(props) {
@@ -101,15 +102,24 @@ export class Results extends Component {
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
-        {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
-        <h1>{this.state.message}</h1>
-        {this.state.result && wordAnimation}
-        <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Play again?
-        </button>
+        
+        
+        <div className="card  m-4  p-3 text-center">
+
+            <h1>{this.state.message}</h1>
+            {this.state.result && wordAnimation}
+               <div className="d-flex justify-content-center">
+                  <button
+                      onClick={this.changeView}
+                      className="btn btn-outline-warning btn-rounded waves-effect"
+                    >
+                      Play again?
+                  </button>
+              </div>     
+              
+             {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
+
+        </div>
       </F>
     );
   }

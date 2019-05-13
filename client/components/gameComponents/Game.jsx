@@ -45,8 +45,8 @@ const mapStateToProps = ({ game }) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayHome: e => dispatch(changeView("displayHome")),
-    resetGame: e => dispatch(resetGame())
+    displayWhichWord: e => dispatch(changeView("displayWhichWord")),
+    resetGame: e => dispatch(resetGame("displayWhichWord"))
   }
 }
 
