@@ -22,7 +22,19 @@ class WhichWord extends Component {
   }
 
   handleTest = (transcription) => {
-    this.setState({ word:  transcription});
+    let maskedWord = '*'
+
+    for(var i =0; i<transcription.length-1; i++){
+      maskedWord += '*'
+    }
+    
+    this.setState({ 
+      word: transcription
+    });
+  }
+
+  displayDefinition = (transcript) => {
+
   }
 
   //****************************************************** */
@@ -37,7 +49,7 @@ class WhichWord extends Component {
   validateWord = definitions => {
     if (definitions) {
       this.props.setDefinitions(definitions);
-      this.props.displayWordDefinition();
+      // this.props.displayWordDefinition();
     } else {
       this.setState({ error: "Invalid word, please try again." });
     }
@@ -54,7 +66,7 @@ class WhichWord extends Component {
         <form className="md-form" onSubmit={this.submit}>
 
           {/*SPEECH TO TEXT*/}
-          <Dictaphone setTest={this.handleTest} />
+          <Dictaphone setTest={this.handleTest} displayDefinition={this.displayDefinition}/>
           <p>{this.state.error}</p>
           <div className="invalid-feedback">Please provide a valid Word.</div>
           <div
@@ -66,6 +78,7 @@ class WhichWord extends Component {
             onChange={this.handleChange}
             value={this.state.test}
           >{this.state.test}</div>
+          <p>{this.props.definitions[0]}</p>
           {/*SPEECH TO TEXT*/}
           
           {/*TEXT INPUT*/}
@@ -97,7 +110,9 @@ class WhichWord extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  definitions: state.game.wordData.definitions
+});
 
 const mapDispatchToProps = dispatch => {
   return {

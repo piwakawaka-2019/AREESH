@@ -38,10 +38,20 @@ const Dictaphone = ({
         <i className="fas fa-redo-alt" />
       </button>
       <br />
-      <span id="transcript">{transcript}</span>
+      <span id="transcript">{maskTranscript(transcript)}</span>
     </div>
   );
 };
+
+function maskTranscript (transcript) {
+  let maskedTranscript = ''
+
+  for(var i =0; i< transcript.length; i++){
+    maskedTranscript += '*'
+  }
+
+  return maskedTranscript
+}
 
 Dictaphone.propTypes = propTypes;
 
