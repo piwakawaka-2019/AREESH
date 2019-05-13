@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import SpeechRecognition from "react-speech-recognition";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import { thisTypeAnnotation } from "@babel/types";
 
 const propTypes = {
@@ -23,23 +23,26 @@ const Dictaphone = ({
 
   return (
     <div>
-   
-      <button className="btn-floating btn-grey btn-sm waves-effect"
+      <button
+        className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
         }}
-      ><i className="fas fa-pencil-alt">
-        </i>
+      >
+        <i className="far fa-hand-rock" />
       </button>
-      <button className="btn-floating btn-grey btn-sm waves-effect"
-       onClick={resetTranscript}><i className="fas fa-redo-alt"></i></button>
+      <button
+        className="btn-floating btn-grey btn-sm waves-effect"
+        onClick={resetTranscript}
+      >
+        <i className="fas fa-redo-alt" />
+      </button>
       <br />
       <span id="transcript">{transcript}</span>
-      <button className="btn-floating btn-grey btn-sm  waves-effect" onClick={() => handleClick()}><i className="far fa-hand-rock"></i></button>
     </div>
   );
 };
 
-Dictaphone.propTypes = propTypes
+Dictaphone.propTypes = propTypes;
 
-export default SpeechRecognition(Dictaphone)
+export default SpeechRecognition(Dictaphone);
