@@ -123,8 +123,7 @@ export class Results extends Component {
                  
 
               </div> 
-               <br></br>
-                  <br></br>
+              
                            
                 {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
                
