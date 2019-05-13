@@ -5,7 +5,6 @@ import { getDefinitions } from "../../apis/dictionary"
 import { changeView, setWord, setDefinitions } from "../../actions/game"
 import Dictaphone from "./Dictaphone";
 
-
 class WhichWord extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +13,16 @@ class WhichWord extends Component {
       blobURL: null,
       word: "",
       error: "",
+      transcription: ""
     };
+  }
+
+  handleTranscription () {
+    this.props.setWord(this.state.word)
+  }
+
+  handleTest = (transcription) => {
+    this.setState({ word:  transcription});
   }
 
   //****************************************************** */
@@ -38,31 +46,32 @@ class WhichWord extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  handleTest = (arg) => {
-    this.setState({ test:  arg});
-  }
   //****************************************************** */
 
   render() {
     return (
       <Fragment>
-        <div>
-          <Dictaphone setTest={this.handleTest} />
-        </div>
-        <p>112, {this.state.test}</p>
-
         <form className="md-form" onSubmit={this.submit}>
+
+          {/*SPEECH TO TEXT*/}
+          <Dictaphone setTest={this.handleTest} />
+          <p>{this.state.test}</p>
+          {/*SPEECH TO TEXT*/}
+          
+          {/*TEXT INPUT*/}
           <input
             type="text"
             name="word"
             id="validationServer043"
             className={`form-control ${this.state.error && "is-invalid"}`}
             onChange={this.handleChange}
+            value={this.state.test}
           />
           <label htmlFor="validationServer043">
             Enter the word you'd like to spell
           </label>
+          {/*TEXT INPUT*/}
+
           <div className="invalid-feedback">Please provide a valid Word.</div>
 
           <button
@@ -87,7 +96,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WhichWord);
+export default connect(mapStateToProps, mapDispatchToProps)(WhichWord)
