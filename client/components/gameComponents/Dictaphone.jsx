@@ -27,6 +27,8 @@ const Dictaphone = ({
         className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
+          resetTranscript();
+          console.log(66, resetTranscript);
         }}
       >
         <i className="far fa-hand-rock" />
