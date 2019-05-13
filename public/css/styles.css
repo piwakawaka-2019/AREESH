@@ -26,7 +26,10 @@ footer{
   font-family: 'Courier New', Courier, monospace
   }
 
-
+.hidden-div {
+  z-index: -1;
+  bottom: 10px;
+}
 
 
 
