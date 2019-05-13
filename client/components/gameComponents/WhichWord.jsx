@@ -55,7 +55,7 @@ class WhichWord extends Component {
       this.props.setDefinitions(definitions);
       // this.props.displayWordDefinition();
     } else {
-      this.setState({ error: "Invalid word, please try again." });
+      this.setState({ error: "Please provide a valid word" });
     }
   };
 
@@ -67,7 +67,8 @@ class WhichWord extends Component {
   render() {
     return (
       <Fragment>
-        <form className="md-form" onSubmit={this.submit}>
+         <div className="card  m-4  p-3 text-center">
+          <form className="md-form" onSubmit={this.submit}>
 
           {/*SPEECH TO TEXT*/}
           <Dictaphone setTest={this.handleTest} toggleDefinitionDisplay={this.toggleDefinitionDisplay}/>
@@ -102,16 +103,23 @@ class WhichWord extends Component {
           </label> */}
           {/*TEXT INPUT*/}
 
-          
+            
 
-          {/* <button
-            type="submit"
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Confirm
-          </button> */}
-        </form>
-
+            {/* <button
+              type="submit"
+              className="btn btn-outline-warning btn-rounded waves-effect"
+            >
+              Confirm
+            </button> */}
+          </form>
+          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+          <br></br>
+            <br></br>
+            <br></br> 
+            <br></br>
+            
+            
+      </div>
       </Fragment>
     );
   }

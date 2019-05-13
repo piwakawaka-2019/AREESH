@@ -40,9 +40,10 @@ export function setWordCorrect(wordCorrect) {
     }
 }
 
-export function resetGame() {
+export function resetGame(view) {
     return {
         type: 'RESET_GAME',
+        view
 
     }
 }
@@ -51,6 +52,13 @@ export function setSpellingAttempt(spellingAttempt) {
     return {
         type: 'SET_SPELLING_ATTEMPT',
         spellingAttempt
+    }
+}
+
+export function saveWord(wordData){
+    return {
+        type: 'SAVE_WORD_DATA',
+        wordData
     }
 }
 

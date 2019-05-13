@@ -17,7 +17,36 @@ export class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
-        <div className="navbar-brand text-white ">Areesh</div>
+        <div id="logo-skull-css">
+  <ul id="skull-structure">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <ul id="eyes">
+    <li></li>
+    <li></li>
+  </ul>
+  <ul id="nose">
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <ul id="skull-pieces">
+    <li></li>
+    <li></li>
+   
+  </ul>
+    
+</div>
+        <div className="title4nav">Areesh</div>
+        <NavLink to="/" className="navbar-brand text-white ">Areesh</NavLink>
         <button
           className="navbar-toggler"
           type="button"

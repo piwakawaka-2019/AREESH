@@ -23,9 +23,10 @@ const Dictaphone = ({
   }
 
   return (
-    <div>
-      <button
-        className="btn-floating btn-grey btn-sm waves-effect"
+    <div>  
+     
+   
+      <button className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
           toggleDefinitionDisplay(true)
