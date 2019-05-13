@@ -2,7 +2,9 @@ import React, { Component, Fragment as F } from 'react'
 import { connect } from "react-redux"
 import Firework from './Firework'
 
+
 import {changeView} from '../../actions/game'
+
 
 class Winner extends Component {
   constructor(props) {
@@ -29,14 +31,16 @@ class Winner extends Component {
           <h1>{winnerStatus}</h1>
           <button
             onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Play again?
+            className="btn-floating btn-yellow btn-sm waves-effect px-3"
+          ><i className="far fa-smile"></i>
+            
           </button>
       
         </F>
       )
-    } else return <F></F>
+    } else return <F>
+    
+    </F>
   }
 }
 
