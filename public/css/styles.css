@@ -33,6 +33,10 @@ main {
   /* text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2); */
 }
 
+.instructions{
+  text-align: left;
+}
+
 .resultWrong div:last-child {
   color: rgb(211, 39, 39);
 }
@@ -47,6 +51,19 @@ font-family:'Orbitron', sans-serif;
 font-size: 15px;
 
 }
+
+.instructions{
+
+font-family: 'Courier New', Courier, monospace;
+
+}
+
+ul{
+  float: 'left';
+  text-align: left;
+}
+
+
 footer{
 
   font-family: 'Courier New', Courier, monospace

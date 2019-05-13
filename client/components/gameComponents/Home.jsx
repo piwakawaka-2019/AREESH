@@ -13,27 +13,23 @@ class Home extends Component {
     const {displayWhichWord} = this.props
     return (
       <Fragment>
-        <div className="card text-center my-5 "> 
-     
-          <div className="card-body ">
+        <div className="card text-center my-5 ">
+          <div className="card-body  ">
           <div className ="view">
-              <br></br>
-                <br></br>
-              <p className="title4content"><strong>Welcome!</strong></p>
-                <p className="card-text"><strong>
-                AREESH uses speech-recognition technology to help you test your memory and sharpen your spelling skills! Just tell the app the word you want to spell. 
-                It will display on your screen briefly before disappearing. Now over to you. 
-                Spell the word out loud, and AREESH will let you know if you got it right</strong>
-
-                </p>
-               <br></br>
                 <br></br>
                 <br></br>
+            <p className="title4content"><strong>INSTRUCTIONS/INFORMATION</strong></p>
+            <ul className="card-text">
+            <li>Fusing speech-recognition technology and your knowledge together to help you test your memory and sharpen your spelling skills!</li> 
+            <li>Let the app know the word you want to learn</li>
+            <li>It will briefly display on your screen before disappearing</li>
+            <li>Now over to you, spell the word out loud and AREESH will let you know if you got it right or wrong</li>
+            <li>Login/Register to keep a hold of your score and compete against other willing learners like yourself</li>
+            </ul>
+             <br></br>
                 <br></br>
-                <br></br>
-            </div>
-          </div>  
-           {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+          </div>
+          </div>
         </div>
         <div className="d-flex justify-content-center">
           <button

@@ -40,9 +40,10 @@ export function setWordCorrect(wordCorrect) {
     }
 }
 
-export function resetGame() {
+export function resetGame(view) {
     return {
         type: 'RESET_GAME',
+        view
 
     }
 }
