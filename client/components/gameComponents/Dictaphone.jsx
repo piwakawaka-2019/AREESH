@@ -29,7 +29,7 @@ const Dictaphone = ({
         onClick={() => {
           setTest(transcript);
         }}
-      ><i class="fas fa-check"></i>
+      ><i className="fas fa-check"></i>
       </button> 
       <button className="btn-floating btn-grey btn-sm waves-effect"
        onClick={resetTranscript}><i className="fas fa-times"></i></button>

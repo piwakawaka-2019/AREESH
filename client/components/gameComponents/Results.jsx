@@ -102,7 +102,8 @@ export class Results extends Component {
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
-        {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
+        
+        
         <div className="card  m-4  p-3 text-center">
 
             <h1>{this.state.message}</h1>
@@ -114,7 +115,10 @@ export class Results extends Component {
                     >
                       Play again?
                   </button>
-              </div>
+              </div>     
+              
+             {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
+
         </div>
       </F>
     );
