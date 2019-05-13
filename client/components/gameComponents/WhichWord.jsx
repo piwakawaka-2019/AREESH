@@ -51,23 +51,27 @@ class WhichWord extends Component {
   render() {
     return (
       <Fragment>
-        <div>
-          <Dictaphone setTest={this.handleTest} />
-        </div>
-        <p>{this.state.test}</p>
-        <button onClick={() => this.handleTranscription()}>Dispatch transcription to props</button>
-
         <form className="md-form" onSubmit={this.submit}>
+
+          {/*SPEECH TO TEXT*/}
+          <Dictaphone setTest={this.handleTest} />
+          <p>{this.state.test}</p>
+          {/*SPEECH TO TEXT*/}
+          
+          {/*TEXT INPUT*/}
           <input
             type="text"
             name="word"
             id="validationServer043"
             className={`form-control ${this.state.error && "is-invalid"}`}
             onChange={this.handleChange}
+            value={this.state.test}
           />
           <label htmlFor="validationServer043">
             Enter the word you'd like to spell
           </label>
+          {/*TEXT INPUT*/}
+
           <div className="invalid-feedback">Please provide a valid Word.</div>
 
           <button

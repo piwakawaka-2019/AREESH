@@ -29,21 +29,14 @@ const Dictaphone = ({
           setTest(transcript);
         }}
       >
-        test
+        Correct word!
       </button>
-      <button onClick={resetTranscript}>Reset</button>
+      <button onClick={resetTranscript}>Nope, let me say it again!</button>
       <br />
       <span id="transcript">{transcript}</span>
-      <button onClick={() => handleClick()}>Grab text</button>
     </div>
   );
 };
-
-function handleClick() {
-  console.log("handling click");
-  let userText = transcript;
-  console.log(userText.innerHTML);
-}
 
 Dictaphone.propTypes = propTypes
 
