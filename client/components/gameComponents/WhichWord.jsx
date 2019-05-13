@@ -55,7 +55,9 @@ class WhichWord extends Component {
           <form className="md-form" onSubmit={this.submit}>
 
             {/*SPEECH TO TEXT*/}
-            <div className="title">Is this the word?</div>
+            <br></br>
+            <br></br>
+          <div className="title">Is this the word?</div>
             <Dictaphone setTest={this.handleTest} />
             <p>{this.state.error}</p>
             <div className="invalid-feedback">Please provide a valid Word.</div>
@@ -93,7 +95,13 @@ class WhichWord extends Component {
               Confirm
             </button> */}
           </form>
-          <img className="card-image" src="/images/bk.png" alt="Card image cap"></img> 
+          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+          <br></br>
+            <br></br>
+            <br></br> 
+            <br></br>
+            
+            
       </div>
       </Fragment>
     );

@@ -104,20 +104,31 @@ export class Results extends Component {
         {/* <p>Answer: {this.state.result}</p> */}
         
         
-        <div className="card  m-4  p-3 text-center">
-
+        <div className="card  m-4  p-3 text-center ">
+ 
             <h1>{this.state.message}</h1>
             {this.state.result && wordAnimation}
                <div className="d-flex justify-content-center">
+               
+               
                   <button
                       onClick={this.changeView}
-                      className="btn btn-outline-warning btn-rounded waves-effect"
+                      className="btn btn-outline-black waves-effect"
                     >
                       Play again?
                   </button>
-              </div>     
-               <img className="card-image" src="/images/bk.png" alt="Card image cap"></img> 
-             {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
+                 
+
+              </div> 
+               <br></br>
+                  <br></br>
+                  <br></br>
+
+                  <br></br>             
+                {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
+
+               {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+             
 
         </div>
       </F>

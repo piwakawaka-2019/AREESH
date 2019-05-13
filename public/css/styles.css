@@ -7,9 +7,21 @@ body{
   min-height:100%; padding:0; margin:0; position:relative;
   
 }
+.card{
 
+  width: 95%;
+   height: 60%;
+   background-image: url("/images/bk.png");
+   position: center;
+}
+h1{
+  font-family:'Orbitron', sans-serif;
+  font-size: 40px;
+ 
+}
 main {
   min-height: 60vh;
+  
 }
 
 .resultsContainer {
@@ -31,8 +43,8 @@ main {
 
 nav{
 
-font-family: 'Courier New', Courier, monospace;
-font-size: 20px;
+font-family:'Orbitron', sans-serif;
+font-size: 15px;
 
 }
 footer{
@@ -47,7 +59,7 @@ footer{
 
 
 .title {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Orbitron', sans-serif;
   font-size: 25px;
 }
 
@@ -283,15 +295,9 @@ footer{
 
   /********************looser**************/
   .box {
-    font-family:'gugi'; 
-    width:auto;
-    height:100px;
-  /*  background-color:#6a2e79; */
-    margin:0 auto;
-    float:left;
-    font-size:100px;
-    padding:20px;
-    color:black;
+    position: absolute;
+    width: 15px;
+    height: 15px;
   }
   
   /* Step 1: Build the Animation */
@@ -306,55 +312,49 @@ footer{
   
   /* Step 2: Call the Animation */
   #box1 {
-    margin-top: 25px;
-    margin-left: 80px;
-    -webkit-animation: fadeinout 3s linear forwards;
-    animation: fadeinout 3s linear forwards;
+    margin-top: 0;
+    margin-left: 80%;
+    -webkit-animation: fadeinout 3s linear forwards infinite;
+    animation: fadeinout 3s linear forwards infinite;
     opacity: 0;
   }
   
   #box2 {
-    margin-top: 6px;
-    margin-left: 50px;
-    -webkit-animation: fadeinout 2s linear forwards;
-    animation: fadeinout 2s linear forwards;
+    margin-top: 0;
+    margin-left: 20%;
+  
+    -webkit-animation: fadeinout 2s linear forwards infinite;
+    animation: fadeinout 2s linear forwards infinite;
     opacity: 0;
   }
   
   #box3 { 
-    margin-top: 15px;
-    margin-left: 20px;
-    -webkit-animation: fadeinout 2.5s linear forwards;
-    animation: fadeinout 2.5s linear forwards;
+    margin-top: 0;
+      margin-left: 70%;
+    -webkit-animation: fadeinout 2.5s linear forwards infinite;
+    animation: fadeinout 2.5s linear forwards infinite;
     opacity: 0;
   }
   
   #box4 {
-    margin-top: 6px;
-    margin-left: 50px;
-    -webkit-animation: fadeinout 2s linear forwards;
-    animation: fadeinout 2s linear forwards;
+    margin-top: 0;
+      margin-left: 40%;
+    -webkit-animation: fadeinout 2s linear forwards infinite;
+    animation: fadeinout 2s linear forwards infinite;
     opacity: 0;
    
   }
   
   #box5 {
-    margin-top: 15px;
-    margin-left: 20px;
-    -webkit-animation: fadeinout 3s linear forwards;
-    animation: fadeinout 3s linear forwards;
+    margin-top: 0;
+    margin-left: 30%;
+    -webkit-animation: fadeinout 3s linear forwards infinite;
+    animation: fadeinout 3s linear forwards infinite;
     opacity: 0;
     
   }
   
-  #box6 {
-    margin-top: 10px;
-    margin-left: 80px;
-    -webkit-animation: fadeinout 2s linear forwards;
-    animation: fadeinout 2s linear forwards;
-    opacity: 0;
-  }
-  
+ 
   
   
   
