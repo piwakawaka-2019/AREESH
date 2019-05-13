@@ -29,9 +29,9 @@ class Winner extends Component {
           <h1>{winnerStatus}</h1>
           <button
             onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Play again?
+            className="btn-floating btn-yellow btn-sm waves-effect px-3"
+          ><i className="far fa-smile"></i>
+            
           </button>
       
         </F>
