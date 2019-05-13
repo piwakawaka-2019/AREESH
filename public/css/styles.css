@@ -21,6 +21,19 @@ nav{
 font-family: 'Courier New', Courier, monospace
 
 }
+
+.instructions{
+
+font-family: 'Courier New', Courier, monospace;
+
+}
+
+ul{
+  float: 'left';
+  text-align: left;
+}
+
+
 footer{
 
   font-family: 'Courier New', Courier, monospace
