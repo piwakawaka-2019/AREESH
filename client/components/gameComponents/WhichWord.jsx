@@ -39,7 +39,7 @@ class WhichWord extends Component {
       this.props.setDefinitions(definitions);
       this.props.displayWordDefinition();
     } else {
-      this.setState({ error: "Invalid word, please try again." });
+      this.setState({ error: "Please provide a valid word" });
     }
   };
 

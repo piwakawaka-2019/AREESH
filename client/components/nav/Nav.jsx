@@ -35,12 +35,12 @@ export class Nav extends Component {
         >
           <ul className="navbar-nav mr-auto ">
             <NavLink
-              to="/game"
+              to="#"
               className="nav-item"
               activeClassName="active"
               className="nav-link" href="#"
             >
-                Game
+              PLACEHOLDER
             </NavLink>
           </ul>
           {/* <ul className="navbar-nav mr-auto">

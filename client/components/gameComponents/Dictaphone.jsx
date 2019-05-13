@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import SpeechRecognition from "react-speech-recognition";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import { thisTypeAnnotation } from "@babel/types";
 
 const propTypes = {
@@ -42,6 +42,6 @@ const Dictaphone = ({
   );
 };
 
-Dictaphone.propTypes = propTypes
+Dictaphone.propTypes = propTypes;
 
-export default SpeechRecognition(Dictaphone)
+export default SpeechRecognition(Dictaphone);
