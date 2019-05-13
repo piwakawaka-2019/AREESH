@@ -2,7 +2,9 @@ import React, { Component, Fragment as F } from 'react'
 import { connect } from "react-redux"
 import Firework from './Firework'
 
+
 import {changeView} from '../../actions/game'
+
 
 class Winner extends Component {
   constructor(props) {
@@ -36,7 +38,9 @@ class Winner extends Component {
       
         </F>
       )
-    } else return <F></F>
+    } else return <F>
+    
+    </F>
   }
 }
 

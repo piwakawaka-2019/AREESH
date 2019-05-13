@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import {transcribeSpeech, checkSpelling} from '../../apis/speech'
 import {changeView, setWordCorrect} from '../../actions/game'
 import Winner from './Winner'
+import Looser from './Looser'
 
 export class Results extends Component {
   constructor(props) {
