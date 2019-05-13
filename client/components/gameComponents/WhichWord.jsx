@@ -13,8 +13,11 @@ class WhichWord extends Component {
       blobURL: null,
       word: "",
       error: "",
-      transcription: ""
-    };
+      transcription: "",
+      displayDefinition: false
+    }
+
+    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this)
   }
 
   handleTranscription () {
@@ -22,9 +25,22 @@ class WhichWord extends Component {
   }
 
   handleTest = (transcription) => {
-    this.setState({ word:  transcription});
+    let maskedWord = '*'
+
+    for(var i =0; i<transcription.length-1; i++){
+      maskedWord += '*'
+    }
+    
+    this.setState({ 
+      word: transcription
+    });
   }
 
+  toggleDefinitionDisplay (displayStatus) {
+      this.setState({
+      displayDefinition: displayStatus
+    })
+  }
   //****************************************************** */
   //Text input
   submit = e => {
@@ -37,7 +53,6 @@ class WhichWord extends Component {
   validateWord = definitions => {
     if (definitions) {
       this.props.setDefinitions(definitions);
-      this.props.displayWordDefinition();
     } else {
       this.setState({ error: "Please provide a valid word" });
     }
@@ -49,41 +64,50 @@ class WhichWord extends Component {
   //****************************************************** */
 
   render() {
+    const definitionDisplay = (
+      <Fragment>
+        <p>{this.props.definitions[0]}</p>
+        <button onClick={this.props.displayLiveSpelling}>✓</button>
+      </Fragment>
+    )
+      
+    
+
     return (
       <Fragment>
          
           <form className="md-form" onSubmit={this.submit}>
 
-            {/*SPEECH TO TEXT*/}
-            <div className="title">Is this the word?</div>
-            <img src="images/listening.gif" style={{width:100}}/>
-            <Dictaphone setTest={this.handleTest} />
-            <p>{this.state.error}</p>
-            <div className="invalid-feedback">Please provide a valid Word.</div>
-            <div
-              type="text"
-              name="word"
-              id="validationServer043"
-              className={`form-control ${this.state.error && "is-invalid"}`}
-              className="hidden-div"
-              onChange={this.handleChange}
-              value={this.state.test}
-            >{this.state.test}</div>
-            {/*SPEECH TO TEXT*/}
-            
-            {/*TEXT INPUT*/}
-            {/* <input
-              type="text"
-              name="word"
-              id="validationServer043"
-              className={`form-control ${this.state.error && "is-invalid"}`}
-              onChange={this.handleChange}
-              value={this.state.test}
-            /> */}
-            {/* <label htmlFor="validationServer043">
-              Enter the word you'd like to spell
-            </label> */}
-            {/*TEXT INPUT*/}
+          {/*SPEECH TO TEXT*/}
+          <Dictaphone setTest={this.handleTest} toggleDefinitionDisplay={this.toggleDefinitionDisplay}/>
+          <p>{this.state.error}</p>
+          <div className="invalid-feedback">Please provide a valid Word.</div>
+          <div
+            type="text"
+            name="word"
+            id="validationServer043"
+            className={`form-control ${this.state.error && "is-invalid"}`}
+            className="hidden-div"
+            onChange={this.handleChange}
+            value={this.state.test}
+          >{this.state.test}</div>
+          {this.state.displayDefinition && definitionDisplay}
+    
+          {/*SPEECH TO TEXT*/}
+          
+          {/*TEXT INPUT*/}
+          {/* <input
+            type="text"
+            name="word"
+            id="validationServer043"
+            className={`form-control ${this.state.error && "is-invalid"}`}
+            onChange={this.handleChange}
+            value={this.state.test}
+          /> */}
+          {/* <label htmlFor="validationServer043">
+            Enter the word you'd like to spell
+          </label> */}
+          {/*TEXT INPUT*/}
 
             
 
@@ -104,11 +128,13 @@ class WhichWord extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  definitions: state.game.wordData.definitions
+});
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWordDefinition: e => dispatch(changeView("displayWordDefinition")),
+    displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling")),
     setWord: word => dispatch(setWord(word)),
     setDefinitions: definitions => dispatch(setDefinitions(definitions))
   };
