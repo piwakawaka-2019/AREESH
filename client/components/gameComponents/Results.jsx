@@ -7,7 +7,7 @@ import {
   checkSpelling,
   speltCorrectly
 } from "../../apis/speech";
-import { changeView, setWordCorrect } from "../../actions/game";
+import { changeView, setWordCorrect, saveWord } from "../../actions/game";
 import Firework from "./Firework";
 import Looser from './Looser'
 
@@ -68,6 +68,10 @@ export class Results extends Component {
       result
     });
     this.props.dispatchWordCorrect(result.isCorrect)
+   
+    if (this.state.wordCorrect = result.isCorrect){
+    this.props.dispatchSaveWord({...this.props.currentWord})
+    }
 
     setTimeout(() => {
       this.setState({
@@ -127,13 +131,15 @@ export class Results extends Component {
 
 const mapStateToProps = state => ({
   word: state.game.wordData.word,
-  spellingAttempt: state.game.wordData.spellingAttempt
+  spellingAttempt: state.game.wordData.spellingAttempt,
+  currentWord: state.game.wordData
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWhichWord: e => dispatch(changeView("displayWhichWord")),
-    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
+    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect)),
+    dispatchSaveWord: currentWord => dispatch(saveWord(currentWord))
     
   };
 };
