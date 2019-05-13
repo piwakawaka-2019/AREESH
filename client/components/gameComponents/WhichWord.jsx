@@ -46,12 +46,13 @@ class WhichWord extends Component {
 
   render() {
     return (
-      <Fragment>
+      <Fragment> 
+        <div  className="card  mt-4 py-7 text-center">
         <div>
           <Dictaphone setTest={this.handleTest} />
         </div>
-        <p>112, {this.state.test}</p>
-
+        {this.state.test}
+     
         <form className="md-form" onSubmit={this.submit}>
           <input
             type="text"
@@ -72,6 +73,8 @@ class WhichWord extends Component {
             Confirm
           </button>
         </form>
+
+        </div>
       </Fragment>
     );
   }

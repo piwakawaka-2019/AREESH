@@ -17,12 +17,7 @@ class Game extends Component {
 
     return (
       <F>
-        <button
-          className="btn btn-outline-danger btn-rounded waves-effect restart-game"
-          onClick={this.props.resetGame}
-        >
-          Restart
-        </button>
+       
         <div className="text-center">
           {views.displayHome && <Home />}
           {views.displayWhichWord && <WhichWord />}
@@ -32,11 +27,10 @@ class Game extends Component {
           {views.displayWinner && <Winner />}
         </div> 
         <div className="d-flex justify-content-center">
-          <button type="button"
-          className="btn btn-outline-grey btn-rounded waves-effect restart-game"
-          onClick={this.restart}
-        >
-          Restart
+          <button
+          className="btn-floating btn-grey btn-sm waves-effect px-3" onClick={this.props.resetGame}><i className="fas fa-rocket" aria-hidden="true">
+         
+          </i>
         </button>
         </div>
       </F>

@@ -23,7 +23,8 @@ class Winner extends Component {
 
     if(this.props.winnerDisplayed){
       return ( 
-        <F className="card  m-4  p-3 text-center"> 
+        <F > 
+          
           <Firework />
           <h1>{winnerStatus}</h1>
           <button
@@ -32,6 +33,7 @@ class Winner extends Component {
           >
             Play again?
           </button>
+      
         </F>
       )
     } else return <F></F>
