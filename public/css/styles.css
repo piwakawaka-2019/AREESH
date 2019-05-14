@@ -7,13 +7,7 @@ body{
   min-height:100%; padding:0; margin:0; position:relative;
   
 }
-.card{
 
-  width: 95%;
-   height: 60%;
-   background-image: url("/images/bk.png");
-   position: center;
-}
 h1{
   font-family:'Orbitron', sans-serif;
   font-size: 40px;
@@ -22,6 +16,12 @@ h1{
 main {
   min-height: 60vh;
   
+}
+.gameBar{
+  display: flex;
+}
+.wordsCorrect{
+    
 }
 
 .resultsContainer {
@@ -395,6 +395,7 @@ footer{
   position: relative;
   width: 76px;
   height: 91px;
+  margin-right:5px;
 }
 
 #skull-structure li {

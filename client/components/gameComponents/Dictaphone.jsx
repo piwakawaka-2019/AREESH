@@ -32,8 +32,7 @@ const Dictaphone = ({
           resetTranscript();
           toggleDefinitionDisplay(true)
         }}
-      >
-        <i className="far fa-hand-rock" />
+      >Show Definition <i className="far fa-hand-rock" />
       </button>
       <button
         className="btn-floating btn-grey btn-sm waves-effect"
@@ -41,9 +40,7 @@ const Dictaphone = ({
           resetTranscript()
           toggleDefinitionDisplay(false)
         }}
-      >
-        <i className="fas fa-redo-alt" />
-      </button>
+      >Say again <i className="fas fa-redo-alt" /></button>
       <br />
       <span id="transcript">{maskTranscript(transcript)}</span>
     </div>
