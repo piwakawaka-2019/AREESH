@@ -15,7 +15,9 @@ class WhichWord extends Component {
       error: "",
       transcription: "",
       displayDefinition: false,
-      transcriptionMasked: true
+      transcriptionMasked: true,
+      wordConfirmed: false,
+      LiveSpellingOn: false
     }
 
     this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this)
@@ -47,6 +49,10 @@ class WhichWord extends Component {
 
   handleWordApproved () {
     this.toggleWordMasking()
+    this.setState({
+      LiveSpellingOn: true
+    })
+    // reset transcript somehow
   }
 
   toggleWordMasking () {
@@ -99,6 +105,8 @@ class WhichWord extends Component {
               toggleDefinitionDisplay={this.toggleDefinitionDisplay}
               transcriptionMasked={this.state.transcriptionMasked}
               currentPage="WhichWord"
+              wordConfirmed={this.state.wordConfirmed}
+              LiveSpellingOn={this.state.LiveSpellingOn}
             />
              <img src="images/listening.gif" style={{ width: 100 }} />
             <p>{this.state.error}</p>
