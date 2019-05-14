@@ -16,7 +16,8 @@ const Dictaphone = ({
   resetTranscript,
   browserSupportsSpeechRecognition,
   setTest,
-  toggleDefinitionDisplay
+  toggleDefinitionDisplay,
+  transcriptionMasked
 }) => {
   if (!browserSupportsSpeechRecognition) {
     return null;
@@ -25,7 +26,6 @@ const Dictaphone = ({
   return (
     <div>  
      
-   
       <button className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
@@ -45,7 +45,11 @@ const Dictaphone = ({
         <i className="fas fa-redo-alt" />
       </button>
       <br />
-      <span id="transcript">{maskTranscript(transcript)}</span>
+      <span id="transcript">
+        {transcriptionMasked && maskTranscript(transcript)}
+        {!transcriptionMasked && transcript}
+      </span>
+
     </div>
   );
 };
