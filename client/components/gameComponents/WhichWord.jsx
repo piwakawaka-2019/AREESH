@@ -95,6 +95,7 @@ class WhichWord extends Component {
             <Dictaphone
               setTest={this.handleTest}
               toggleDefinitionDisplay={this.toggleDefinitionDisplay}
+              transcriptionMasked={this.state.transcriptionMasked}
             />
              <img src="images/listening.gif" style={{ width: 100 }} />
             <p>{this.state.error}</p>
