@@ -61,6 +61,12 @@ export class Results extends Component {
   componentDidMount(e) {
     let { word, spellingAttempt } = this.props;
 
+    const correctSound = document.createElement("audio");
+    if (correctSound.canPlayType("audio/mpeg"))
+      correctSound.setAttribute("src", "sounds/correct-answer.mp3");
+    const incorrectSound = document.createElement("audio");
+    if (incorrectSound.canPlayType("audio/mpeg"))
+      incorrectSound.setAttribute("src", "sounds/incorrect-answer.mp3");
     //let result = checkSpelling(word, spellingAttempt);
 
     let result = speltCorrectly(word, spellingAttempt);
@@ -76,6 +82,8 @@ export class Results extends Component {
           ? "Well Done!"
           : "You done f@#%ed up A-A-ron!"
       });
+      this.state.result.isCorrect ? correctSound.play():incorrectSound.play()
+
       this.props.dispatchSaveWord({
         ...this.props.currentWord,
         wordCorrect: result.isCorrect
@@ -104,23 +112,27 @@ export class Results extends Component {
         <div />
       </div>
     );
+
     return (
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
-        {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
-          <h1>{this.state.message}</h1>
-          {this.state.result && wordAnimation}
-          <div className="d-flex justify-content-center">
-            <button
-              onClick={this.changeView}
-              className="btn btn-outline-black waves-effect"
-            >
-              Play again?
-            </button>
-          </div>
 
-          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+        {this.state.resultsComplete && this.state.result.isCorrect && (
+          <Firework />
+        )}
+        <h1>{this.state.message}</h1>
+        {this.state.result && wordAnimation}
+        <div className="d-flex justify-content-center">
+          <button
+            onClick={this.changeView}
+            className="btn btn-outline-black waves-effect"
+          >
+            Play again?
+          </button>
+        </div>
+
+        {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
     );
   }
