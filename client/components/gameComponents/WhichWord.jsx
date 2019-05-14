@@ -88,7 +88,7 @@ class WhichWord extends Component {
 
     return (
       <Fragment>
-        <div className="card  m-4  p-3 text-center">
+         
           <form className="md-form" onSubmit={this.submit}>
 
           {/*SPEECH TO TEXT*/}
@@ -131,11 +131,10 @@ class WhichWord extends Component {
             </button> */}
           </form>
           {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
+           
+            
+            
+      
       </Fragment>
     );
   }

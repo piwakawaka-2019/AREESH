@@ -108,8 +108,7 @@ export class Results extends Component {
         {/* <p>Answer: {this.state.result}</p> */}
         
         
-        <div className="card  m-4  p-3 text-center ">
- 
+        
             <h1>{this.state.message}</h1>
             {this.state.result && wordAnimation}
                <div className="d-flex justify-content-center">
@@ -124,17 +123,13 @@ export class Results extends Component {
                  
 
               </div> 
-               <br></br>
-                  <br></br>
-                  <br></br>
-
-                  <br></br>             
+              
+                           
                 {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
-
+               
                {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
-             
-
-        </div>
+       
+  
       </F>
     );
   }
