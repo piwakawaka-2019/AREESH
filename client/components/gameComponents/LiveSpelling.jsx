@@ -44,20 +44,35 @@ class LiveSpelling extends Component {
   render() {
     return (
       <F>
-        <div className="card  m-4  p-3 text-center">
-          {/* text input */}
+        <div className="card  m-4  p-3 text-center ">
           {/* <form>
+            <br></br>
+            <br></br>
+            <br></br>
+           
+            
             <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
             
             <button
             onClick={(e) => this.handleTextClick(e)}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Check your spelling!
+            className="btn-floating btn-grey btn-sm waves-effect px-3"
+          ><i className="far fa-grin-tongue-wink"></i>
+          
           </button>
           </form> */}
 
           <Dictaphone setTest={this.handleDictaphone} />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <img src="images/listening.gif" style={{ width: 100 }} />
+          {/* </form> */}
+          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
         </div>
       </F>
     );

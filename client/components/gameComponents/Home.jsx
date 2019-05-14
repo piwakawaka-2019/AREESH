@@ -15,19 +15,29 @@ class Home extends Component {
       <Fragment>
         <div className="card text-center my-5 ">
           <div className="card-body  ">
-            <h5 className="card-title">Welcome!</h5>
-            <p className="card-text">
-            AREESH uses speech-recognition technology to help you test your memory and sharpen your spelling skills! Just tell the app the word you want to spell. It will display on your screen briefly before disappearing. Now over to you. Spell the word out loud, and AREESH will let you know if you got it right
-            </p>
+          <div className ="view">
+                <br></br>
+                <br></br>
+            <p className="title4content"><strong>INSTRUCTIONS/INFORMATION</strong></p>
+            <ul className="card-text">
+            <li>Fusing speech-recognition technology and your knowledge together to help you test your memory and sharpen your spelling skills!</li> 
+            <li>Let the app know the word you want to learn</li>
+            <li>It will briefly display on your screen before disappearing</li>
+            <li>Now over to you, spell the word out loud and AREESH will let you know if you got it right or wrong</li>
+            <li>Login/Register to keep a hold of your score and compete against other willing learners like yourself</li>
+            </ul>
+             <br></br>
+                <br></br>
+          </div>
           </div>
         </div>
         <div className="d-flex justify-content-center">
           <button
             onClick={displayWhichWord}
             type="button"
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Start
+            className="btn-floating btn-yellow btn-sm waves-effect px-3"
+          ><i className="fas fa-gamepad"></i>
+           
           </button>
         </div>
       </Fragment>

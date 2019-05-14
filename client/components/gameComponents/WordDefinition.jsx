@@ -16,6 +16,7 @@ class WordDefinition extends Component {
     let { word, definitions } = this.props;
     return (
       <F>
+
         <h1>{word}</h1>
         <p>{definitions[0]}</p>
         <div className="clock">

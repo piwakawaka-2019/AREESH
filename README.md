@@ -8,6 +8,17 @@ Just tell the app the word you want to spell. It will appear on your screen brie
 
 Now over to you. Spell the word out loud, and AREESH will let you know if you get it right.
 
+<<<<<<< HEAD
+## Team Roles
+* Product owner		Des
+* Scrum Master		Des
+* Git Master		Jesse
+* FE Lead		    TBC
+* BE Lead		    TBC
+* Vibe Master		Josh
+||||||| merged common ancestors
+The intended effect of this App is to make meeting attendees aware of how much this time is costing the business.
+=======
 ## Team Roles
 * Product owner:	Des
 * Scrum Master:		Des
@@ -15,6 +26,7 @@ Now over to you. Spell the word out loud, and AREESH will let you know if you ge
 * Git Master:		Jesse
 * FE Lead:		    Vinnie
 * BE Lead:		    TBC
+>>>>>>> developer
 
 ## Stand-Up Schedule
 Daily @
