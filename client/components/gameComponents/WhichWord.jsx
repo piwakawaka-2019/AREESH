@@ -25,6 +25,11 @@ class WhichWord extends Component {
 
   }
 
+
+  clearDefinition = () => {
+    this.props.setDefinitions([])
+  }
+
   handleTranscription() {
     this.props.setWord(this.state.word);
   }
@@ -107,6 +112,7 @@ class WhichWord extends Component {
               currentPage="WhichWord"
               wordConfirmed={this.state.wordConfirmed}
               LiveSpellingOn={this.state.LiveSpellingOn}
+              clearDefinition={this.clearDefinition}
             />
              <img src="images/listening.gif" style={{ width: 100 }} />
             <p>{this.state.error}</p>

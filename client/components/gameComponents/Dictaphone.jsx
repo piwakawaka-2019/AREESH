@@ -21,7 +21,8 @@ const Dictaphone = ({
     transcriptionMasked,
     currentPage,
     wordConfirmed,
-    LiveSpellingOn
+    LiveSpellingOn,
+    clearDefinition
   }) => {
 
     if (!browserSupportsSpeechRecognition) {
@@ -45,6 +46,7 @@ const Dictaphone = ({
           onClick={() => {
             setTest(transcript);
             resetTranscript();
+            clearDefinition()
             toggleDefinitionDisplay(true)
           }}
         >
