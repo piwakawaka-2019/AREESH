@@ -10,8 +10,6 @@ class Home extends Component {
   }
 
   handleClick = () =>{
-    console.log("handling click")
-    
     this.props.displayWhichWord()
   }
 
@@ -46,7 +44,7 @@ class Home extends Component {
             onClick={this.handleClick}
             onClick={displayWhichWord}
             type="button"
-            className="btn-floating btn-yellow btn-sm waves-effect px-3"
+            className="btn-floating btn-grey btn-sm waves-effect"
           >
             <i className="fas fa-gamepad" /> Play
           </button>

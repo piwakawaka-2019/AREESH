@@ -46,9 +46,9 @@ export class Nav extends Component {
             <li />
           </ul>
         </NavLink>
-        <NavLink to="/" className="navbar-brand text-white ">
-          Areesh
-        </NavLink>
+        <h1 className="navbar-brand text-black ">
+          AREESH
+        </h1>
         <button
           className="navbar-toggler"
           type="button"

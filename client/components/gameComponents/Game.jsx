@@ -18,7 +18,7 @@ class Game extends Component {
         <br />
         <div className="">
           {!views.displayHome && (<div className=" btn wordsCorrect">
-            Words Correct:
+            SCORE:
             {
               this.props.wordHistory.filter(wordData => wordData.wordCorrect)
                 .length
