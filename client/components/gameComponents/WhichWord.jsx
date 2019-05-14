@@ -14,10 +14,13 @@ class WhichWord extends Component {
       word: "",
       error: "",
       transcription: "",
-      displayDefinition: false
-    };
+      displayDefinition: false,
+      transcriptionMasked: true
+    }
 
-    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this);
+    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this)
+    this.handleWordApproved = this.handleWordApproved.bind(this)
+
   }
 
   handleTranscription() {
@@ -41,6 +44,18 @@ class WhichWord extends Component {
       displayDefinition: displayStatus
     });
   }
+
+  handleWordApproved () {
+    this.toggleWordMasking()
+  }
+
+  toggleWordMasking () {
+    this.setState({
+      transcriptionMasked: !this.state.transcriptionMasked
+    })
+    this.props.displayLiveSpelling()
+  }
+
   //****************************************************** */
   //Text input
   submit = e => {
@@ -67,7 +82,7 @@ class WhichWord extends Component {
     const definitionDisplay = (
       <Fragment>
         <p>{this.props.definitions[0]}</p>
-        <button onClick={this.props.displayLiveSpelling}>✓</button>
+        <button onClick={this.handleWordApproved}>✓</button>
       </Fragment>
     );
 
