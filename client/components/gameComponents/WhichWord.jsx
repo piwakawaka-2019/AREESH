@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react"
-import { connect } from "react-redux"
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import { getDefinitions } from "../../apis/dictionary"
-import { changeView, setWord, setDefinitions } from "../../actions/game"
+import { getDefinitions } from "../../apis/dictionary";
+import { changeView, setWord, setDefinitions } from "../../actions/game";
 import Dictaphone from "./Dictaphone";
 
 class WhichWord extends Component {
@@ -15,31 +15,31 @@ class WhichWord extends Component {
       error: "",
       transcription: "",
       displayDefinition: false
-    }
+    };
 
-    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this)
+    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this);
   }
 
-  handleTranscription () {
-    this.props.setWord(this.state.word)
+  handleTranscription() {
+    this.props.setWord(this.state.word);
   }
 
-  handleTest = (transcription) => {
-    let maskedWord = '*'
+  handleTest = transcription => {
+    let maskedWord = "*";
 
-    for(var i =0; i<transcription.length-1; i++){
-      maskedWord += '*'
+    for (var i = 0; i < transcription.length - 1; i++) {
+      maskedWord += "*";
     }
-    
-    this.setState({ 
+
+    this.setState({
       word: transcription
     });
-  }
+  };
 
-  toggleDefinitionDisplay (displayStatus) {
-      this.setState({
+  toggleDefinitionDisplay(displayStatus) {
+    this.setState({
       displayDefinition: displayStatus
-    })
+    });
   }
   //****************************************************** */
   //Text input
@@ -69,34 +69,36 @@ class WhichWord extends Component {
         <p>{this.props.definitions[0]}</p>
         <button onClick={this.props.displayLiveSpelling}>✓</button>
       </Fragment>
-    )
-      
-    
+    );
 
     return (
       <Fragment>
-         <div className="card  m-4  p-3 text-center">
+        <div className="card  m-4  p-3 text-center">
           <form className="md-form" onSubmit={this.submit}>
+            {/*SPEECH TO TEXT*/}
+            <Dictaphone
+              setTest={this.handleTest}
+              toggleDefinitionDisplay={this.toggleDefinitionDisplay}
+            />
+            <p>{this.state.error}</p>
+            <div className="invalid-feedback">Please provide a valid Word.</div>
+            <div
+              type="text"
+              name="word"
+              id="validationServer043"
+              className={`form-control ${this.state.error && "is-invalid"}`}
+              className="hidden-div"
+              onChange={this.handleChange}
+              value={this.state.test}
+            >
+              {this.state.test}
+            </div>
+            {this.state.displayDefinition && definitionDisplay}
 
-          {/*SPEECH TO TEXT*/}
-          <Dictaphone setTest={this.handleTest} toggleDefinitionDisplay={this.toggleDefinitionDisplay}/>
-          <p>{this.state.error}</p>
-          <div className="invalid-feedback">Please provide a valid Word.</div>
-          <div
-            type="text"
-            name="word"
-            id="validationServer043"
-            className={`form-control ${this.state.error && "is-invalid"}`}
-            className="hidden-div"
-            onChange={this.handleChange}
-            value={this.state.test}
-          >{this.state.test}</div>
-          {this.state.displayDefinition && definitionDisplay}
-    
-          {/*SPEECH TO TEXT*/}
-          
-          {/*TEXT INPUT*/}
-          {/* <input
+            {/*SPEECH TO TEXT*/}
+
+            {/*TEXT INPUT*/}
+            {/* <input
             type="text"
             name="word"
             id="validationServer043"
@@ -104,12 +106,10 @@ class WhichWord extends Component {
             onChange={this.handleChange}
             value={this.state.test}
           /> */}
-          {/* <label htmlFor="validationServer043">
+            {/* <label htmlFor="validationServer043">
             Enter the word you'd like to spell
           </label> */}
-          {/*TEXT INPUT*/}
-
-            
+            {/*TEXT INPUT*/}
 
             {/* <button
               type="submit"
@@ -119,13 +119,11 @@ class WhichWord extends Component {
             </button> */}
           </form>
           {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
-          <br></br>
-            <br></br>
-            <br></br> 
-            <br></br>
-            
-            
-      </div>
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
       </Fragment>
     );
   }
@@ -143,4 +141,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WhichWord)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WhichWord);

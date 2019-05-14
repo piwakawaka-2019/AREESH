@@ -15,18 +15,18 @@ const Dictaphone = ({
   transcript,
   resetTranscript,
   browserSupportsSpeechRecognition,
+  startListening,
   setTest,
   toggleDefinitionDisplay
 }) => {
   if (!browserSupportsSpeechRecognition) {
     return null;
   }
-
+  startListening()
   return (
-    <div>  
-     
-   
-      <button className="btn-floating btn-grey btn-sm waves-effect"
+    <div>
+      <button
+        className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
           resetTranscript();
@@ -62,4 +62,4 @@ function maskTranscript (transcript) {
 
 Dictaphone.propTypes = propTypes;
 
-export default SpeechRecognition(Dictaphone);
+export default SpeechRecognition({ autoStart: false })(Dictaphone);
