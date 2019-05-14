@@ -1214,3 +1214,12 @@ footer{
   -o-animation: skull-structure-color .5s linear infinite alternate;
   animation: skull-structure-color .5s linear infinite alternate;
 }
+
+
+
+/****************chart****************/
+.chart{
+  margin-left: 50%;
+  height:50% ;
+  width: 90%;
+}
