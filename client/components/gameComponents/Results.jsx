@@ -121,7 +121,7 @@ export class Results extends Component {
               onClick={this.changeView}
               className="btn btn-outline-black waves-effect"
             >
-              Play again?
+              {this.state.result.isCorrect? "Play again?": "Try again?"}
             </button>
           </div>
 
