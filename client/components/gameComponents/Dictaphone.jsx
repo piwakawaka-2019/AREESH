@@ -18,7 +18,8 @@ const Dictaphone = ({
   startListening,
   setTest,
   toggleDefinitionDisplay,
-  transcriptionMasked
+  transcriptionMasked,
+  currentPage
 }) => {
   if (!browserSupportsSpeechRecognition) {
     return null;
@@ -33,7 +34,9 @@ const Dictaphone = ({
           resetTranscript();
           toggleDefinitionDisplay(true)
         }}
-      >Show Definition <i className="far fa-hand-rock" />
+      >
+        {currentPage == "WhichWord"? "check definition": "submit"}
+        <i className="far fa-hand-rock" />
       </button>
       <button
         className="btn-floating btn-grey btn-sm waves-effect"
