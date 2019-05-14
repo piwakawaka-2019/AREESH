@@ -25,7 +25,8 @@ const initialState = {
         attemptDuration: null,
         // lettersCorrect: [], May not need?
         wordCorrect: false,
-        spellingAttempt: ""
+        spellingAttempt: "",
+        LiveSpellingOn: false
     }
 }
 

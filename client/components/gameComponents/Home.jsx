@@ -9,6 +9,12 @@ class Home extends Component {
     this.state = {};
   }
 
+  handleClick = () =>{
+    console.log("handling click")
+    
+    this.props.displayWhichWord()
+  }
+
   render() {
     const { displayWhichWord } = this.props;
     return (
@@ -37,6 +43,7 @@ class Home extends Component {
         <br/>
         <div className="d-flex justify-content-center">
           <button
+            onClick={this.handleClick}
             onClick={displayWhichWord}
             type="button"
             className="btn-floating btn-yellow btn-sm waves-effect px-3"
@@ -50,7 +57,9 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  LiveSpellingOn: state.LiveSpellingOn
+});
 
 const mapDispatchToProps = dispatch => {
   return {

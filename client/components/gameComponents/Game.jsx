@@ -13,7 +13,6 @@ import Winner from "./Winner";
 class Game extends Component {
   render() {
     const { views } = this.props;
-    console.log(this.props.wordHistory.length);
     return (
       <F>
         <br />
