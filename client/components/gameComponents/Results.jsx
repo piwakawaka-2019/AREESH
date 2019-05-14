@@ -109,6 +109,18 @@ export class Results extends Component {
         <div />
       </div>
     );
+
+    let retryButton = (
+      <F>
+        <button
+          onClick={this.changeView}
+          className="btn btn-outline-black waves-effect"
+        >
+          {this.state.result.isCorrect? "Spell another word": "Try again?"}
+        </button>
+      </F>
+    )
+
     return (
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
@@ -117,12 +129,7 @@ export class Results extends Component {
           <h1>{this.state.message}</h1>
           {this.state.result && wordAnimation}
           <div className="d-flex justify-content-center">
-            <button
-              onClick={this.changeView}
-              className="btn btn-outline-black waves-effect"
-            >
-              {this.state.result.isCorrect? "Play again?": "Try again?"}
-            </button>
+            {this.state.resultsComplete && retryButton}
           </div>
 
           {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
