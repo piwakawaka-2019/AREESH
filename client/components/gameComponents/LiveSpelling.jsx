@@ -34,7 +34,6 @@ class LiveSpelling extends Component {
   //   this.changeView(e);
   // }
   handleDictaphone = word => {
-    console.log(22, word);
     this.setState({ spellingAttempt: word.split(" ").join("") });
     //when you click confirm get it to check the answer
     this.props.dispatchSpellingAttempt(word.split(" ").join(""));
