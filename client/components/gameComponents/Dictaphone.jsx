@@ -22,7 +22,8 @@ const Dictaphone = ({
     currentPage,
     wordConfirmed,
     LiveSpellingOn,
-    clearDefinition
+    clearDefinition,
+    definitions
   }) => {
 
     if (!browserSupportsSpeechRecognition) {

@@ -62,6 +62,9 @@ class LiveSpelling extends Component {
         <h2>Spell the word</h2>
         <Dictaphone setTest={this.handleDictaphone} currentPage="LiveSpelling"/>
         <img src="images/listening.gif" style={{ width: 100 }} />
+
+        <p>{this.props.definitions[0]}</p>
+
         {/* </form> */}
         {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
@@ -69,7 +72,9 @@ class LiveSpelling extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  definitions: state.game.wordData.definitions
+});
 
 const mapDispatchToProps = dispatch => {
   return {
