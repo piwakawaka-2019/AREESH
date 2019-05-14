@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import SignedInNav from "./SignedInNav";
 import SignedOutNav from "./SignedOutNav";
 
+import {changeView} from '../../actions/game'
+
 export class Nav extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,7 @@ export class Nav extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
 
-        <NavLink to="/" id="logo-skull-css">
+        <NavLink to="/" id="logo-skull-css" onClick={() => this.props.displayHome()}>
           <ul id="skull-structure">
             <li />
             <li />
@@ -140,7 +142,11 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    displayHome: e => dispatch(changeView("displayHome"))
+  }
+}
 
 export default connect(
   mapStateToProps,
