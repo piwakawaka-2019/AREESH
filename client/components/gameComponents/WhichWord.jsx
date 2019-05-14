@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react"
-import { connect } from "react-redux"
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import { getDefinitions } from "../../apis/dictionary"
-import { changeView, setWord, setDefinitions } from "../../actions/game"
+import { getDefinitions } from "../../apis/dictionary";
+import { changeView, setWord, setDefinitions } from "../../actions/game";
 import Dictaphone from "./Dictaphone";
 
 class WhichWord extends Component {
@@ -17,13 +17,13 @@ class WhichWord extends Component {
     };
   }
 
-  handleTranscription () {
-    this.props.setWord(this.state.word)
+  handleTranscription() {
+    this.props.setWord(this.state.word);
   }
 
-  handleTest = (transcription) => {
-    this.setState({ word:  transcription});
-  }
+  handleTest = transcription => {
+    this.setState({ word: transcription });
+  };
 
   //****************************************************** */
   //Text input
@@ -51,12 +51,11 @@ class WhichWord extends Component {
   render() {
     return (
       <Fragment>
-         <div className="card  m-4  p-3 text-center">
+        <div className="card  m-4  p-3 text-center">
           <form className="md-form" onSubmit={this.submit}>
-
             {/*SPEECH TO TEXT*/}
             <div className="title">Is this the word?</div>
-            <img src="images/listening.gif" style={{width:100}}/>
+            <img src="images/listening.gif" style={{ width: 100 }} />
             <Dictaphone setTest={this.handleTest} />
             <p>{this.state.error}</p>
             <div className="invalid-feedback">Please provide a valid Word.</div>
@@ -68,9 +67,11 @@ class WhichWord extends Component {
               className="hidden-div"
               onChange={this.handleChange}
               value={this.state.test}
-            >{this.state.test}</div>
+            >
+              {this.state.test}
+            </div>
             {/*SPEECH TO TEXT*/}
-            
+
             {/*TEXT INPUT*/}
             {/* <input
               type="text"
@@ -85,8 +86,6 @@ class WhichWord extends Component {
             </label> */}
             {/*TEXT INPUT*/}
 
-            
-
             {/* <button
               type="submit"
               className="btn btn-outline-warning btn-rounded waves-effect"
@@ -94,7 +93,7 @@ class WhichWord extends Component {
               Confirm
             </button> */}
           </form>
-      </div>
+        </div>
       </Fragment>
     );
   }
@@ -110,4 +109,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WhichWord)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WhichWord);
