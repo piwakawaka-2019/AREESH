@@ -9,7 +9,7 @@ import {
 } from "../../apis/speech";
 import { changeView, setWordCorrect, saveWord } from "../../actions/game";
 import Firework from "./Firework";
-import Looser from './Looser'
+import Looser from "./Looser";
 
 export class Results extends Component {
   constructor(props) {
@@ -67,16 +67,18 @@ export class Results extends Component {
     this.setState({
       result
     });
-    this.props.dispatchWordCorrect(result.isCorrect)
-   
-    if (this.state.wordCorrect = result.isCorrect){
-    this.props.dispatchSaveWord({...this.props.currentWord})
-    }
+    this.props.dispatchWordCorrect(result.isCorrect);
 
     setTimeout(() => {
       this.setState({
         resultsComplete: true,
-        message: this.state.result.isCorrect ? "Well Done!" : "You done f@#%ed up A-A-ron!"
+        message: this.state.result.isCorrect
+          ? "Well Done!"
+          : "You done f@#%ed up A-A-ron!"
+      });
+      this.props.dispatchSaveWord({
+        ...this.props.currentWord,
+        wordCorrect: result.isCorrect
       });
     }, this.state.letterSpeed * result.word.length);
 
@@ -106,30 +108,19 @@ export class Results extends Component {
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
-        
-        
-        
-            <h1>{this.state.message}</h1>
-            {this.state.result && wordAnimation}
-               <div className="d-flex justify-content-center">
-               
-               
-                  <button
-                      onClick={this.changeView}
-                      className="btn btn-outline-black waves-effect"
-                    >
-                      Play again?
-                  </button>
-                 
+        {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
+          <h1>{this.state.message}</h1>
+          {this.state.result && wordAnimation}
+          <div className="d-flex justify-content-center">
+            <button
+              onClick={this.changeView}
+              className="btn btn-outline-black waves-effect"
+            >
+              Play again?
+            </button>
+          </div>
 
-              </div> 
-              
-                           
-                {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
-               
-               {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
-       
-  
+          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
     );
   }
@@ -146,7 +137,6 @@ const mapDispatchToProps = dispatch => {
     displayWhichWord: e => dispatch(changeView("displayWhichWord")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect)),
     dispatchSaveWord: currentWord => dispatch(saveWord(currentWord))
-    
   };
 };
 

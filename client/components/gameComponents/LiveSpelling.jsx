@@ -43,8 +43,7 @@ class LiveSpelling extends Component {
   render() {
     return (
       <F>
-        
-          <form>
+        {/* <form>
             <br></br>
             <br></br>
             <br></br>
@@ -57,12 +56,14 @@ class LiveSpelling extends Component {
             className="btn-floating btn-grey btn-sm waves-effect px-3"
           ><i className="far fa-grin-tongue-wink"></i>
           
-          </button> */}
-          
-          <img src="images/listening.gif" style={{width:100}}/>
-          </form>
-          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
-       
+          </button>
+          </form> */}
+        <br />
+        <h2>Spell the word</h2>
+        <Dictaphone setTest={this.handleDictaphone} />
+        <img src="images/listening.gif" style={{ width: 100 }} />
+        {/* </form> */}
+        {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
     );
   }
