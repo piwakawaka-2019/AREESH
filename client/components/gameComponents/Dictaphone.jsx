@@ -17,7 +17,8 @@ const Dictaphone = ({
   browserSupportsSpeechRecognition,
   startListening,
   setTest,
-  toggleDefinitionDisplay
+  toggleDefinitionDisplay,
+  transcriptionMasked
 }) => {
   if (!browserSupportsSpeechRecognition) {
     return null;
@@ -45,7 +46,11 @@ const Dictaphone = ({
         <i className="fas fa-redo-alt" />
       </button>
       <br />
-      <span id="transcript">{maskTranscript(transcript)}</span>
+      <span id="transcript">
+        {transcriptionMasked && maskTranscript(transcript)}
+        {!transcriptionMasked && transcript}
+      </span>
+
     </div>
   );
 };
