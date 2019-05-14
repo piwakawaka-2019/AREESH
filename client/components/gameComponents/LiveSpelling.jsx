@@ -48,10 +48,10 @@ class LiveSpelling extends Component {
             <br></br>
             <br></br>
            
+            <Dictaphone setTest={this.handleDictaphone} />
+            {/* <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input> */}
             
-            <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input>
-            
-            <button
+            {/* <button
             onClick={(e) => this.handleTextClick(e)}
             className="btn-floating btn-grey btn-sm waves-effect px-3"
           ><i className="far fa-grin-tongue-wink"></i>

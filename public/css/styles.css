@@ -13,6 +13,11 @@ h1{
   font-size: 40px;
  
 }
+
+h2{
+  font-family:'Orbitron', sans-serif;
+  font-size: 25px;
+}
 main {
   min-height: 60vh;
   
@@ -338,7 +343,7 @@ footer{
   
   #box2 {
     margin-top: 0;
-    margin-left: 20%;
+    margin-left: 15%;
   
     -webkit-animation: fadeinout 2s linear forwards infinite;
     animation: fadeinout 2s linear forwards infinite;
@@ -347,15 +352,15 @@ footer{
   
   #box3 { 
     margin-top: 0;
-      margin-left: 70%;
+      margin-left: 50%;
     -webkit-animation: fadeinout 2.5s linear forwards infinite;
     animation: fadeinout 2.5s linear forwards infinite;
     opacity: 0;
   }
   
   #box4 {
-    margin-top: 0;
-      margin-left: 40%;
+    margin-top: -50;
+      margin-left: 70%;
     -webkit-animation: fadeinout 2s linear forwards infinite;
     animation: fadeinout 2s linear forwards infinite;
     opacity: 0;
