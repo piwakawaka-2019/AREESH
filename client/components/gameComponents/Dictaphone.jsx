@@ -18,12 +18,16 @@ const Dictaphone = ({
   startListening,
   setTest,
   toggleDefinitionDisplay,
-  transcriptionMasked
+  transcriptionMasked,
+  recognition
 }) => {
+  console.log(recognition);
+  recognition.grammars.src =
+    "#JSGF V1.0; grammar letters; public <letters> = a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z ;";
   if (!browserSupportsSpeechRecognition) {
-    return null;
+    return <p>please switch to chrome to play this game</p>;
   }
-  startListening()
+  startListening();
   return (
     <div>
       <button
@@ -31,7 +35,7 @@ const Dictaphone = ({
         onClick={() => {
           setTest(transcript);
           resetTranscript();
-          toggleDefinitionDisplay(true)
+          toggleDefinitionDisplay(true);
         }}
       >
         <i className="far fa-hand-rock" />
@@ -39,8 +43,8 @@ const Dictaphone = ({
       <button
         className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
-          resetTranscript()
-          toggleDefinitionDisplay(false)
+          resetTranscript();
+          toggleDefinitionDisplay(false);
         }}
       >
         <i className="fas fa-redo-alt" />
@@ -50,19 +54,18 @@ const Dictaphone = ({
         {transcriptionMasked && maskTranscript(transcript)}
         {!transcriptionMasked && transcript}
       </span>
-
     </div>
   );
 };
 
-function maskTranscript (transcript) {
-  let maskedTranscript = ''
+function maskTranscript(transcript) {
+  let maskedTranscript = "";
 
-  for(var i =0; i< transcript.length; i++){
-    maskedTranscript += '*'
+  for (var i = 0; i < transcript.length; i++) {
+    maskedTranscript += "*";
   }
 
-  return maskedTranscript
+  return maskedTranscript;
 }
 
 Dictaphone.propTypes = propTypes;
