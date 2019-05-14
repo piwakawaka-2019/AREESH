@@ -35,7 +35,7 @@ const Dictaphone = ({
           toggleDefinitionDisplay(true)
         }}
       >
-        {currentPage == "WhichWord"? "check definition": "submit"}
+        {currentPage == "WhichWord"? "check definition ": "submit "}
         <i className="far fa-hand-rock" />
       </button>
       <button
@@ -44,7 +44,7 @@ const Dictaphone = ({
           resetTranscript()
           toggleDefinitionDisplay(false)
         }}
-      >Say again <i className="fas fa-redo-alt" /></button>
+      >clear <i className="fas fa-redo-alt" /></button>
       <br />
       <span id="transcript">
         {transcriptionMasked && maskTranscript(transcript)}

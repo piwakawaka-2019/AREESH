@@ -20,7 +20,7 @@ export class Results extends Component {
         word: "testaaaaaa",
         isCorrect: false
       },
-      message: "The results are in...",
+      message: "",
       letterSpeed: 400,
       resultsComplete: false
     };
@@ -126,7 +126,7 @@ export class Results extends Component {
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
         {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
-          <h1>{this.state.message}</h1>
+          {/* <h1>{this.state.message}</h1> */}
           {this.state.result && wordAnimation}
           <div className="d-flex justify-content-center">
             {this.state.resultsComplete && retryButton}

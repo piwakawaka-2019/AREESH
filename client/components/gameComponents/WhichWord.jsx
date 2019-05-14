@@ -82,7 +82,9 @@ class WhichWord extends Component {
     const definitionDisplay = (
       <Fragment>
         <p>{this.props.definitions[0]}</p>
-        <button onClick={this.handleWordApproved}>✓</button>
+        <button className="btn-floating btn-grey btn-sm waves-effect" onClick={this.handleWordApproved}>
+          ✓ Let's Spell
+        </button>
       </Fragment>
     );
 
