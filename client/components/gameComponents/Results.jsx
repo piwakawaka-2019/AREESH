@@ -7,7 +7,7 @@ import {
   checkSpelling,
   speltCorrectly
 } from "../../apis/speech";
-import { changeView, setWordCorrect } from "../../actions/game";
+import { changeView, setWordCorrect, saveWord } from "../../actions/game";
 import Firework from "./Firework";
 import Looser from './Looser'
 
@@ -68,6 +68,10 @@ export class Results extends Component {
       result
     });
     this.props.dispatchWordCorrect(result.isCorrect)
+   
+    if (this.state.wordCorrect = result.isCorrect){
+    this.props.dispatchSaveWord({...this.props.currentWord})
+    }
 
     setTimeout(() => {
       this.setState({
@@ -104,20 +108,31 @@ export class Results extends Component {
         {/* <p>Answer: {this.state.result}</p> */}
         
         
-        <div className="card  m-4  p-3 text-center">
-
+        <div className="card  m-4  p-3 text-center ">
+ 
             <h1>{this.state.message}</h1>
             {this.state.result && wordAnimation}
                <div className="d-flex justify-content-center">
+               
+               
                   <button
                       onClick={this.changeView}
-                      className="btn btn-outline-warning btn-rounded waves-effect"
+                      className="btn btn-outline-black waves-effect"
                     >
                       Play again?
                   </button>
-              </div>     
-              
-             {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
+                 
+
+              </div> 
+               <br></br>
+                  <br></br>
+                  <br></br>
+
+                  <br></br>             
+                {(this.state.resultsComplete && this.state.result.isCorrect) ? <Firework />: <Looser/>}
+
+               {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+             
 
         </div>
       </F>
@@ -127,13 +142,15 @@ export class Results extends Component {
 
 const mapStateToProps = state => ({
   word: state.game.wordData.word,
-  spellingAttempt: state.game.wordData.spellingAttempt
+  spellingAttempt: state.game.wordData.spellingAttempt,
+  currentWord: state.game.wordData
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWhichWord: e => dispatch(changeView("displayWhichWord")),
-    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
+    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect)),
+    dispatchSaveWord: currentWord => dispatch(saveWord(currentWord))
     
   };
 };

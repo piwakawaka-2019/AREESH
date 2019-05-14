@@ -15,8 +15,9 @@ const Dictaphone = ({
   transcript,
   resetTranscript,
   browserSupportsSpeechRecognition,
+  startListening,
   setTest,
-  startListening
+  toggleDefinitionDisplay
 }) => {
   if (!browserSupportsSpeechRecognition) {
     return null;
@@ -28,24 +29,36 @@ const Dictaphone = ({
         className="btn-floating btn-grey btn-sm waves-effect"
         onClick={() => {
           setTest(transcript);
+          resetTranscript();
+          toggleDefinitionDisplay(true)
         }}
       >
-        <i className="fas fa-check" />
+        <i className="far fa-hand-rock" />
       </button>
       <button
         className="btn-floating btn-grey btn-sm waves-effect"
-        onClick={resetTranscript}
+        onClick={() => {
+          resetTranscript()
+          toggleDefinitionDisplay(false)
+        }}
       >
-        <i className="fas fa-times" />
+        <i className="fas fa-redo-alt" />
       </button>
       <br />
-
-      <span id="transcript">{transcript}</span>
-
-      {/* <button className="btn-floating btn-grey btn-sm  waves-effect" onClick={() => handleClick()}><i className="far fa-hand-rock"></i></button> */}
+      <span id="transcript">{maskTranscript(transcript)}</span>
     </div>
   );
 };
+
+function maskTranscript (transcript) {
+  let maskedTranscript = ''
+
+  for(var i =0; i< transcript.length; i++){
+    maskedTranscript += '*'
+  }
+
+  return maskedTranscript
+}
 
 Dictaphone.propTypes = propTypes;
 
