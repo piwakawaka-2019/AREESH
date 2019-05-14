@@ -1,15 +1,15 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
-import { Link, NavLink } from "react-router-dom"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 // are we using this package?
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
-import SignedInNav from "./SignedInNav"
-import SignedOutNav from "./SignedOutNav"
+import SignedInNav from "./SignedInNav";
+import SignedOutNav from "./SignedOutNav";
 
 export class Nav extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentDidMount() {}
@@ -17,36 +17,36 @@ export class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+
         <NavLink to="/" id="logo-skull-css">
-            <ul id="skull-structure">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-            <ul id="eyes">
-              <li></li>
-              <li></li>
-            </ul>
-            <ul id="nose">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-            <ul id="skull-pieces">
-              <li></li>
-              <li></li>
-            
-            </ul>
-    
+          <ul id="skull-structure">
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+          </ul>
+          <ul id="eyes">
+            <li />
+            <li />
+          </ul>
+          <ul id="nose">
+            <li />
+            <li />
+            <li />
+          </ul>
+          <ul id="skull-pieces">
+            <li />
+            <li />
+          </ul>
         </NavLink>
-        <div className="title4nav">Areesh</div>
-        {/* <NavLink to="/" className="navbar-brand text-white ">Areesh</NavLink> */}
+        <NavLink to="/" className="navbar-brand text-white ">
+          Areesh
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -67,9 +67,10 @@ export class Nav extends Component {
               to="#"
               className="nav-item"
               activeClassName="active"
-              className="nav-link" href="#"
+              className="nav-link"
+              href="#"
             >
-              PLACEHOLDER
+              
             </NavLink>
           </ul>
           {/* <ul className="navbar-nav mr-auto">
@@ -129,16 +130,19 @@ export class Nav extends Component {
           </ul>
         </div>
       </nav>
-    )
+    );
   }
 }
 
 const mapStateToProps = ({ auth }) => {
   return {
     auth
-  }
-}
+  };
+};
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);
