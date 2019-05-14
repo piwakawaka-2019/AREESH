@@ -31,9 +31,9 @@ function SignedInNav({logout, user}) {
           className="dropdown-menu dropdown-menu-right dropdown-secondary"
           aria-labelledby="navbarDropdownMenuLink-55"
         >
-          <a className="dropdown-item" >
+          <NavLink to= "./Profile" className="dropdown-item" >
             Profile
-          </a>
+            </NavLink>
           <a className="dropdown-item" onClick={logout}>
             Logout
           </a>
