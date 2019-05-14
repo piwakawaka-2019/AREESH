@@ -74,7 +74,7 @@ export class Results extends Component {
         resultsComplete: true,
         message: this.state.result.isCorrect
           ? "Well Done!"
-          : "You done f@#%ed up A-A-ron!"
+          : "Oops! Incorrect spelling"
       });
       this.props.dispatchSaveWord({
         ...this.props.currentWord,
@@ -89,7 +89,12 @@ export class Results extends Component {
 
   changeView = e => {
     e.preventDefault();
-    this.props.displayWhichWord();
+    if (this.state.result.isCorrect) {
+      this.props.displayWhichWord();
+    } else {
+      this.props.displayLiveSpelling()
+    }
+    
   };
 
   render() {
@@ -135,6 +140,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     displayWhichWord: e => dispatch(changeView("displayWhichWord")),
+    displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect)),
     dispatchSaveWord: currentWord => dispatch(saveWord(currentWord))
   };
