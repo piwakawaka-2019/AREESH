@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react"
-import { connect } from "react-redux"
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import { getDefinitions } from "../../apis/dictionary"
-import { changeView, setWord, setDefinitions } from "../../actions/game"
+import { getDefinitions } from "../../apis/dictionary";
+import { changeView, setWord, setDefinitions } from "../../actions/game";
 import Dictaphone from "./Dictaphone";
 
 class WhichWord extends Component {
@@ -20,28 +20,29 @@ class WhichWord extends Component {
 
     this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this)
     this.handleWordApproved = this.handleWordApproved.bind(this)
+
   }
 
-  handleTranscription () {
-    this.props.setWord(this.state.word)
+  handleTranscription() {
+    this.props.setWord(this.state.word);
   }
 
-  handleTest = (transcription) => {
-    let maskedWord = '*'
+  handleTest = transcription => {
+    let maskedWord = "*";
 
-    for(var i =0; i<transcription.length-1; i++){
-      maskedWord += '*'
+    for (var i = 0; i < transcription.length - 1; i++) {
+      maskedWord += "*";
     }
-    
-    this.setState({ 
+
+    this.setState({
       word: transcription
     });
-  }
+  };
 
-  toggleDefinitionDisplay (displayStatus) {
-      this.setState({
+  toggleDefinitionDisplay(displayStatus) {
+    this.setState({
       displayDefinition: displayStatus
-    })
+    });
   }
 
   handleWordApproved () {
@@ -83,13 +84,11 @@ class WhichWord extends Component {
         <p>{this.props.definitions[0]}</p>
         <button onClick={this.handleWordApproved}>✓</button>
       </Fragment>
-    )
-      
-    
+    );
 
     return (
       <Fragment>
-         <div className="card  m-4  p-3 text-center">
+         
           <form className="md-form" onSubmit={this.submit}>
 
           {/*SPEECH TO TEXT*/}
@@ -111,6 +110,7 @@ class WhichWord extends Component {
           
           {/*TEXT INPUT*/}
           {/* <input
+
             type="text"
             name="word"
             id="validationServer043"
@@ -118,12 +118,10 @@ class WhichWord extends Component {
             onChange={this.handleChange}
             value={this.state.test}
           /> */}
-          {/* <label htmlFor="validationServer043">
+            {/* <label htmlFor="validationServer043">
             Enter the word you'd like to spell
           </label> */}
-          {/*TEXT INPUT*/}
-
-            
+            {/*TEXT INPUT*/}
 
             {/* <button
               type="submit"
@@ -133,13 +131,10 @@ class WhichWord extends Component {
             </button> */}
           </form>
           {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
-          <br></br>
-            <br></br>
-            <br></br> 
-            <br></br>
+           
             
             
-      </div>
+      
       </Fragment>
     );
   }
@@ -157,4 +152,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WhichWord)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WhichWord);
