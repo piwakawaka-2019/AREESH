@@ -1,7 +1,7 @@
 const initialState = []
 
 //We may not need  this. Could become part of global state.
-export default function currentWord(state = initialState, action) {
+export default function userGameHistory(state = initialState, action) {
     switch (action.type) {
         case "SAVE_USER_GAMES":
             return action.gameHistory
