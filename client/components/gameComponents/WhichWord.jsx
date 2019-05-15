@@ -5,7 +5,7 @@ import { getDefinitions } from "../../apis/dictionary";
 import { changeView, setWord, setDefinitions } from "../../actions/game";
 import Dictaphone from "./Dictaphone";
 
-class WhichWord extends Component {
+export class WhichWord extends Component {
   constructor(props) {
     super(props);
     this.state = {
