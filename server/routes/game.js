@@ -2,49 +2,44 @@
 
 const router = require('express').Router()
 
-const { saveGame, getGameHistory} = require('../db/game')
+const { saveUserGame, getUserGames} = require('../db/game')
 const {parseMeetingsData} = require ('./routeFunctions')
 const verifyToken = require('express-jwt')
 
 
 router.get('/history', verifyToken({secret:process.env.JWT_SECRET}), async (req, res) => {
-    //Get a Users Meeting History
-    //We will get the user ID from token when we figure that out
 
-    console.log('user', req.user)
-    const meetings = await getUserMeetings(userID)
-    res.json(parseMeetingsData(meetings))
-
-
+   
+    const userID = req.user.user_id
+    const games = await getUserGames(userID)
+    res.json(games)
 })
 
-router.post('/', async (req, res) => {
-    //Save a completed meeting
-
+router.post('/',verifyToken({secret:process.env.JWT_SECRET}), async (req, res) => {
     try{
-        const meetingData = req.body;
-        const meeting = {...meetingData, attendees:meetingData.attendees.length}
-        const attendeeNames = meetingData.attendees;
-    
-        const meetingID = await saveMeeting(meeting)
-    
-        await saveAttendees(meetingID, attendeeNames);
-    
-        res.status(200)
+
+        const game = req.body;
+       
+
+        game.userID = req.user.user_id
+        
+        gameID = await saveUserGame(game)
+
+        res.status(200).send({ message: "Game Saved" })
     }
     catch(err){
         err => res.status(500).send({message: "Server Error"})
     }
-  
+    
 
 
 })
 
-router.get('/:id/users', async (req, res) => {
-    // Get the attendees of a Meeting
-    const meetingID = req.params.id;
-    const users = await getAttendees(meetingID)
-    res.json(users)
-})
+// router.get('/:id/users', async (req, res) => {
+//     // Get the attendees of a Meeting
+//     const meetingID = req.params.id;
+//     const users = await getAttendees(meetingID)
+//     res.json(users)
+// })
 
 module.exports = router

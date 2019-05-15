@@ -1,3 +1,5 @@
+import { getUserGames, saveGame} from '../apis/game'
+
 export function changeView(view) {
     return {
         type: 'CHANGE_VIEW',
@@ -61,6 +63,46 @@ export function saveWord(wordData){
         wordData
     }
 }
+
+export function saveUserGames(gameHistory){
+    return {
+        type: 'SAVE_USER_GAMES',
+        gameHistory
+    }
+}
+
+export function clearUserGames(){
+    return {
+        type: 'CLEAR_USER_GAMES',
+    }
+}
+
+export function fetchUserGames() {
+    return dispatch => {
+        return getUserGames()
+            .then((gameHistory) => {
+             
+                dispatch(saveUserGames(gameHistory))
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch(loginError(err.response.body.message))
+            })
+    }
+}
+
+
+export function storeUserGame (game) {
+    return dispatch => {
+      return saveGame(game)
+        .then((message) => {
+         
+        })
+        .catch(err => {
+          dispatch(loginError(err.response.body.message))
+        })
+    }
+  }
 
 
 

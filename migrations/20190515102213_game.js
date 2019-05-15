@@ -1,6 +1,7 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('game', function (table) {
         table.increments('id').primary()
+        table.integer('user_id')
         table.string('word')
 
         table.string('definition')

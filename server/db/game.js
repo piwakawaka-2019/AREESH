@@ -1,25 +1,37 @@
-saveGame, getGameHistory
 
 const connection = require('./connection')
 
-function saveGame({ word, definition, start_time, attempt_duration, word_correct, spelling_attempt }, testDb) {
+function saveUserGame({ userID, word, definitions, startTime, attemptDuration, wordCorrect, spellingAttempt }, testDb) {
     const db = testDb || connection
-  
-    return db('meetings')
+    return db('game')
       .insert({
-        meeting_name: meetingName,
-        time: time,
-        duration: duration,
-        attendees: attendees,
-        cost: cost
+        user_id: userID,
+        word,
+        definition: definitions[0],
+        start_time: startTime,
+        attempt_duration: attemptDuration,
+        word_correct: wordCorrect,
+        spelling_attempt: spellingAttempt
       })
   }
 
-  function getGameHistory(user_id, testDb) {
+  function getUserGames(user_id, testDb) {
     const db = testDb || connection
   
-    return db('attendees')
-      .join('meetings', 'attendees.meeting_id', '=', 'meetings.id')
-      .where('attendees.user_id', '=', user_id)
-      .select()
+    return db('game')
+      .where('game.user_id', '=', user_id)
+      .select(
+        'user_id as userID', 
+        'word', 
+        'definition', 
+        'start_time as startTime', 
+        'attempt_duration as attemptDuration',
+        'word_correct as wordCorrect',
+        'spelling_attempt as spellingAttempt',
+      )
+  }
+
+  module.exports = {
+    saveUserGame,
+    getUserGames
   }
