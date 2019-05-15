@@ -82,7 +82,7 @@ class WhichWord extends Component {
     if (definitions) {
       this.props.setDefinitions(definitions);
     } else {
-      this.setState({ error: "Please provide a valid word" });
+      this.setState({ error: "invalid word! please try again" });
     }
   };
 
@@ -156,7 +156,7 @@ class WhichWord extends Component {
               LiveSpellingOn={this.state.LiveSpellingOn}
               clearDefinition={this.clearDefinition}
             />
-            <p>{this.state.error}</p>
+            <p id="invalid-word-error">{this.state.error}</p>
             <div className="invalid-feedback">Please provide a valid Word.</div>
             <div
               type="text"
