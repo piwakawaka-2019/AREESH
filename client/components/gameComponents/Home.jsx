@@ -20,6 +20,10 @@ class Home extends Component {
       <Fragment>
         <div className="view">
           <p className="title4content">
+          <br>
+          </br>
+          <br>
+          </br>
             <strong>INSTRUCTIONS/INFORMATION</strong>
           </p>
           <ul className="card-text">

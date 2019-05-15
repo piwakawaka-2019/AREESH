@@ -46,7 +46,7 @@ class ContactDetails extends Component {
                             <img className="view view-cascade overlay card-img-top mask rgba-white-slight" src="/images/Vinnie.jpg" alt="Card image cap"></img> 
                                 <div className="card-body card-body-cascade text-center">
                                     <h4 className="card-title"><strong>Vinnie Reid</strong></h4>
-                                    <h6 className="font-weight-bold amber-text py-2">Web developer</h6>
+                                    <h6 className="font-weight-bold amber-text py-2">Technical Lead</h6>
                                     <p className="card-text">
                                     <ul>
                                         <li>
@@ -59,7 +59,7 @@ class ContactDetails extends Component {
                                         <strong>Favourite animal:</strong> Dog
                                         </li>
                                         <li>
-                                        <strong>Strenth:</strong> I can think outsize of box
+                                        <strong>Strenth:</strong> I can ride my bike with no handle bars
                                         </li>
                                     </ul>
                                     
@@ -75,7 +75,7 @@ class ContactDetails extends Component {
                             <div className="card card-cascade">
                             <img className="view view-cascade overlay card-img-top mask rgba-white-slight" src="/images/Josh.jpg" alt="Card image cap"></img> 
                                 <div className="card-body card-body-cascade text-center">
-                                    <h4 className="card-title"><strong>Josh Gulliver</strong></h4>
+                                    <h4 className="card-title"><strong>Vibe Watcher</strong></h4>
                                     <h6 className="font-weight-bold amber-text py-2">Web developer</h6>
                                     <p className="card-text">
                                     <ul>
@@ -106,7 +106,7 @@ class ContactDetails extends Component {
                              <img className="view view-cascade overlay card-img-top mask rgba-white-slight" src="/images/Jesse.jpg" alt="Card image cap"></img> 
                                       <div className="card-body card-body-cascade text-center">
                                           <h4 className="card-title"><strong>Jesse Collier</strong></h4>
-                                          <h6 className="font-weight-bold amber-text py-2">Web developer</h6>
+                                          <h6 className="font-weight-bold amber-text py-2">Git Master</h6>
                                           <p className="card-text">
                                           <ul>
                                         <li>
@@ -135,7 +135,7 @@ class ContactDetails extends Component {
                             <img className="view view-cascade overlay card-img-top mask rgba-white-slight" src="/images/Jennifer.JPG" alt="Card image cap"></img> 
                                 <div className="card-body card-body-cascade text-center">
                                     <h4 className="card-title"><strong>Jennifer Huang</strong></h4>
-                                    <h6 className="font-weight-bold amber-text py-2">Web developer</h6>
+                                    <h6 className="font-weight-bold amber-text py-2">Web Developer</h6>
                                     <p className="card-text">
                                     <ul>
                                         <li>
