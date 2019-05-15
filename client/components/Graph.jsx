@@ -16,19 +16,19 @@ class Graph extends React.Component {
 
   componentDidMount () {
     let graphData = this.createGraphData()
-
+    console.log(graphData)
     this.setState({
       graphData
     })
   }
 
-  getTheLastFortnight (date) {
+  getTheLastFortnight () {
     let lastSevenDays = []
 
     let today = new Date()
 
-    for (var i = 0; i < 14; i++){
-        lastSevenDays.push(new Date(today.getFullYear(), today.getMonth(), today.getDate()-i))
+    for (var i = 7; i < 14; i++){
+        lastSevenDays.unshift(new Date(today.getFullYear(), today.getMonth(), today.getDate()-i))
     }
 
     this.setState({
@@ -70,7 +70,9 @@ class Graph extends React.Component {
   }
 
   handleClick = () => {
-    this.createGraphData(this.props.gameHistory)
+    this.setState({
+      graphData: this.createGraphData()
+    })
   }
 
 
