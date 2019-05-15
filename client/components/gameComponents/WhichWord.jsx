@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import Radar from "../Radar"
 
 import { getDefinitions } from "../../apis/dictionary";
 import { changeView, setWord, setDefinitions } from "../../actions/game";
@@ -137,7 +138,7 @@ class WhichWord extends Component {
     return (
       <Fragment>
         <br />
-        <img src="images/listening.gif" style={{ width: 100 }} />
+        {/* <img src="images/listening.gif" style={{ width: 100 }} /> */}
         <h2>say the word you want to spell</h2>
         <form className="md-form" onSubmit={this.submit}>
           {/*SPEECH TO TEXT*/}
@@ -150,6 +151,8 @@ class WhichWord extends Component {
             LiveSpellingOn={this.state.LiveSpellingOn}
             clearDefinition={this.clearDefinition}
           />
+        
+          {/* <img src="images/listening.gif" style={{ width: 100 }} /> */}
           <p>{this.state.error}</p>
           <div className="invalid-feedback">Please provide a valid Word.</div>
           <div
@@ -164,7 +167,8 @@ class WhichWord extends Component {
             {this.state.test}
           </div>
           {this.state.displayDefinition && definitionDisplay}
-        </form>
+        </form> 
+         <Radar/>
       </Fragment>
     );
   }
