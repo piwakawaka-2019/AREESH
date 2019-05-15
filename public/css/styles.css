@@ -2,20 +2,21 @@ html {
   height: 100%;
 }
 body{
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
+  font-family: 'Righteous', Courier, monospace;
+  font-size: 1.5em;
+  font-weight: lighter;
   min-height:100%; padding:0; margin:0; position:relative;
   
 }
 
 h1{
-  font-family:'Orbitron', sans-serif;
+  font-family:'Righteous', sans-serif;
   font-size: 40px;
  
 }
 
 h2{
-  font-family:'Orbitron', sans-serif;
+  font-family:'Righteous', sans-serif;
   font-size: 25px;
 }
 main {
@@ -37,19 +38,21 @@ main {
 
 #title {
   align-self: center;
-  font-size: 3.5em
+  font-size: 3.5em;
+  color: gray;
 }
 
 .resultsContainer {
   color: green;
   font-size: 64px;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Righteous', cursive;
   font-weight: 200;
   letter-spacing: 10px;
   /* text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2); */
 }
 
 .instructions{
+  font-size: 0.75em;
   text-align: left;
 }
 
@@ -63,15 +66,14 @@ main {
 
 nav{
 
-font-family:'Orbitron', sans-serif;
+font-family:'Righteous', sans-serif;
 font-size: 15px;
 
 }
 
 .instructions{
-
-font-family: 'Courier New', Courier, monospace;
-
+  list-style-type: none;
+  font-family: Arial, 'Acme', Courier, monospace;
 }
 
 ul{
@@ -82,7 +84,7 @@ ul{
 
 footer{
 
-  font-family: 'Courier New', Courier, monospace
+  font-family: 'Righteous', Courier, monospace
   }
 
 .hidden-div {
@@ -90,18 +92,17 @@ footer{
   bottom: 10px;
 }
 
-
 .title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Righteous', sans-serif;
   font-size: 25px;
 }
 
 .title4nav {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Righteous', sans-serif;
   color: white;
 }
 .title4content {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Righteous', sans-serif;
   color: black;
 }
 .img {
