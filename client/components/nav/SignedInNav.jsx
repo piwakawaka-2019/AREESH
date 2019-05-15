@@ -7,12 +7,12 @@ import { clearUserGames } from "../../actions/game"
 function SignedInNav({logout, user, clearUserGames}) {
   return (
     <F>
-      <li className="nav-item">
+      {/* <li className="nav-item">
         <a className="nav-link waves-effect waves-light">
           1<i className="fas fa-envelope" />
         </a>
-      </li>
-      <li className="nav-item avatar dropdown">
+      </li> */}
+      <li className="nav-item avatar dropdown" >
         <a
           className="nav-link dropdown-toggle"
           id="navbarDropdownMenuLink-55"
