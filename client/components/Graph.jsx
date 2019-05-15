@@ -9,16 +9,25 @@ class Graph extends React.Component {
     super(props)
 
     this.state = {
-      lastSevenDays: []
+      lastSevenDays: [],
+      graphData: []
     }
   }
 
-  getTheLastSevenDays (date) {
+  componentDidMount () {
+    let graphData = this.createGraphData()
+
+    this.setState({
+      graphData
+    })
+  }
+
+  getTheLastFortnight (date) {
     let lastSevenDays = []
 
     let today = new Date()
 
-    for (var i = 0; i < 7; i++){
+    for (var i = 0; i < 14; i++){
         lastSevenDays.push(new Date(today.getFullYear(), today.getMonth(), today.getDate()-i))
     }
 
@@ -31,11 +40,29 @@ class Graph extends React.Component {
 
   createGraphData = () => {
     let graphData = []
+    var weekday = new Array(7);
+      weekday[0] = "Sun";
+      weekday[1] = "Mon";
+      weekday[2] = "Tue";
+      weekday[3] = "Wed";
+      weekday[4] = "Thu";
+      weekday[5] = "Fri";
+      weekday[6] = "Sat";
 
-    let lastSevenDays = this.getTheLastSevenDays()
+    let lastSevenDays = this.getTheLastFortnight()
 
-    lastSevenDays.forEach((date, i) => {
-      graphData.push({days: date, wordslearnt: i})
+    lastSevenDays.forEach((date) => {
+      let dateWithoutTime = date.setHours(0,0,0,0)
+
+      let wordsSpelledOnThisDay = 0
+
+      this.props.gameHistory.filter(game => {
+        if (new Date(game.startTime).setHours(0,0,0,0) == dateWithoutTime) {
+          wordsSpelledOnThisDay++
+        }
+      })
+
+      graphData.push({days: weekday[date.getDay()], wordslearnt: wordsSpelledOnThisDay})
     })
 
     console.log("Graph data: ", graphData)
@@ -43,8 +70,7 @@ class Graph extends React.Component {
   }
 
   handleClick = () => {
-    this.createGraphData()
-    console.log("Game history: ",this.props.gameHistory)
+    this.createGraphData(this.props.gameHistory)
   }
 
 
@@ -57,15 +83,17 @@ class Graph extends React.Component {
          style={{marginLeft: 120}}
         >
          <VictoryLine
-           data={[
-               {days: "Mon", wordslearnt: 10},
-               {days: "Tue", wordslearnt: 28},
-               {days: "Wed", wordslearnt: 30},
-               {days: "Thu", wordslearnt: 25},
-               {days: "Fri", wordslearnt: 35},
-               {days: "Sat", wordslearnt: 43},
-               {days: "Sun", wordslearnt: 32},
-                ]}
+          data = {this.state.graphData}
+          //  data={[
+          //   {weeks: 1, wordslearnt: 10},
+          //   {weeks: 2, wordslearnt: 28},
+          //   {weeks: 3, wordslearnt: 30},
+          //   {weeks: 4, wordslearnt: 25},
+          //   {weeks: 5, wordslearnt: 35},
+          //   {weeks: 6, wordslearnt: 43},
+          //   {weeks: 7, wordslearnt: 32},
+          //   {weeks: 8, wordslearnt: 59},
+          //    ]}
            x="days"
            y="wordslearnt"
            style={{
