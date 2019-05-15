@@ -9,6 +9,15 @@ class LoadingBar extends Component {
   render() { 
     return ( 
       <Fragment>
+        <div className="apple">
+            <div className='load-bar'>
+                <div className='h-load-bar'>
+                <div className='load-step'></div>
+                </div>
+                {/* <span>Loading...</span> */}
+            </div>
+        </div>
+
       </Fragment>
     )
   }
