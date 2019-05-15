@@ -82,7 +82,7 @@ export class WhichWord extends Component {
     if (definitions) {
       this.props.setDefinitions(definitions);
     } else {
-      this.setState({ error: "Please provide a valid word" });
+      this.setState({ error: "invalid word! please try again" });
     }
   };
 
@@ -137,38 +137,36 @@ export class WhichWord extends Component {
 
     return (
       <Fragment>
-        <br />
-        {/* <img src="images/listening.gif" style={{ width: 100 }} /> */}
-        <h2>say the word you want to spell</h2>
-        <form className="md-form" onSubmit={this.submit}>
-          {/*SPEECH TO TEXT*/}
-          <Dictaphone
-            setTest={this.handleTest}
-            toggleDefinitionDisplay={this.toggleDefinitionDisplay}
-            transcriptionMasked={this.state.transcriptionMasked}
-            currentPage="WhichWord"
-            wordConfirmed={this.state.wordConfirmed}
-            LiveSpellingOn={this.state.LiveSpellingOn}
-            clearDefinition={this.clearDefinition}
-          />
-        
-          {/* <img src="images/listening.gif" style={{ width: 100 }} /> */}
-          <p>{this.state.error}</p>
-          <div className="invalid-feedback">Please provide a valid Word.</div>
-          <div
-            type="text"
-            name="word"
-            id="validationServer043"
-            className={`form-control ${this.state.error && "is-invalid"}`}
-            className="hidden-div"
-            onChange={this.handleChange}
-            value={this.state.test}
-          >
-            {this.state.test}
-          </div>
-          {this.state.displayDefinition && definitionDisplay}
-        </form> 
-         <Radar/>
+          {/* <Radar /> */}
+          <br></br>
+          <img src="images/listening.gif" style={{ width: 100 }} />
+          <h2>say the word you want to spell</h2>
+          <form className="md-form" onSubmit={this.submit}>
+            {/*SPEECH TO TEXT*/}
+            <Dictaphone
+              setTest={this.handleTest}
+              toggleDefinitionDisplay={this.toggleDefinitionDisplay}
+              transcriptionMasked={this.state.transcriptionMasked}
+              currentPage="WhichWord"
+              wordConfirmed={this.state.wordConfirmed}
+              LiveSpellingOn={this.state.LiveSpellingOn}
+              clearDefinition={this.clearDefinition}
+            />
+            <p id="invalid-word-error">{this.state.error}</p>
+            <div className="invalid-feedback">Please provide a valid Word.</div>
+            <div
+              type="text"
+              name="word"
+              id="validationServer043"
+              className={`form-control ${this.state.error && "is-invalid"}`}
+              className="hidden-div"
+              onChange={this.handleChange}
+              value={this.state.test}
+            >
+              {this.state.test}
+            </div>
+            {this.state.displayDefinition && definitionDisplay}
+          </form>
       </Fragment>
     );
   }

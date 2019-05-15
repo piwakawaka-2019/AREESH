@@ -1,22 +1,22 @@
 import request from "superagent";
 
-export function transcribeSpeech(fileName) {
-  return request
-    .post("/api/speech/transcribe")
-    .send({ fileName: fileName })
-    .then(res => {
-      return res.body["transcript"];
-    });
-}
+// export function transcribeSpeech(fileName) {
+//   return request
+//     .post("/api/speech/transcribe")
+//     .send({ fileName: fileName })
+//     .then(res => {
+//       return res.body["transcript"];
+//     });
+// }
 
-// send blob of audio recording to server-side
-// built for first recording solution ( the one with the pink equalizer )
-export function sendBlob(blob) {
-  return request
-    .post("/api/speech/blob")
-    .send({ blob: blob })
-    .then(() => {});
-}
+// // send blob of audio recording to server-side
+// // built for first recording solution ( the one with the pink equalizer )
+// export function sendBlob(blob) {
+//   return request
+//     .post("/api/speech/blob")
+//     .send({ blob: blob })
+//     .then(() => {});
+// }
 
 export function checkSpelling(word, spelling) {
   let score = [];

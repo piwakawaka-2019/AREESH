@@ -20,23 +20,20 @@ class Home extends Component {
       <Fragment>
         <div className="view">
           <p className="title4content">
-          <br>
-          </br>
-          <br>
-          </br>
-            <strong>INSTRUCTIONS/INFORMATION</strong>
+            <strong>INSTRUCTIONS</strong>
           </p>
-          <ul className="card-text">
+          <ul className="card-text" className="instructions">
             <li>
               Fusing speech-recognition technology and your knowledge together
               to help you test your memory and sharpen your spelling skills!
             </li>
-            <li>Let the app know the word you want to learn</li>
-            <li>It will briefly display on your screen before disappearing</li>
+            <br />
+            <li>Let the app know the word you want to learn</li><br />
+            <li>It will briefly display on your screen before disappearing</li><br />
             <li>
               Now over to you, spell the word out loud and AREESH will let you
               know if you got it right or wrong
-            </li>
+            </li><br />
             <li>
               Login/Register to keep a hold of your score and compete against
               other willing learners like yourself
