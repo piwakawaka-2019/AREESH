@@ -137,8 +137,9 @@ class WhichWord extends Component {
 
     return (
       <Fragment>
-          <Radar />
+          {/* <Radar /> */}
           <br></br>
+          <img src="images/listening.gif" style={{ width: 100 }} />
           <h2>say the word you want to spell</h2>
           <form className="md-form" onSubmit={this.submit}>
             {/*SPEECH TO TEXT*/}

@@ -62,13 +62,13 @@ class LiveSpelling extends Component {
           </button>
           </form> */}
         <br />
-        {/* <img src="images/listening.gif" style={{ width: 100 }} /> */}
+        <img src="images/listening.gif" style={{ width: 100 }} />
         <h2>Spell the word</h2>
         <Dictaphone setTest={this.handleDictaphone} currentPage="LiveSpelling"/>
         <p>{this.props.definitions[0]}</p>
 
         {/* </form> */}
-        <Radar/>
+        {/* <Radar/> */}
         {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
     );
