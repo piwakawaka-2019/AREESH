@@ -1,5 +1,3 @@
 module.exports = {
-  setupFiles: [
-    "./test/client/setup-enzyme.js"
-  ]
-}
+  setupFiles: ["./test/client/setup-enzyme.js", "./test/jest.init.js"]
+};

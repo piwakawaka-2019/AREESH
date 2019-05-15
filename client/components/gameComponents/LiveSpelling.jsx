@@ -1,7 +1,7 @@
 import React, { Component, Fragment as F } from "react";
 import { connect } from "react-redux";
 // import LoadingBar from "../LoadingBar"
-import Radar from "../Radar"
+import Radar from "../Radar";
 
 import { changeView, setSpellingAttempt } from "../../actions/game";
 import Dictaphone from "./Dictaphone";
@@ -41,11 +41,40 @@ class LiveSpelling extends Component {
     this.props.dispatchSpellingAttempt(word.split(" ").join(""));
     this.props.displayResults();
   };
+  parseDefinition(definition) {
+    if (definition) {
+      if (definition[0] == "n") {
+        return (
+          <p>
+            <i>noun: </i>
+            {definition.slice(2)}
+          </p>
+        );
+      } else if (definition.slice(0, 3) == "adj") {
+        return (
+          <p>
+            <i>adjective: </i>
+            {definition.slice(3)}
+          </p>
+        );
+      } else if (definition.slice(0, 3) == "adv") {
+        return (
+          <p>
+            <i>adverb: </i>
+            {definition.slice(3)}
+          </p>
+        );
+      } else {
+        return definition;
+      }
+    } else {
+      return "";
+    }
+  }
 
   render() {
     return (
       <F>
-        
         {/* <form>
             <br></br>
             <br></br>
@@ -53,8 +82,8 @@ class LiveSpelling extends Component {
            
             <Dictaphone setTest={this.handleDictaphone} />
             {/* <input placeholder="spell the word here" onChange={(e) => this.handleChange(e)}></input> */}
-            
-            {/* <button
+
+        {/* <button
             onClick={(e) => this.handleTextClick(e)}
             className="btn-floating btn-grey btn-sm waves-effect px-3"
           ><i className="far fa-grin-tongue-wink"></i>
@@ -64,8 +93,11 @@ class LiveSpelling extends Component {
         <br />
         <img src="images/listening.gif" style={{ width: 100 }} />
         <h2>Spell the word</h2>
-        <Dictaphone setTest={this.handleDictaphone} currentPage="LiveSpelling"/>
-        <p>{this.props.definitions[0]}</p>
+        <Dictaphone
+          setTest={this.handleDictaphone}
+          currentPage="LiveSpelling"
+        />
+        <p>{this.parseDefinition(this.props.definitions[0])}</p>
 
         {/* </form> */}
         {/* <Radar/> */}
