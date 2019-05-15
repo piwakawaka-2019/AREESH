@@ -16,7 +16,6 @@ class Graph extends React.Component {
 
   componentDidMount () {
     let graphData = this.createGraphData()
-    console.log(graphData)
     this.setState({
       graphData
     })
@@ -65,7 +64,6 @@ class Graph extends React.Component {
       graphData.push({days: weekday[date.getDay()], wordslearnt: wordsSpelledOnThisDay})
     })
 
-    console.log("Graph data: ", graphData)
     return graphData
   }
 

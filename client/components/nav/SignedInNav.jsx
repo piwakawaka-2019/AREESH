@@ -3,8 +3,9 @@ import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 
 import { logoutUser } from "../../actions/logout"
-import { clearUserGames } from "../../actions/game"
-function SignedInNav({logout, user, clearUserGames}) {
+import { clearUserGames, changeView } from "../../actions/game"
+
+function SignedInNav({logout, user, clearUserGames, displayHome}) {
   return (
     <F>
       {/* <li className="nav-item">
@@ -32,10 +33,10 @@ function SignedInNav({logout, user, clearUserGames}) {
           aria-labelledby="navbarDropdownMenuLink-55"
         >
           <NavLink to= "./Profile" className="dropdown-item" >
-            Profile
+            profile
             </NavLink>
-          <a className="dropdown-item" onClick={() => {logout(),clearUserGames()}}>
-            Logout
+          <a className="dropdown-item" onClick={() => {displayHome(), logout(),clearUserGames()}}>
+            logout
           </a>
         </div>
       </li>
@@ -50,7 +51,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: e => dispatch(logoutUser(e)),
-    clearUserGames: () => dispatch(clearUserGames())
+    clearUserGames: () => dispatch(clearUserGames()),
+    displayHome: e => dispatch(changeView("displayHome"))
   }
 }
 

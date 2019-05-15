@@ -48,7 +48,7 @@ class Home extends Component {
             type="button"
             className="btn-floating btn-grey btn-sm waves-effect"
           >
-            <i className="fas fa-gamepad" /> Play
+             play <i className="fas fa-gamepad" />
           </button>
         </div>
         <br/>
