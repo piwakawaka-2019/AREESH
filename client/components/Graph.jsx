@@ -1,7 +1,7 @@
 import React, { Fragment as F } from 'react';
 import { VictoryAxis, VictoryLine, VictoryChart } from 'victory';
 import {connect} from 'react-redux'
-
+import {fetchUserGames} from '../actions/game'
 
 
 class Graph extends React.Component {
@@ -10,14 +10,17 @@ class Graph extends React.Component {
 
     this.state = {
       lastSevenDays: [],
-      graphData: []
+      graphData: null
     }
   }
 
   componentDidMount () {
-    let graphData = this.createGraphData()
+    this.props.setUserGames()
+    .then(() => {
+      let graphData = this.createGraphData()
     this.setState({
       graphData
+    })
     })
   }
 
@@ -26,7 +29,7 @@ class Graph extends React.Component {
 
     let today = new Date()
 
-    for (var i = 7; i < 14; i++){
+    for (var i = 0; i < 7; i++){
         lastSevenDays.unshift(new Date(today.getFullYear(), today.getMonth(), today.getDate()-i))
     }
 
@@ -57,7 +60,8 @@ class Graph extends React.Component {
 
       this.props.gameHistory.filter(game => {
         if (new Date(game.startTime).setHours(0,0,0,0) == dateWithoutTime) {
-          wordsSpelledOnThisDay++
+          if(game.wordCorrect)
+            wordsSpelledOnThisDay++
         }
       })
 
@@ -75,25 +79,16 @@ class Graph extends React.Component {
 
 
  render() {
+
    return (
        <F>
-         <button onClick={() => this.handleClick()}>Date test</button>
         <VictoryChart
          domainPadding={{x: 40}}
          style={{marginLeft: 120}}
         >
          <VictoryLine
-          data = {this.state.graphData}
-          //  data={[
-          //   {weeks: 1, wordslearnt: 10},
-          //   {weeks: 2, wordslearnt: 28},
-          //   {weeks: 3, wordslearnt: 30},
-          //   {weeks: 4, wordslearnt: 25},
-          //   {weeks: 5, wordslearnt: 35},
-          //   {weeks: 6, wordslearnt: 43},
-          //   {weeks: 7, wordslearnt: 32},
-          //   {weeks: 8, wordslearnt: 59},
-          //    ]}
+          data = {this.state.graphData ? this.state.graphData: [
+               {days: 'Sun', wordslearnt: 10}]}
            x="days"
            y="wordslearnt"
            style={{
@@ -102,7 +97,7 @@ class Graph extends React.Component {
            }}
           />
          <VictoryAxis
-           label="Weeks"
+           label="Days"
            style={{
              axisLabel: { padding: 30 }
            }}
@@ -126,8 +121,10 @@ class Graph extends React.Component {
      });
 
      const mapDispatchToProps = dispatch => {
-       return {}
-     };
+      return {
+        setUserGames: () => dispatch(fetchUserGames()),
+      };
+    };
 
      export default connect(
        mapStateToProps,
