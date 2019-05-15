@@ -59,7 +59,7 @@ class ContactDetails extends Component {
                                         <strong>Favourite animal:</strong> Dog
                                         </li>
                                         <li>
-                                        <strong>Strenth:</strong> I can think outsize of box
+                                        <strong>Strenth:</strong> I can ride my bike with no handle bars
                                         </li>
                                     </ul>
                                     

@@ -93,7 +93,7 @@ export class Results extends Component {
       this.props.dispatchStoreUserGame({
         ...this.props.currentWord,
         wordCorrect: result.isCorrect,
-        startTime: Date.now().toString(),
+        startTime: new Date().toString(),
         attemptDuration: 5
 
       })
@@ -128,7 +128,7 @@ export class Results extends Component {
         <div />
       </div>
     );
-
+          console.log(this.state.resultsComplete);
     let retryButton = (
       <F>
         <button
@@ -144,7 +144,7 @@ export class Results extends Component {
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
-        {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
+        {this.state.resultsComplete && (this.state.result.isCorrect ? <Firework />:<Looser/>)}
           {/* <h1>{this.state.message}</h1> */}
           {this.state.result && wordAnimation}
           <div className="d-flex justify-content-center">
