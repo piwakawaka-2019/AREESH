@@ -18,6 +18,7 @@ class WordDefinition extends Component {
       <F>
         <h1>{word}</h1>
         <p>{definitions[0]}</p>
+
         <div className="clock">
           <ReactCountdownClock
             seconds={1}

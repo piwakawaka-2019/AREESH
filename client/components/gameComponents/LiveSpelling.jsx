@@ -1,5 +1,7 @@
 import React, { Component, Fragment as F } from "react";
 import { connect } from "react-redux";
+// import LoadingBar from "../LoadingBar"
+import Radar from "../Radar"
 
 import { changeView, setSpellingAttempt } from "../../actions/game";
 import Dictaphone from "./Dictaphone";
@@ -43,6 +45,7 @@ class LiveSpelling extends Component {
   render() {
     return (
       <F>
+        
         {/* <form>
             <br></br>
             <br></br>
@@ -61,8 +64,9 @@ class LiveSpelling extends Component {
         <br />
         <h2>Spell the word</h2>
         <Dictaphone setTest={this.handleDictaphone} />
-        <img src="images/listening.gif" style={{ width: 100 }} />
+       {/* <LoadingBar/> */}
         {/* </form> */}
+        <Radar/>
         {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
     );

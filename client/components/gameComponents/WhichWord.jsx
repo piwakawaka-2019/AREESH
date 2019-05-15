@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import Radar from "../Radar"
 
 import { getDefinitions } from "../../apis/dictionary";
 import { changeView, setWord, setDefinitions } from "../../actions/game";
@@ -135,7 +136,8 @@ class WhichWord extends Component {
             toggleDefinitionDisplay={this.toggleDefinitionDisplay}
             transcriptionMasked={this.state.transcriptionMasked}
           />
-          <img src="images/listening.gif" style={{ width: 100 }} />
+          <Radar/>
+          {/* <img src="images/listening.gif" style={{ width: 100 }} /> */}
           <p>{this.state.error}</p>
           <div className="invalid-feedback">Please provide a valid Word.</div>
           <div
