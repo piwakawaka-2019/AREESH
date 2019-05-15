@@ -106,12 +106,12 @@ class Register extends React.Component {
             />
           </div>
         </div>
-        <small
+        {/* <small
           id="defaultRegisterFormPasswordHelpBlock"
           className="form-text text-muted mb-4"
         >
           At least 8 characters and 1 digit
-        </small>
+        </small> */}
 
         <input
           type="text"
@@ -122,14 +122,14 @@ class Register extends React.Component {
           aria-describedby="defaultRegisterFormPhoneHelpBlock"
           onChange={this.updateDetails}
         />
-        <small
+        {/* <small
           id="defaultRegisterFormPhoneHelpBlock"
           className="form-text text-muted mb-4"
         >
           Optional
-        </small>
+        </small> */}
 
-        <div className="custom-control custom-checkbox">
+        {/* <div className="custom-control custom-checkbox">
           <input
             type="checkbox"
             className="custom-control-input"
@@ -141,13 +141,13 @@ class Register extends React.Component {
           >
             Subscribe to our newsletter
           </label>
-        </div>
+        </div> */}
 
         <button className="btn btn-outline-warning btn-rounded waves-effect" type="submit">
-          Sign In
+          sign up
         </button>
 
-        <p>or sign up with:</p>
+        {/* <p>or sign up with:</p>
 
         <a className="grey-text mx-2">
           <i className="fab fa-facebook-f" />
@@ -160,9 +160,9 @@ class Register extends React.Component {
         </a>
         <a className="grey-text mx-2">
           <i className="fab fa-github" />
-        </a>
+        </a> */}
 
-        <hr />
+        {/* <hr />
 
         <p>
           By clicking
@@ -171,7 +171,7 @@ class Register extends React.Component {
           <a className="amber-text" href="" target="_blank">
             terms of service
           </a>
-        </p>
+        </p> */}
       </form>
     )
   }

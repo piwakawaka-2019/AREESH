@@ -130,7 +130,7 @@ export class WhichWord extends Component {
           className="btn-floating btn-grey btn-sm waves-effect"
           onClick={this.handleWordApproved}
         >
-          ✓ Let's Spell
+          ✓ let's spell
         </button>
       </Fragment>
     );

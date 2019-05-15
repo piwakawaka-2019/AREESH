@@ -33,7 +33,7 @@ class Login extends React.Component {
     return (
       <div className="card  m-4  p-3 text-center">
         <h5 className="card-header stylish-color white-text">
-          <strong>Sign in</strong>
+          <strong>Log in</strong>
         </h5>
       <form
         onSubmit={this.submit}
@@ -71,13 +71,14 @@ class Login extends React.Component {
                 className="custom-control-label"
                 htmlFor="defaultLoginFormRemember"
               >
-                Remember me
+              Remember me
               </label>
             </div>
           </div>
-          <div>
+          <br />
+          {/* <div>
             <a className="amber-text" href="">Forgot password?</a>
-          </div>
+          </div> */}
         </div>
 
         <button className="btn btn-outline-warning btn-rounded waves-effect my-4" type="submit">
@@ -86,10 +87,10 @@ class Login extends React.Component {
 
         <p>
           Not a member?
-          <a className="amber-text" href="#"> Register</a>
+          <a className="amber-text" href="/#/register"> sign up</a>
         </p>
 
-        <p>or sign in with:</p>
+        {/* <p>or sign in with:</p>
 
         <a className="amber-text mx-2">
           <i className="fab fa-facebook-f" />
@@ -102,7 +103,7 @@ class Login extends React.Component {
         </a>
         <a className="amber-text mx-2">
           <i className="fab fa-github" />
-        </a>
+        </a> */}
       </form>
       </div>
     )

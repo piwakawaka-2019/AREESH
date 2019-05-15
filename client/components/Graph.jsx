@@ -68,7 +68,6 @@ class Graph extends React.Component {
       graphData.push({days: weekday[date.getDay()], wordslearnt: wordsSpelledOnThisDay})
     })
 
-    console.log("Graph data: ", graphData)
     return graphData
   }
 
@@ -90,16 +89,6 @@ class Graph extends React.Component {
          <VictoryLine
           data = {this.state.graphData ? this.state.graphData: [
                {days: 'Sun', wordslearnt: 10}]}
-          //  data={[
-          //   {weeks: 1, wordslearnt: 10},
-          //   {weeks: 2, wordslearnt: 28},
-          //   {weeks: 3, wordslearnt: 30},
-          //   {weeks: 4, wordslearnt: 25},
-          //   {weeks: 5, wordslearnt: 35},
-          //   {weeks: 6, wordslearnt: 43},
-          //   {weeks: 7, wordslearnt: 32},
-          //   {weeks: 8, wordslearnt: 59},
-          //    ]}
            x="days"
            y="wordslearnt"
            style={{

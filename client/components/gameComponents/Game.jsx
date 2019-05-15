@@ -18,7 +18,7 @@ class Game extends Component {
         <br />
           <div className="text-center">
             <div className="btn-floating btn-grey btn-sm waves-effect" id="score-count">
-              score:{
+              score: {
                 this.props.wordHistory.filter(wordData => wordData.wordCorrect)
                   .length
               }
