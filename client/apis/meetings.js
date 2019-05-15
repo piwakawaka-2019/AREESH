@@ -18,6 +18,7 @@ export function getMeetings() {
     .catch(err => {
       throw err
     })
+    
 }
 
 export function saveMeeting(meeting) {

@@ -7,7 +7,7 @@ import {
   checkSpelling,
   speltCorrectly
 } from "../../apis/speech";
-import { changeView, setWordCorrect, saveWord } from "../../actions/game";
+import { changeView, setWordCorrect, saveWord, storeUserGame } from "../../actions/game";
 import Firework from "./Firework";
 import Looser from "./Looser";
 
@@ -84,10 +84,21 @@ export class Results extends Component {
       });
       this.state.result.isCorrect ? correctSound.play():incorrectSound.play()
 
+
       this.props.dispatchSaveWord({
         ...this.props.currentWord,
         wordCorrect: result.isCorrect
       });
+
+      this.props.dispatchStoreUserGame({
+        ...this.props.currentWord,
+        wordCorrect: result.isCorrect,
+        startTime: Date.now().toString(),
+        attemptDuration: 5
+
+      })
+
+
     }, this.state.letterSpeed * result.word.length);
 
     // result.forEach((letter, i) => {
@@ -157,7 +168,8 @@ const mapDispatchToProps = dispatch => {
     displayWhichWord: e => dispatch(changeView("displayWhichWord")),
     displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect)),
-    dispatchSaveWord: currentWord => dispatch(saveWord(currentWord))
+    dispatchSaveWord: currentWord => dispatch(saveWord(currentWord)),
+    dispatchStoreUserGame: game => dispatch(storeUserGame(game)),
   };
 };
 
