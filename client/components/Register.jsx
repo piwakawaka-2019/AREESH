@@ -106,12 +106,12 @@ class Register extends React.Component {
             />
           </div>
         </div>
-        <small
+        {/* <small
           id="defaultRegisterFormPasswordHelpBlock"
           className="form-text text-muted mb-4"
         >
           At least 8 characters and 1 digit
-        </small>
+        </small> */}
 
         <input
           type="text"
@@ -144,7 +144,7 @@ class Register extends React.Component {
         </div> */}
 
         <button className="btn btn-outline-warning btn-rounded waves-effect" type="submit">
-          Sign Up
+          sign up
         </button>
 
         {/* <p>or sign up with:</p>
