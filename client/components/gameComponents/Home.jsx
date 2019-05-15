@@ -15,6 +15,7 @@ class Home extends Component {
 
   render() {
     const { displayWhichWord } = this.props;
+    
     return (
       <Fragment>
         <div className="view">

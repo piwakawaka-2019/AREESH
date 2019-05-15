@@ -61,6 +61,12 @@ export class Results extends Component {
   componentDidMount(e) {
     let { word, spellingAttempt } = this.props;
 
+    const correctSound = document.createElement("audio");
+    if (correctSound.canPlayType("audio/mpeg"))
+      correctSound.setAttribute("src", "sounds/correct-answer.mp3");
+    const incorrectSound = document.createElement("audio");
+    if (incorrectSound.canPlayType("audio/mpeg"))
+      incorrectSound.setAttribute("src", "sounds/incorrect-answer.mp3");
     //let result = checkSpelling(word, spellingAttempt);
 
     let result = speltCorrectly(word, spellingAttempt);
@@ -76,6 +82,8 @@ export class Results extends Component {
           ? "Well Done!"
           : "Oops! Incorrect spelling"
       });
+      this.state.result.isCorrect ? correctSound.play():incorrectSound.play()
+
       this.props.dispatchSaveWord({
         ...this.props.currentWord,
         wordCorrect: result.isCorrect

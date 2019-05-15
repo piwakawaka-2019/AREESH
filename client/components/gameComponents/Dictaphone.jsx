@@ -65,14 +65,14 @@ const Dictaphone = ({
     );
   };
 
-function maskTranscript (transcript) {
-  let maskedTranscript = ''
+function maskTranscript(transcript) {
+  let maskedTranscript = "";
 
-  for(var i =0; i< transcript.length; i++){
-    maskedTranscript += '*'
+  for (var i = 0; i < transcript.length; i++) {
+    maskedTranscript += "*";
   }
 
-  return maskedTranscript
+  return maskedTranscript;
 }
 
 let resetTranscriptSwitch = true
