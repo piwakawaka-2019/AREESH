@@ -16,22 +16,42 @@ class Graph extends React.Component {
   getTheLastSevenDays (date) {
     let lastSevenDays = []
 
+    let today = new Date()
+
     for (var i = 0; i < 7; i++){
-        lastSevenDays.push(new Date(now.getFullYear(), now.getMonth(), now.getDate()-i))
+        lastSevenDays.push(new Date(today.getFullYear(), today.getMonth(), today.getDate()-i))
     }
 
     this.setState({
       lastSevenDays: lastSevenDays
     })
+
+    return lastSevenDays
   }
 
+  createGraphData = () => {
+    let graphData = []
+
+    let lastSevenDays = this.getTheLastSevenDays()
+
+    lastSevenDays.forEach((date, i) => {
+      graphData.push({days: date, wordslearnt: i})
+    })
+
+    console.log("Graph data: ", graphData)
+    return graphData
+  }
+
+  handleClick = () => {
+    this.createGraphData()
+    console.log("Game history: ",this.props.gameHistory)
+  }
+
+
  render() {
-
-  console.log(this.state.lastSevenDays)
-  console.log(this.props.gameHistory)
-
    return (
        <F>
+         <button onClick={() => this.handleClick()}>Date test</button>
         <VictoryChart
          domainPadding={{x: 40}}
          style={{marginLeft: 120}}
@@ -78,7 +98,7 @@ class Graph extends React.Component {
      });
 
      const mapDispatchToProps = dispatch => {
-       return 1
+       return {}
      };
 
      export default connect(

@@ -137,6 +137,7 @@ class WhichWord extends Component {
 
     return (
       <Fragment>
+          <Radar/>
           <br></br>
           <h2>say the word you want to spell</h2>
           <form className="md-form" onSubmit={this.submit}>
@@ -165,7 +166,6 @@ class WhichWord extends Component {
             </div>
             {this.state.displayDefinition && definitionDisplay}
           </form>
-          <Radar/>
       </Fragment>
     );
   }
