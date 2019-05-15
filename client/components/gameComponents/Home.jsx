@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react"
-import { connect } from "react-redux"
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import {changeView} from '../../actions/game'
+import { changeView } from "../../actions/game";
 
 class Home extends Component {
   constructor(props) {
@@ -9,38 +9,64 @@ class Home extends Component {
     this.state = {};
   }
 
+  handleClick = () =>{
+    this.props.displayWhichWord()
+  }
+
   render() {
-    const {displayWhichWord} = this.props
+    const { displayWhichWord } = this.props;
+    
     return (
       <Fragment>
-        <div className="card text-center my-5 ">
-          <div className="card-body  ">
-            <h5 className="card-title">Welcome!</h5>
-            <p className="card-text">
-            AREESH uses speech-recognition technology to help you test your memory and sharpen your spelling skills! Just tell the app the word you want to spell. It will display on your screen briefly before disappearing. Now over to you. Spell the word out loud, and AREESH will let you know if you got it right
-            </p>
-          </div>
+        <div className="view">
+          <p className="title4content">
+            <strong>INSTRUCTIONS/INFORMATION</strong>
+          </p>
+          <ul className="card-text">
+            <li>
+              Fusing speech-recognition technology and your knowledge together
+              to help you test your memory and sharpen your spelling skills!
+            </li>
+            <li>Let the app know the word you want to learn</li>
+            <li>It will briefly display on your screen before disappearing</li>
+            <li>
+              Now over to you, spell the word out loud and AREESH will let you
+              know if you got it right or wrong
+            </li>
+            <li>
+              Login/Register to keep a hold of your score and compete against
+              other willing learners like yourself
+            </li>
+          </ul>
         </div>
+        <br/>
         <div className="d-flex justify-content-center">
           <button
+            onClick={this.handleClick}
             onClick={displayWhichWord}
             type="button"
-            className="btn btn-outline-warning btn-rounded waves-effect"
+            className="btn-floating btn-grey btn-sm waves-effect"
           >
-            Start
+            <i className="fas fa-gamepad" /> Play
           </button>
         </div>
+        <br/>
       </Fragment>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  LiveSpellingOn: state.LiveSpellingOn
+});
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWhichWord: e => dispatch(changeView("displayWhichWord"))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

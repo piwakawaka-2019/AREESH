@@ -7,8 +7,9 @@ import {
   checkSpelling,
   speltCorrectly
 } from "../../apis/speech";
-import { changeView, setWordCorrect } from "../../actions/game";
+import { changeView, setWordCorrect, saveWord, storeUserGame } from "../../actions/game";
 import Firework from "./Firework";
+import Looser from "./Looser";
 
 export class Results extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export class Results extends Component {
         word: "testaaaaaa",
         isCorrect: false
       },
-      message: "The results are in...",
+      message: "",
       letterSpeed: 400,
       resultsComplete: false
     };
@@ -60,19 +61,44 @@ export class Results extends Component {
   componentDidMount(e) {
     let { word, spellingAttempt } = this.props;
 
+    const correctSound = document.createElement("audio");
+    if (correctSound.canPlayType("audio/mpeg"))
+      correctSound.setAttribute("src", "sounds/correct-answer.mp3");
+    const incorrectSound = document.createElement("audio");
+    if (incorrectSound.canPlayType("audio/mpeg"))
+      incorrectSound.setAttribute("src", "sounds/incorrect-answer.mp3");
     //let result = checkSpelling(word, spellingAttempt);
 
     let result = speltCorrectly(word, spellingAttempt);
     this.setState({
       result
     });
-    this.props.dispatchWordCorrect(result.isCorrect)
+    this.props.dispatchWordCorrect(result.isCorrect);
 
     setTimeout(() => {
       this.setState({
         resultsComplete: true,
-        message: this.state.result.isCorrect ? "Well Done!" : "You done f@#%ed up A-A-ron!"
+        message: this.state.result.isCorrect
+          ? "Well Done!"
+          : "Oops! Incorrect spelling"
       });
+      this.state.result.isCorrect ? correctSound.play():incorrectSound.play()
+
+
+      this.props.dispatchSaveWord({
+        ...this.props.currentWord,
+        wordCorrect: result.isCorrect
+      });
+
+      this.props.dispatchStoreUserGame({
+        ...this.props.currentWord,
+        wordCorrect: result.isCorrect,
+        startTime: Date.now().toString(),
+        attemptDuration: 5
+
+      })
+
+
     }, this.state.letterSpeed * result.word.length);
 
     // result.forEach((letter, i) => {
@@ -82,7 +108,12 @@ export class Results extends Component {
 
   changeView = e => {
     e.preventDefault();
-    this.props.displayWhichWord();
+    if (this.state.result.isCorrect) {
+      this.props.displayWhichWord();
+    } else {
+      this.props.displayLiveSpelling()
+    }
+    
   };
 
   render() {
@@ -97,19 +128,30 @@ export class Results extends Component {
         <div />
       </div>
     );
+
+    let retryButton = (
+      <F>
+        <button
+          onClick={this.changeView}
+          className="btn btn-outline-black waves-effect"
+        >
+          {this.state.result.isCorrect? "Spell another word": "Try again?"}
+        </button>
+      </F>
+    )
+
     return (
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
         {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
-        <h1>{this.state.message}</h1>
-        {this.state.result && wordAnimation}
-        <button
-            onClick={this.changeView}
-            className="btn btn-outline-warning btn-rounded waves-effect"
-          >
-            Play again?
-        </button>
+          {/* <h1>{this.state.message}</h1> */}
+          {this.state.result && wordAnimation}
+          <div className="d-flex justify-content-center">
+            {this.state.resultsComplete && retryButton}
+          </div>
+
+          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
     );
   }
@@ -117,14 +159,17 @@ export class Results extends Component {
 
 const mapStateToProps = state => ({
   word: state.game.wordData.word,
-  spellingAttempt: state.game.wordData.spellingAttempt
+  spellingAttempt: state.game.wordData.spellingAttempt,
+  currentWord: state.game.wordData
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     displayWhichWord: e => dispatch(changeView("displayWhichWord")),
-    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect))
-    
+    displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling")),
+    dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect)),
+    dispatchSaveWord: currentWord => dispatch(saveWord(currentWord)),
+    dispatchStoreUserGame: game => dispatch(storeUserGame(game)),
   };
 };
 

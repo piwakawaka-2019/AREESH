@@ -1,15 +1,17 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
-import { Link, NavLink } from "react-router-dom"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 // are we using this package?
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
-import SignedInNav from "./SignedInNav"
-import SignedOutNav from "./SignedOutNav"
+import SignedInNav from "./SignedInNav";
+import SignedOutNav from "./SignedOutNav";
+
+import {changeView} from '../../actions/game'
 
 export class Nav extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentDidMount() {}
@@ -17,7 +19,38 @@ export class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
-        <div className="navbar-brand text-white ">Areesh</div>
+
+        <NavLink to="/" id="logo-skull-css" onClick={() => this.props.displayHome()}>
+          <ul id="skull-structure">
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+            <li />
+          </ul>
+          <ul id="eyes">
+            <li />
+            <li />
+          </ul>
+          <ul id="nose">
+            <li />
+            <li />
+            <li />
+          </ul>
+          <ul id="skull-pieces">
+            <li />
+            <li />
+          </ul>
+        </NavLink>
+
+        <h1 className="navbar-brand text-black " id="title">
+          AREESH
+        </h1>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -38,9 +71,10 @@ export class Nav extends Component {
               to="#"
               className="nav-item"
               activeClassName="active"
-              className="nav-link" href="#"
+              className="nav-link"
+              href="#"
             >
-              PLACEHOLDER
+              
             </NavLink>
           </ul>
           {/* <ul className="navbar-nav mr-auto">
@@ -99,17 +133,27 @@ export class Nav extends Component {
             {this.props.auth.user ? <SignedInNav /> : <SignedOutNav />}
           </ul>
         </div>
+
       </nav>
-    )
+    );
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, wordHistory, game }) => {
   return {
-    auth
+    auth,
+    views: game.views,
+    wordHistory
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    displayHome: e => dispatch(changeView("displayHome"))
   }
 }
 
-const mapDispatchToProps = {}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);

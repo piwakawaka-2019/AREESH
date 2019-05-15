@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react"
-import { connect } from "react-redux"
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import { getDefinitions } from "../../apis/dictionary"
-import { changeView, setWord, setDefinitions } from "../../actions/game"
+import { getDefinitions } from "../../apis/dictionary";
+import { changeView, setWord, setDefinitions } from "../../actions/game";
 import Dictaphone from "./Dictaphone";
 
 class WhichWord extends Component {
@@ -13,16 +13,59 @@ class WhichWord extends Component {
       blobURL: null,
       word: "",
       error: "",
-      transcription: ""
+      transcription: "",
+      displayDefinition: false,
+      transcriptionMasked: true,
+      wordConfirmed: false,
+      LiveSpellingOn: false
     };
+
+    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this);
+    this.handleWordApproved = this.handleWordApproved.bind(this);
+
+    this.toggleDefinitionDisplay = this.toggleDefinitionDisplay.bind(this);
+    this.handleWordApproved = this.handleWordApproved.bind(this);
   }
 
-  handleTranscription () {
-    this.props.setWord(this.state.word)
+  clearDefinition = () => {
+    this.props.setDefinitions([]);
+  };
+
+  handleTranscription() {
+    this.props.setWord(this.state.word);
   }
 
-  handleTest = (transcription) => {
-    this.setState({ word:  transcription});
+  handleTest = transcription => {
+    let maskedWord = "*";
+
+    for (var i = 0; i < transcription.length - 1; i++) {
+      maskedWord += "*";
+    }
+
+    this.setState({
+      word: transcription
+    });
+  };
+
+  toggleDefinitionDisplay(displayStatus) {
+    this.setState({
+      displayDefinition: displayStatus
+    });
+  }
+
+  handleWordApproved() {
+    this.toggleWordMasking();
+    this.setState({
+      LiveSpellingOn: true
+    });
+    // reset transcript somehow
+  }
+
+  toggleWordMasking() {
+    this.setState({
+      transcriptionMasked: !this.state.transcriptionMasked
+    });
+    this.props.displayLiveSpelling();
   }
 
   //****************************************************** */
@@ -37,24 +80,76 @@ class WhichWord extends Component {
   validateWord = definitions => {
     if (definitions) {
       this.props.setDefinitions(definitions);
-      this.props.displayWordDefinition();
     } else {
-      this.setState({ error: "Invalid word, please try again." });
+      this.setState({ error: "Please provide a valid word" });
     }
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  parseDefinition(definition) {
+    if (definition) {
+      if (definition[0] == "n") {
+        return (
+          <p>
+            <i>noun: </i>
+            {definition.slice(2)}
+          </p>
+        );
+      } else if (definition.slice(0, 3) == "adj") {
+        return (
+          <p>
+            <i>adjective: </i>
+            {definition.slice(3)}
+          </p>
+        );
+      } else if (definition.slice(0, 3) == "adv") {
+        return (
+          <p>
+            <i>adverb: </i>
+            {definition.slice(3)}
+          </p>
+        );
+      } else {
+        return definition;
+      }
+    } else {
+      return "";
+    }
+  }
   //****************************************************** */
 
   render() {
+    const definitionDisplay = (
+      <Fragment>
+        <p>{this.parseDefinition(this.props.definitions[0])}</p>
+        <button
+          className="btn-floating btn-grey btn-sm waves-effect"
+          onClick={this.handleWordApproved}
+        >
+          ✓ Let's Spell
+        </button>
+      </Fragment>
+    );
+
     return (
       <Fragment>
+        <br />
+        <img src="images/listening.gif" style={{ width: 100 }} />
+        <h2>say the word you want to spell</h2>
         <form className="md-form" onSubmit={this.submit}>
-
           {/*SPEECH TO TEXT*/}
-          <Dictaphone setTest={this.handleTest} />
+          <Dictaphone
+            setTest={this.handleTest}
+            toggleDefinitionDisplay={this.toggleDefinitionDisplay}
+            transcriptionMasked={this.state.transcriptionMasked}
+            currentPage="WhichWord"
+            wordConfirmed={this.state.wordConfirmed}
+            LiveSpellingOn={this.state.LiveSpellingOn}
+            clearDefinition={this.clearDefinition}
+          />
           <p>{this.state.error}</p>
           <div className="invalid-feedback">Please provide a valid Word.</div>
           <div
@@ -65,46 +160,29 @@ class WhichWord extends Component {
             className="hidden-div"
             onChange={this.handleChange}
             value={this.state.test}
-          >{this.state.test}</div>
-          {/*SPEECH TO TEXT*/}
-          
-          {/*TEXT INPUT*/}
-          {/* <input
-            type="text"
-            name="word"
-            id="validationServer043"
-            className={`form-control ${this.state.error && "is-invalid"}`}
-            onChange={this.handleChange}
-            value={this.state.test}
-          /> */}
-          {/* <label htmlFor="validationServer043">
-            Enter the word you'd like to spell
-          </label> */}
-          {/*TEXT INPUT*/}
-
-          
-
-          {/* <button
-            type="submit"
-            className="btn btn-outline-warning btn-rounded waves-effect"
           >
-            Confirm
-          </button> */}
+            {this.state.test}
+          </div>
+          {this.state.displayDefinition && definitionDisplay}
         </form>
-
       </Fragment>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  definitions: state.game.wordData.definitions
+});
 
 const mapDispatchToProps = dispatch => {
   return {
-    displayWordDefinition: e => dispatch(changeView("displayWordDefinition")),
+    displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling")),
     setWord: word => dispatch(setWord(word)),
     setDefinitions: definitions => dispatch(setDefinitions(definitions))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WhichWord)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WhichWord);

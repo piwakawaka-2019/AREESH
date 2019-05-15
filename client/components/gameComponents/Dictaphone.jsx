@@ -12,37 +12,78 @@ const propTypes = {
 };
 
 const Dictaphone = ({
-  transcript,
-  resetTranscript,
-  browserSupportsSpeechRecognition,
-  setTest
-}) => {
-  if (!browserSupportsSpeechRecognition) {
-    return null;
+    transcript,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+    startListening,
+    setTest,
+    toggleDefinitionDisplay,
+    transcriptionMasked,
+    currentPage,
+    wordConfirmed,
+    LiveSpellingOn,
+    clearDefinition,
+    definitions
+  }) => {
+
+    if (!browserSupportsSpeechRecognition) {
+      return null;
+    }
+
+    clearTranscriptOnViewLoad(LiveSpellingOn, resetTranscript)
+
+    startListening()
+
+    return (
+      <div>
+
+        <span id="transcript">
+          {transcriptionMasked? maskTranscript(transcript):transcript}
+        </span>
+
+        <br />  
+        <button
+          className="btn-floating btn-grey btn-sm waves-effect"
+          onClick={() => {
+            setTest(transcript);
+            resetTranscript();
+            clearDefinition()
+            toggleDefinitionDisplay(true)
+          }}
+        >
+          {currentPage == "WhichWord"? "check definition ": "submit "}
+          <i className="far fa-hand-rock" />
+        </button>
+        <button
+          className="btn-floating btn-grey btn-sm waves-effect"
+          onClick={() => {
+            resetTranscript()
+            toggleDefinitionDisplay(false)
+          }}
+        >clear <i className="fas fa-redo-alt" /></button>
+      </div>
+    );
+  };
+
+function maskTranscript(transcript) {
+  let maskedTranscript = "";
+
+  for (var i = 0; i < transcript.length; i++) {
+    maskedTranscript += "*";
   }
 
-  return (
-    <div>
-      <button
-        className="btn-floating btn-grey btn-sm waves-effect"
-        onClick={() => {
-          setTest(transcript);
-        }}
-      >
-        <i className="far fa-hand-rock" />
-      </button>
-      <button
-        className="btn-floating btn-grey btn-sm waves-effect"
-        onClick={resetTranscript}
-      >
-        <i className="fas fa-redo-alt" />
-      </button>
-      <br />
-      <span id="transcript">{transcript}</span>
-    </div>
-  );
-};
+  return maskedTranscript;
+}
+
+let resetTranscriptSwitch = true
+
+function clearTranscriptOnViewLoad (LiveSpellingOn, resetTranscript) {
+  if(LiveSpellingOn != resetTranscriptSwitch){
+    resetTranscript()
+    resetTranscriptSwitch = LiveSpellingOn
+  }
+}
 
 Dictaphone.propTypes = propTypes;
 
-export default SpeechRecognition(Dictaphone);
+export default SpeechRecognition({ autoStart: false })(Dictaphone);

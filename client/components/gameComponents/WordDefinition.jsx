@@ -5,7 +5,7 @@ import ReactCountdownClock from "react-countdown-clock";
 
 class WordDefinition extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   changeView = () => {
@@ -46,13 +46,13 @@ class WordDefinition extends Component {
 const mapStateToProps = state => ({
   definitions: state.game.wordData.definitions,
   word: state.game.wordData.word
-})
+});
 
 const mapDispatchToProps = dispatch => {
   return {
     displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling"))
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,

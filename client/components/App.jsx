@@ -9,6 +9,7 @@ import Register from './Register'
 import Game from './gameComponents/Game';
 import ContactDetails from './ContactDetails'
 import Footer from './Footer'
+import Profile from "./Profile";
 
 export function App({ auth }) {
   return (
@@ -20,6 +21,7 @@ export function App({ auth }) {
           <Route exact path="/register" component={Register} />
           <Route path="/" component={Game} exact />
           <Route exact path="/ContactDetails" component={ContactDetails} />
+          <Route exact path="/Profile" component={Profile} />
         </main>
       </div>
       <Footer />

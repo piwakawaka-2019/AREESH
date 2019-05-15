@@ -25,7 +25,8 @@ const initialState = {
         attemptDuration: null,
         // lettersCorrect: [], May not need?
         wordCorrect: false,
-        spellingAttempt: ""
+        spellingAttempt: "",
+        LiveSpellingOn: false
     }
 }
 
@@ -81,7 +82,13 @@ export default function game(state = initialState, action) {
                 }
             }
         case "RESET_GAME":
-            return initialState
+            return {
+                ...initialState,
+                views: {
+                    ..._.map(state.views, () => false), //the underscore is the lodash object
+                    [action.view]: true
+                }
+            }
         case "SET_SPELLING_ATTEMPT":
             return {
                 ...state,
