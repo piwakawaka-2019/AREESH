@@ -46,6 +46,15 @@ export class Nav extends Component {
             <li />
           </ul>
         </NavLink>
+
+       <div className=" btn wordsCorrect">
+            SCORE:
+            {
+              this.props.wordHistory.filter(wordData => wordData.wordCorrect)
+                .length
+            }
+        </div>
+
         <h1 className="navbar-brand text-black ">
           AREESH
         </h1>
@@ -136,9 +145,11 @@ export class Nav extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, wordHistory, game }) => {
   return {
-    auth
+    auth,
+    views: game.views,
+    wordHistory
   };
 };
 
