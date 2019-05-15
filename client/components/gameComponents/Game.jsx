@@ -18,13 +18,15 @@ class Game extends Component {
       <F>
         <br />
         <div className="">
-          {!views.displayHome && (<div className=" btn wordsCorrect">
-            Words Correct:
-            {
-              this.props.wordHistory.filter(wordData => wordData.wordCorrect)
-                .length
-            }
-          </div>)}
+          {!views.displayHome && (
+            <div className=" btn wordsCorrect">
+              Words Correct:
+              {
+                this.props.wordHistory.filter(wordData => wordData.wordCorrect)
+                  .length
+              }
+            </div>
+          )}
           <div className="text-center">
             {views.displayHome && <Home />}
             {views.displayWhichWord && <WhichWord />}
@@ -34,7 +36,7 @@ class Game extends Component {
             {views.displayWinner && <Winner />}
           </div>
         </div>
-        <br/>
+        <br />
         {/* <div className="d-flex justify-content-center">
           <button type="button"
           className="btn btn-outline-grey btn-rounded waves-effect restart-game"
