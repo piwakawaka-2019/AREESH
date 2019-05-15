@@ -47,17 +47,10 @@ export class Nav extends Component {
           </ul>
         </NavLink>
 
-       <div className=" btn wordsCorrect">
-            SCORE:
-            {
-              this.props.wordHistory.filter(wordData => wordData.wordCorrect)
-                .length
-            }
-        </div>
-
-        <h1 className="navbar-brand text-black ">
+        <h1 className="navbar-brand text-black " id="title">
           AREESH
         </h1>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -140,6 +133,7 @@ export class Nav extends Component {
             {this.props.auth.user ? <SignedInNav /> : <SignedOutNav />}
           </ul>
         </div>
+
       </nav>
     );
   }

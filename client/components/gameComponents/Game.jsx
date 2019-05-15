@@ -16,23 +16,21 @@ class Game extends Component {
     return (
       <F>
         <br />
-        <div className="">
-          {!views.displayHome && (<div className=" btn wordsCorrect">
-            SCORE:
-            {
-              this.props.wordHistory.filter(wordData => wordData.wordCorrect)
-                .length
-            }
-          </div>)}
           <div className="text-center">
+            <div className="btn-floating btn-grey btn-sm waves-effect" id="score-count">
+              score:{
+                this.props.wordHistory.filter(wordData => wordData.wordCorrect)
+                  .length
+              }
+            </div>
             {views.displayHome && <Home />}
             {views.displayWhichWord && <WhichWord />}
             {views.displayWordDefinition && <WordDefinition />}
             {views.displayLiveSpelling && <LiveSpelling />}
             {views.displayResults && <Results />}
             {views.displayWinner && <Winner />}
-          </div>
-        </div>
+            
+            </div>
         <br/>
         {/* <div className="d-flex justify-content-center">
           <button type="button"

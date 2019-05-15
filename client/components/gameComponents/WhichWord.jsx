@@ -102,7 +102,8 @@ class WhichWord extends Component {
     return (
       <Fragment>
           <br></br>
-          <h2>Say a word you'd like to spell</h2>
+          <img src="images/listening.gif" style={{ width: 100 }} />
+          <h2>say the word you want to spell</h2>
           <form className="md-form" onSubmit={this.submit}>
             {/*SPEECH TO TEXT*/}
             <Dictaphone
@@ -114,7 +115,6 @@ class WhichWord extends Component {
               LiveSpellingOn={this.state.LiveSpellingOn}
               clearDefinition={this.clearDefinition}
             />
-             <img src="images/listening.gif" style={{ width: 100 }} />
             <p>{this.state.error}</p>
             <div className="invalid-feedback">Please provide a valid Word.</div>
             <div
