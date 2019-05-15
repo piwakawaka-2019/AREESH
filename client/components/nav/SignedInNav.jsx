@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 
 import { logoutUser } from "../../actions/logout"
-
-function SignedInNav({logout, user}) {
+import { clearUserGames } from "../../actions/game"
+function SignedInNav({logout, user, clearUserGames}) {
   return (
     <F>
       {/* <li className="nav-item">
@@ -34,7 +34,7 @@ function SignedInNav({logout, user}) {
           <NavLink to= "./Profile" className="dropdown-item" >
             Profile
             </NavLink>
-          <a className="dropdown-item" onClick={logout}>
+          <a className="dropdown-item" onClick={() => {logout(),clearUserGames()}}>
             Logout
           </a>
         </div>
@@ -49,7 +49,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: e => dispatch(logoutUser(e))
+    logout: e => dispatch(logoutUser(e)),
+    clearUserGames: () => dispatch(clearUserGames())
   }
 }
 
