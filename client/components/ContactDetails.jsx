@@ -30,7 +30,7 @@ class ContactDetails extends Component {
                                         <strong>Favourite animal:</strong> Honey Badger
                                         </li>
                                         <li>
-                                        <strong>Strenth:</strong> Talk and Shite
+                                        <strong>Strenth:</strong> Talking shite
                                         </li>
                                     </ul>
                                           </p>

@@ -7,7 +7,7 @@ import {
   checkSpelling,
   speltCorrectly
 } from "../../apis/speech";
-import { changeView, setWordCorrect, saveWord } from "../../actions/game";
+import { changeView, setWordCorrect, saveWord, storeUserGame } from "../../actions/game";
 import Firework from "./Firework";
 import Looser from "./Looser";
 
@@ -20,7 +20,7 @@ export class Results extends Component {
         word: "testaaaaaa",
         isCorrect: false
       },
-      message: "The results are in...",
+      message: "",
       letterSpeed: 400,
       resultsComplete: false
     };
@@ -80,14 +80,25 @@ export class Results extends Component {
         resultsComplete: true,
         message: this.state.result.isCorrect
           ? "Well Done!"
-          : "You done f@#%ed up A-A-ron!"
+          : "Oops! Incorrect spelling"
       });
       this.state.result.isCorrect ? correctSound.play():incorrectSound.play()
+
 
       this.props.dispatchSaveWord({
         ...this.props.currentWord,
         wordCorrect: result.isCorrect
       });
+
+      this.props.dispatchStoreUserGame({
+        ...this.props.currentWord,
+        wordCorrect: result.isCorrect,
+        startTime: Date.now().toString(),
+        attemptDuration: 5
+
+      })
+
+
     }, this.state.letterSpeed * result.word.length);
 
     // result.forEach((letter, i) => {
@@ -97,7 +108,12 @@ export class Results extends Component {
 
   changeView = e => {
     e.preventDefault();
-    this.props.displayWhichWord();
+    if (this.state.result.isCorrect) {
+      this.props.displayWhichWord();
+    } else {
+      this.props.displayLiveSpelling()
+    }
+    
   };
 
   render() {
@@ -113,26 +129,29 @@ export class Results extends Component {
       </div>
     );
 
+    let retryButton = (
+      <F>
+        <button
+          onClick={this.changeView}
+          className="btn btn-outline-black waves-effect"
+        >
+          {this.state.result.isCorrect? "Spell another word": "Try again?"}
+        </button>
+      </F>
+    )
+
     return (
       <F>
         {/* <button onClick={() => this.handleClick()}>Transcribe File</button> */}
         {/* <p>Answer: {this.state.result}</p> */}
+        {(this.state.resultsComplete && this.state.result.isCorrect) && <Firework />}
+          {/* <h1>{this.state.message}</h1> */}
+          {this.state.result && wordAnimation}
+          <div className="d-flex justify-content-center">
+            {this.state.resultsComplete && retryButton}
+          </div>
 
-        {this.state.resultsComplete && this.state.result.isCorrect && (
-          <Firework />
-        )}
-        <h1>{this.state.message}</h1>
-        {this.state.result && wordAnimation}
-        <div className="d-flex justify-content-center">
-          <button
-            onClick={this.changeView}
-            className="btn btn-outline-black waves-effect"
-          >
-            Play again?
-          </button>
-        </div>
-
-        {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
+          {/* <img className="card-image" src="/images/bk.png" alt="Card image cap"></img>  */}
       </F>
     );
   }
@@ -147,8 +166,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     displayWhichWord: e => dispatch(changeView("displayWhichWord")),
+    displayLiveSpelling: e => dispatch(changeView("displayLiveSpelling")),
     dispatchWordCorrect: wordcorrect => dispatch(setWordCorrect(wordcorrect)),
-    dispatchSaveWord: currentWord => dispatch(saveWord(currentWord))
+    dispatchSaveWord: currentWord => dispatch(saveWord(currentWord)),
+    dispatchStoreUserGame: game => dispatch(storeUserGame(game)),
   };
 };
 

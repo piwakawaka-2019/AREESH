@@ -12,47 +12,58 @@ const propTypes = {
 };
 
 const Dictaphone = ({
-  transcript,
-  resetTranscript,
-  browserSupportsSpeechRecognition,
-  startListening,
-  setTest,
-  toggleDefinitionDisplay,
-  transcriptionMasked
-}) => {
-  if (!browserSupportsSpeechRecognition) {
-    return null;
-  }
-  startListening();
-  return (
-    <div>
-      <button
-        className="btn-floating btn-grey btn-sm waves-effect"
-        onClick={() => {
-          setTest(transcript);
-          resetTranscript();
-          toggleDefinitionDisplay(true);
-        }}
-      >
-        Show Definition <i className="far fa-hand-rock" />
-      </button>
-      <button
-        className="btn-floating btn-grey btn-sm waves-effect"
-        onClick={() => {
-          resetTranscript();
-          toggleDefinitionDisplay(false);
-        }}
-      >
-        Say again <i className="fas fa-redo-alt" />
-      </button>
-      <br />
-      <span id="transcript">
-        {transcriptionMasked && maskTranscript(transcript)}
-        {!transcriptionMasked && transcript}
-      </span>
-    </div>
-  );
-};
+    transcript,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+    startListening,
+    setTest,
+    toggleDefinitionDisplay,
+    transcriptionMasked,
+    currentPage,
+    wordConfirmed,
+    LiveSpellingOn,
+    clearDefinition,
+    definitions
+  }) => {
+
+    if (!browserSupportsSpeechRecognition) {
+      return null;
+    }
+
+    clearTranscriptOnViewLoad(LiveSpellingOn, resetTranscript)
+
+    startListening()
+
+    return (
+      <div>
+
+        <span id="transcript">
+          {transcriptionMasked? maskTranscript(transcript):transcript}
+        </span>
+
+        <br />  
+        <button
+          className="btn-floating btn-grey btn-sm waves-effect"
+          onClick={() => {
+            setTest(transcript);
+            resetTranscript();
+            clearDefinition()
+            toggleDefinitionDisplay(true)
+          }}
+        >
+          {currentPage == "WhichWord"? "check definition ": "submit "}
+          <i className="far fa-hand-rock" />
+        </button>
+        <button
+          className="btn-floating btn-grey btn-sm waves-effect"
+          onClick={() => {
+            resetTranscript()
+            toggleDefinitionDisplay(false)
+          }}
+        >clear <i className="fas fa-redo-alt" /></button>
+      </div>
+    );
+  };
 
 function maskTranscript(transcript) {
   let maskedTranscript = "";
@@ -62,6 +73,15 @@ function maskTranscript(transcript) {
   }
 
   return maskedTranscript;
+}
+
+let resetTranscriptSwitch = true
+
+function clearTranscriptOnViewLoad (LiveSpellingOn, resetTranscript) {
+  if(LiveSpellingOn != resetTranscriptSwitch){
+    resetTranscript()
+    resetTranscriptSwitch = LiveSpellingOn
+  }
 }
 
 Dictaphone.propTypes = propTypes;

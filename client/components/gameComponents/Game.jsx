@@ -13,30 +13,25 @@ import Winner from "./Winner";
 class Game extends Component {
   render() {
     const { views } = this.props;
-    console.log(this.props.wordHistory.length);
     return (
       <F>
         <br />
-        <div className="">
-          {!views.displayHome && (
-            <div className=" btn wordsCorrect">
-              Words Correct:
-              {
+          <div className="text-center">
+            <div className="btn-floating btn-grey btn-sm waves-effect" id="score-count">
+              score:{
                 this.props.wordHistory.filter(wordData => wordData.wordCorrect)
                   .length
               }
             </div>
-          )}
-          <div className="text-center">
             {views.displayHome && <Home />}
             {views.displayWhichWord && <WhichWord />}
             {views.displayWordDefinition && <WordDefinition />}
             {views.displayLiveSpelling && <LiveSpelling />}
             {views.displayResults && <Results />}
             {views.displayWinner && <Winner />}
-          </div>
-        </div>
-        <br />
+            
+            </div>
+        <br/>
         {/* <div className="d-flex justify-content-center">
           <button type="button"
           className="btn btn-outline-grey btn-rounded waves-effect restart-game"

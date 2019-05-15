@@ -8,25 +8,12 @@ Just tell the app the word you want to spell. It will appear on your screen brie
 
 Now over to you. Spell the word out loud, and AREESH will let you know if you get it right.
 
-<<<<<<< HEAD
-## Team Roles
-* Product owner		Des
-* Scrum Master		Des
-* Git Master		Jesse
-* FE Lead		    TBC
-* BE Lead		    TBC
-* Vibe Master		Josh
-||||||| merged common ancestors
-The intended effect of this App is to make meeting attendees aware of how much this time is costing the business.
-=======
 ## Team Roles
 * Product owner:	Des
 * Scrum Master:		Des
 * Vibe Master:		Josh
 * Git Master:		Jesse
 * FE Lead:		    Vinnie
-* BE Lead:		    TBC
->>>>>>> developer
 
 ## Stand-Up Schedule
 Daily @
@@ -43,15 +30,15 @@ Daily @
 As a user:
 * I want to be presented with the correct spelling of a word when I say it out loud so that I can learn how to spell it
 * I want to be presented with the definition the word when I say it out loud so that I can make sure it is the word I meant
-* I want to get live feedback, letter-by-letter, as I spell a word out loud so I that I can add it to my active vocabulary and train my memory
-* I want to be able to see my total number of completed words so I can keep track of my learning progress during each session
+* I want to get feedback, letter-by-letter, when I spell a word out loud so I that I can add it to my active vocabulary and train my memory
+* I want to be able to see my total number of completed words so I can keep track of my learning progress during each time I play
 * I want to be able to see the rules of the game when I log in, so I know how to play
 
 ### Stretch
 As a user:
-  * I want to be able to view a graph displaying my history of completed words over time, so I can track my learning progress
-  * TBC...
-
+  * I want to be able to view a graph displaying my completed words each time I play, so I can track my learning progress in the short term
+  * As a *registered* I want to be able to view a graph displaying my history of completed words since I signed up, so I can track my learning progress long term
+  
   ---
 
 ## Views (Client Side - MVP)
@@ -94,13 +81,13 @@ const auth = {
 
 
 const currentWord = {
-        word: 'apple',
-        definition: 'The round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.',
-        // the time string needs to be converted back to a date object upon extraction
-        startTime: 'Fri May 03 2019 12:22:50 GMT+1200 (New Zealand Standard Time)',
-        attemptDuration: null,
-        lettersCorrect:[],
-        wordCorrect:false
+    word: 'apple',
+    definition: 'The round fruit of a tree of the rose family, which typically has thin green or red skin and crisp flesh.',
+    // the time string needs to be converted back to a date object upon extraction
+    startTime: 'Fri May 03 2019 12:22:50 GMT+1200 (New Zealand Standard Time)',
+    attemptDuration: null,
+    lettersCorrect:[],
+    wordCorrect:false
 }
 
 const wordHistory = [
@@ -335,7 +322,6 @@ If ever you need to rollback, you can also:
 ```sh
 npm run h:rollback
 ```
-
 
 ### Ta-Da!
 Your app should be deployed!

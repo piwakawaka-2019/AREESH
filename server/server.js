@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth')
 const usersRoutes = require('./routes/users')
 const speechRoutes = require('./routes/speech')
+const gameRoutes = require('./routes/game')
 // const meetingsRoutes = require('./routes/meetings')
 
 const server = express()
@@ -23,6 +24,6 @@ server.use(express.static(path.join(__dirname, '../public')))
 server.use('/api/auth', authRoutes)
 server.use('/api/users', usersRoutes)
 server.use('/api/speech', speechRoutes)
-// server.use('/api/meetings', meetingsRoutes)
+server.use('/api/game', gameRoutes)
 
 module.exports = server
