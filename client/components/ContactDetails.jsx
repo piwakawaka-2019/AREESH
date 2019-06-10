@@ -53,7 +53,7 @@ class ContactDetails extends Component {
                                         <strong>Favourite colour:</strong> Blue
                                         </li>
                                         <li>
-                                        <strong>Favourite food:</strong> Frie chicken
+                                        <strong>Favourite food:</strong> Fried Chicken
                                         </li>
                                         <li>
                                         <strong>Favourite animal:</strong> Dog
@@ -75,7 +75,7 @@ class ContactDetails extends Component {
                             <div className="card card-cascade">
                             <img className="view view-cascade overlay card-img-top mask rgba-white-slight" src="/images/Josh.jpg" alt="Card image cap"></img> 
                                 <div className="card-body card-body-cascade text-center">
-                                    <h4 className="card-title"><strong>Vibe Watcher</strong></h4>
+                                    <h4 className="card-title"><strong>Josh Gulliver</strong></h4>
                                     <h6 className="font-weight-bold amber-text py-2">Web developer</h6>
                                     <p className="card-text">
                                     <ul>
@@ -89,7 +89,7 @@ class ContactDetails extends Component {
                                         <strong>Favourite animal:</strong> English Bulldog
                                         </li>
                                         <li>
-                                        <strong>Strenth:</strong> 'm party animal
+                                        <strong>Strenth:</strong> Hello my name is Josh and I like to party
                                         </li>
                                     </ul>
                                     </p>
